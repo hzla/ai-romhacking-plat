@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-05-16T00:00:00.000Z",
+  "toolkit": "ai-romhacking",
+  "game": "pokemon-platinum",
+  "recipe": {
+    "name": "Remove critical hits",
+    "sourcePath": "ai-romhacking/recipes/examples/remove-critical-hits.json",
+    "patches": ["noCrits"],
+    "options": {
+      "force": false
+    }
+  },
+  "input": {
+    "path": "/absolute/path/to/input.nds",
+    "sha1": "input-rom-sha1",
+    "bytes": 0
+  },
+  "output": {
+    "path": "/absolute/path/to/output.nds",
+    "sha1": "output-rom-sha1",
+    "bytes": 0
+  },
+  "patcherLog": ["Patcher messages are recorded here."]
+}

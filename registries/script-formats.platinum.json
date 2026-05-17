@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "game": "pokemon-platinum",
+  "generatedAt": "2026-05-17T03:59:58.818Z",
+  "generatedBy": "scripts/extract-dspre-index.js",
+  "sourceRoot": "../../Docs",
+  "notes": [
+    "Compact script/event reference generated from DSPRE format classes and platinum_scrcmd_database.json.",
+    "Use this before loading DSPRE source or large script files."
+  ],
+  "sources": {
+    "scriptDatabase": {
+      "source": "../../Docs/platinum_scrcmd_database.json",
+      "available": true,
+      "sha1": "a9b25178dc73a58acdd95f5e6fef20b023bac4ca",
+      "counts": {
+        "movements": 107,
+        "scrcmd": 840,
+        "levelScriptCommands": 8,
+        "sounds": 1013
+      },
+      "examples": {
+        "movements": {
+          "0x0000": {
+            "name": "FaceNorth",
+            "decomp_name": "FaceNorth",
+            "description": "Event faces up"
+          },
+          "0x000C": {
+            "name": "WalkNorth8",
+            "decomp_name": "WalkNormalNorth",
+            "description": "Event faces up and moves northwards at 1 tile per 8 frames; Equivalent to 3.75 tiles per second. This should be taken as the standard speed."
+          },
+          "0x0010": {
+            "name": "WalkNorth4",
+            "decomp_name": "WalkFastNorth",
+            "description": "Event faces up and moves northwards at 1 tile per 4 frames; Equivalent to 7.5 tiles per second."
+          },
+          "0x0014": {
+            "name": "WalkNorth2",
+            "decomp_name": "WalkFasterNorth",
+            "description": "Event faces up and moves northwards at 1 tile per 2 frames; Equivalent to 15 tiles per second."
+          }
+        },
+        "comparisonOperators": {
+          "0x0000": "LESS",
+          "0x0001": "EQUAL",
+          "0x0004": "GREATER/EQUAL",
+          "0x0005": "DIFFERENT"
+        },
+        "overworldDirections": {
+          "0x0000": "Up",
+          "0x0001": "Down",
+          "0x0002": "Left",
+          "0x0003": "Right"
+        },
+        "levelScriptCommands": {
+          "InitScriptEntryEnd": {
+            "length": "u8",
+            "value": 0,
+            "parameters": [],
+            "parameter_types": [],
+            "description": "comes after the last InitScript entry but before InitScriptFrameTable"
+          },
+          "InitScriptEntry_OnFrameTable": {
+            "length": "u8",
+            "value": 1,
+            "parameters": [
+              4
+            ],
+            "parameter_types": [
+              "Function"
+            ],
+            "description": "Before each frame of input processing, a table of conditions for the map is checked. Runs the first script where its two condition variables are equal. Therefore, any script invoked this way must at some point make its own condition false. The first check only occurs after all other init script types have run."
+          },
+          "InitScriptEntry_OnTransition": {
+            "length": "u8",
+            "value": 2,
+            "parameters": [
+              4
+            ],
+            "parameter_types": [
+              "Integer"
+            ],
+            "description": "Runs upon first entering a map, including when starting a new game or loading a save. Runs before all other init script types, including ON_FRAME_TABLE. Primary roles: modify object events, manage persisted map features"
+          },
+          "InitScriptEntry_OnResume": {
+            "length": "u8",
+            "value": 3,
+            "parameters": [
+              4
+            ],
+            "parameter_types": [
+              "Integer"
+            ],
+            "description": "Runs after the map has been fully loaded and drawn. Can run again without leaving the map, e.g., when using a field move or item. Primary roles: hide the player, modify object events"
+          },
+          "InitScriptEntry_OnLoad": {
+            "length": "u8",
+            "value": 4,
+            "parameters": [
+              4
+            ],
+            "parameter_types": [
+              "Integer"
+            ],
+            "description": "Runs after the map layout is loaded (but not drawn yet). Can run again without leaving the map, e.g., when using a field move or item. Primary roles: modify warp events, set/unset flags tied to object events"
+          },
+          "InitScriptGoToIfEqual": {
+            "length": null,
+            "value": null,
+            "parameters": [
+              2,
+              2,
+              2
+            ],
+            "parameter_types": [
+              "Variable",
+              "Integer",
+              "Integer"
+            ],
+            "description": "Calls a Script in the associated Script File if the given Variable holds the given Value"
+          },
+          "InitScriptFrameTableEnd": {
+            "length": "u16",
+            "value": 0,
+            "parameters": [
+              4
+            ],
+            "parameter_types": [
+              "Integer"
+            ],
+            "description": ""
+          },
+          "InitScriptEnd": {
+            "length": null,
+            "value": null,
+            "parameters": [],
+            "parameter_types": [],
+            "description": "alignment"
+          }
+        }
+      }
+    },
+    "classes": [
+      {
+        "id": "ScriptFile",
+        "source": "../../Docs/DSPRE_Romfiles/ScriptFile.cs",
+        "sha1": "bbe59f83d210d4e24418a23c2e9efa2e17a6ad86"
+      },
+      {
+        "id": "EventFile",
+        "source": "../../Docs/DSPRE_Romfiles/EventFile.cs",
+        "sha1": "a0e09898fb5b3d4348a04d039a21ca6a062c99c1"
+      },
+      {
+        "id": "LevelScriptFile",
+        "source": "../../Docs/DSPRE_Romfiles/LevelScriptFile.cs",
+        "sha1": "ae971f0e70a9c3a33297df41da24aa4ba815456c"
+      },
+      {
+        "id": "MapHeader",
+        "source": "../../Docs/DSPRE_Romfiles/MapHeader.cs",
+        "sha1": "9dbbcd0884d27d2ebdeeb2c862f27d0adbb025e4"
+      }
+    ]
+  },
+  "formats": [
+    {
+      "id": "map_header_pt",
+      "description": "Map headers link maps to script, level script, text archive, encounter, and event file IDs.",
+      "keyFields": [
+        "scriptFileID@0x04",
+        "levelScriptID@0x06",
+        "textArchiveID@0x08",
+        "wildPokemon@0x0E",
+        "eventFileID@0x10"
+      ],
+      "relatedRegistry": "narc-formats.platinum.json#map_header_pt"
+    },
+    {
+      "id": "script_file",
+      "source": "../../Docs/DSPRE_Romfiles/ScriptFile.cs",
+      "description": "Field script command bytecode. Use script command database for names/meanings before editing raw scripts.",
+      "editGuidance": "Prefer script-aware tooling; raw edits need command widths and jump target updates."
+    },
+    {
+      "id": "event_file",
+      "source": "../../Docs/DSPRE_Romfiles/EventFile.cs",
+      "description": "Map event file: overworlds, warps, triggers, signposts/objects depending on game format.",
+      "editGuidance": "Use DSPRE format index or GUI-derived exports for object/event edits; avoid blind binary edits."
+    },
+    {
+      "id": "level_script_file",
+      "source": "../../Docs/DSPRE_Romfiles/LevelScriptFile.cs",
+      "description": "Level script triggers and init/load/resume script references.",
+      "editGuidance": "Use level script command names from platinum_scrcmd_database.json when available."
+    }
+  ],
+  "quickLookups": {
+    "commonAgentSearches": [
+      "rg -n \"ScrCmd_StartWildBattle|Encounter_New|ScriptContext_GetVar\" ../pokeplatinum/src/scrcmd.c ../pokeplatinum/src/scrcmd_*.c",
+      "rg -n \"FLAG_|VAR_|SetFlag|CheckFlag|ClearFlag\" ../pokeplatinum/src ../pokeplatinum/include",
+      "rg -n \"scriptFileID|levelScriptID|textArchiveID|wildPokemon|eventFileID\" docs/script-format-index.md registries/script-formats.platinum.json"
+    ]
+  }
+}

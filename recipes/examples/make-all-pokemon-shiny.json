@@ -1,0 +1,14 @@
+{
+  "game": "pokemon-platinum",
+  "name": "Make all Pokemon shiny",
+  "description": "Sets the shiny personality threshold to 100 percent. Some gift or event routines may reroll forever if they require non-shiny Pokemon.",
+  "patches": [
+    {
+      "id": "shinyOdds"
+    }
+  ],
+  "options": {
+    "shinyOddsPercent": 100,
+    "force": false
+  }
+}

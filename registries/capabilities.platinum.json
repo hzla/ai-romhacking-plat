@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "game": "pokemon-platinum",
+  "source": "Requires sibling ../platinum-rom-patcher/app.js",
+  "capabilities": [
+    {
+      "id": "frameRate",
+      "name": "Unlock framerate",
+      "summary": "Skips the normal extra VBlank wait, either globally or only in battle.",
+      "risk": "experimental",
+      "aliases": ["60 fps", "unlock fps", "faster battles", "framerate unlock"],
+      "options": {
+        "frameRateMode": ["battle", "global"],
+        "force": "boolean"
+      },
+      "touches": ["ARM9 main loop", "ARM9 helper cave for battle-only mode"],
+      "caveats": ["Global mode affects more game contexts than battle-only mode.", "Timing-sensitive scenes may behave differently."],
+      "examplePrompts": ["Make battles run closer to 60 FPS.", "Unlock the framerate only during battles."]
+    },
+    {
+      "id": "shinyOdds",
+      "name": "Shiny odds",
+      "summary": "Changes the ARM9 shiny personality threshold using an integer percent from 0 to 100.",
+      "risk": "medium",
+      "aliases": ["all shiny", "make pokemon shiny", "100 percent shiny", "change shiny rate"],
+      "options": {
+        "shinyOddsPercent": "integer 0-100",
+        "force": "boolean"
+      },
+      "touches": ["ARM9 Pokemon_IsPersonalityShiny predicate"],
+      "caveats": ["100 percent shiny odds can stall event or gift routines that explicitly reroll until non-shiny."],
+      "examplePrompts": ["Make all Pokemon shiny.", "Set shiny odds to 50 percent."]
+    },
+    {
+      "id": "noCrits",
+      "name": "No critical hits",
+      "summary": "Makes the battle critical-hit multiplier routine return no critical hit.",
+      "risk": "low",
+      "aliases": ["remove crits", "disable critical hits", "no crits", "turn off critical hits"],
+      "options": {
+        "force": "boolean"
+      },
+      "touches": ["overlay 16 battle critical-hit multiplier function"],
+      "caveats": ["Does not change move descriptions or UI text."],
+      "examplePrompts": ["Remove critical hits from the game.", "Make crits impossible."]
+    },
+    {
+      "id": "iv15_31",
+      "name": "Random IV range",
+      "summary": "Rerolls generated IV values until they land inside a configured inclusive range.",
+      "risk": "medium",
+      "aliases": ["better IVs", "minimum IVs", "perfect IV range", "wild IV range"],
+      "options": {
+        "ivMin": "integer 0-31",
+        "ivMax": "integer 0-31",
+        "force": "boolean"
+      },
+      "touches": ["ARM9 random IV generation block"],
+      "caveats": ["Extreme narrow ranges reroll more often and may make generation slower."],
+      "examplePrompts": ["Make every generated Pokemon have IVs from 15 to 31.", "Make all generated Pokemon perfect IVs."]
+    },
+    {
+      "id": "wildNatures",
+      "name": "Filter wild natures",
+      "summary": "Restricts wild Pokemon nature generation to a selected list of nature ids.",
+      "risk": "medium",
+      "aliases": ["block natures", "allowed natures", "nature filter", "wild nature"],
+      "options": {
+        "natureAllowed": "non-empty array of integers 0-24",
+        "force": "boolean"
+      },
+      "touches": ["overlay 6 wild encounter nature generation routine"],
+      "caveats": ["Synchronize no longer forces banned wild natures."],
+      "examplePrompts": ["Only allow Adamant and Jolly wild Pokemon.", "Remove bad natures from wild encounters."]
+    },
+    {
+      "id": "movementSpeed",
+      "name": "Faster movement",
+      "summary": "Speeds up player walking, running, and cycling by editing player movement constants.",
+      "risk": "low",
+      "aliases": ["faster walking", "faster bike", "speed up movement", "run faster"],
+      "options": {
+        "force": "boolean"
+      },
+      "touches": ["ARM9 player movement constants"],
+      "caveats": ["This is player-scoped and does not globally change all NPC movement tables."],
+      "examplePrompts": ["Make the player move faster.", "Speed up walking and biking."]
+    },
+    {
+      "id": "fairyType",
+      "name": "Fairy Patch",
+      "summary": "Replaces the ??? type slot with Fairy battle logic and visual assets.",
+      "risk": "high",
+      "aliases": ["add fairy type", "fairy patch", "gen 6 type chart", "fairy effectiveness"],
+      "options": {
+        "force": "boolean",
+        "debugFairyBattleTest": "boolean"
+      },
+      "touches": ["ARM9 helper cave", "overlay 16 type-effectiveness logic", "overlay 21 Pokedex type display", "battle and Pokedex NARC assets"],
+      "caveats": ["Pokemon type updates are separate; use fairyPokemonTypes too if desired."],
+      "examplePrompts": ["Add the Fairy type to Platinum.", "Install Fairy battle logic."]
+    },
+    {
+      "id": "fairyPokemonTypes",
+      "name": "Update Pokemon Types",
+      "summary": "Updates selected Kanto-Sinnoh base-form Pokemon personal-data type bytes for the Fairy Patch.",
+      "risk": "medium",
+      "aliases": ["fairy pokemon types", "retype pokemon to fairy", "give clefairy fairy type"],
+      "options": {
+        "force": "boolean"
+      },
+      "touches": ["poketool/personal/pl_personal.narc"],
+      "caveats": ["Automatically also applies fairyType. Altaria is intentionally unchanged because Platinum has no Mega Evolution form."],
+      "examplePrompts": ["Add Fairy type and update Pokemon types.", "Make eligible Pokemon Fairy type."]
+    },
+    {
+      "id": "instantText",
+      "name": "Force fast text",
+      "summary": "Applies the fastest normal field and battle text speed edits.",
+      "risk": "low",
+      "aliases": ["fast text", "instant text", "speed up text", "faster dialogue"],
+      "options": {
+        "force": "boolean"
+      },
+      "touches": ["ARM9 field text-speed helper", "overlay 16 battle text-speed helper"],
+      "caveats": ["For multi-character-per-frame text, use text4x instead."],
+      "examplePrompts": ["Make text fast.", "Remove slow dialogue speed."]
+    },
+    {
+      "id": "text4x",
+      "name": "Experimental text speed",
+      "summary": "Hooks the async text printer to render multiple normal characters per frame.",
+      "risk": "experimental",
+      "aliases": ["4x text", "10x text", "very fast text", "multi character text"],
+      "options": {
+        "textCharsPerFrame": "integer 2-10",
+        "force": "boolean"
+      },
+      "touches": ["ARM9 async text-printer hook", "ARM9 helper cave", "instantText edits"],
+      "caveats": ["Callback-driven text falls back to one render per frame; timing quirks are possible."],
+      "examplePrompts": ["Make text 4x faster.", "Set dialogue to 10 characters per frame."]
+    },
+    {
+      "id": "playerAccuracy",
+      "name": "Player accuracy bypass",
+      "summary": "Skips standard accuracy miss handling for player-side attackers.",
+      "risk": "medium",
+      "aliases": ["never miss", "make my moves always hit", "perfect accuracy", "player accuracy"],
+      "options": {
+        "force": "boolean"
+      },
+      "touches": ["overlay 16 accuracy trampoline", "overlay 16 helper cave"],
+      "caveats": ["Does not remove type immunities, Protect, or semi-invulnerable state checks."],
+      "examplePrompts": ["Make my moves never miss.", "Give the player perfect accuracy."]
+    }
+  ]
+}

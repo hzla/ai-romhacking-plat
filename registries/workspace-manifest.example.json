@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "workspaceName": "my-platinum-romhack",
+  "game": "pokemon-platinum",
+  "expectedSiblings": {
+    "platinum-rom-patcher": "../platinum-rom-patcher"
+  },
+  "optionalMaintainerInputs": {
+    "pokeplatinum": "../pokeplatinum",
+    "Docs": "../Docs",
+    "DSPRE": "../DSPRE"
+  },
+  "notes": [
+    "Do not commit or share .nds ROM files.",
+    "Place user-owned ROM files outside ai-romhacking or in an ignored local folder."
+  ]
+}

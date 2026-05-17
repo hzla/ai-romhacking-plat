@@ -1,0 +1,20 @@
+{
+  "game": "pokemon-platinum",
+  "name": "QoL bundle",
+  "description": "A convenience bundle for faster movement, faster text, and player-side standard accuracy bypass.",
+  "patches": [
+    {
+      "id": "movementSpeed"
+    },
+    {
+      "id": "text4x"
+    },
+    {
+      "id": "playerAccuracy"
+    }
+  ],
+  "options": {
+    "textCharsPerFrame": 4,
+    "force": false
+  }
+}

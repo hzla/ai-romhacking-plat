@@ -1,0 +1,15 @@
+# Generated patched ROMs and manifests.
+output/*
+!output/.gitkeep
+
+# User-owned ROM files should not be committed or shared.
+*.nds
+*.srl
+*.dsv
+*.sav
+*.state
+
+# Local scratch files.
+.DS_Store
+node_modules/
+tmp/

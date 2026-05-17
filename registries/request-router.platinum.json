@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "game": "pokemon-platinum",
+  "purpose": "Small request-to-reference router for low-context AI usage.",
+  "routes": [
+    {
+      "id": "existing_capability",
+      "aliases": ["shiny odds", "all shiny", "no critical hits", "fast text", "faster movement", "fairy type", "iv range", "wild natures", "player accuracy"],
+      "firstTargets": ["registries/capabilities.platinum.json", "recipes/examples/", "docs/common-requests.md"],
+      "notes": "Use existing recipes before researching new source behavior."
+    },
+    {
+      "id": "pokemon_personal_data",
+      "aliases": ["ev yields", "base stats", "pokemon types", "pokemon abilities", "held wild items", "catch rate", "gender ratio", "egg groups"],
+      "firstTargets": ["docs/dspre-data-edit-playbook.md", "registries/narc-formats.platinum.json#pokemon_personal", "docs/narc-format-index.md"],
+      "notes": "Stored personal data edits usually do not require pokeplatinum source fallback."
+    },
+    {
+      "id": "moves_items_evolutions_learnsets",
+      "aliases": ["move power", "move accuracy", "move pp", "item data", "evolution method", "learnset", "tm compatibility"],
+      "firstTargets": ["registries/narc-formats.platinum.json", "docs/narc-format-index.md"],
+      "notes": "Use source shards only when changing runtime interpretation."
+    },
+    {
+      "id": "scripts_events_trainers_encounters",
+      "aliases": ["wild encounters", "trainer teams", "trainer ai", "script", "flag", "var", "npc", "event", "scripted battle"],
+      "firstTargets": ["docs/dspre-data-edit-playbook.md", "docs/script-format-index.md", "registries/script-formats.platinum.json", "registries/narc-formats.platinum.json"],
+      "notes": "Runtime behavior routes to source shards after data formats are checked."
+    },
+    {
+      "id": "battle_rules_abilities",
+      "aliases": ["critical hit", "damage formula", "accuracy", "never miss", "ability", "chlorophyll", "weather", "type chart", "effectiveness"],
+      "firstTargets": ["docs/source/battle.md", "docs/pokeplatinum-search-playbook.md", "registries/pokeplatinum-source-index.json#battle_core"],
+      "notes": "Use exact rg searches in battle files only after the shard is insufficient."
+    },
+    {
+      "id": "pokemon_generation_runtime",
+      "aliases": ["personality", "shiny logic", "iv generation", "nature generation", "gender generation", "wild pokemon creation", "repel", "sweet scent"],
+      "firstTargets": ["docs/source/pokemon-generation.md", "registries/pokeplatinum-source-index.json#pokemon_generation_personality"],
+      "notes": "Prefer NARC indexes for stored species fields."
+    },
+    {
+      "id": "field_movement_scripts",
+      "aliases": ["movement", "collision", "field", "overworld", "map object", "level script", "scrcmd"],
+      "firstTargets": ["docs/source/field-scripts.md", "docs/script-format-index.md"],
+      "notes": "Keep field source behavior separate from script-data edits."
+    },
+    {
+      "id": "text_ui_apps",
+      "aliases": ["text speed", "font", "message", "pokedex", "party menu", "pc boxes", "bag", "summary", "save record", "menu", "mystery gift"],
+      "firstTargets": ["docs/source/text-ui.md", "docs/narc-format-index.md"],
+      "notes": "Use data indexes for message archive edits and source shard for rendering/UI behavior."
+    },
+    {
+      "id": "assets_narc_build",
+      "aliases": ["narc", "sprite", "icon", "palette", "graphics", "filesystem", "filesys", "build", "rom revision", "sha1"],
+      "firstTargets": ["docs/source/assets-narc.md", "docs/narc-format-index.md"],
+      "notes": "Use structured NARC docs before runtime source for known data formats."
+    },
+    {
+      "id": "save_files",
+      "aliases": ["save file", ".sav", "save block", "edit save", "party in save", "flags in save"],
+      "firstTargets": ["docs/request-router.md#save-files"],
+      "notes": "Save docs are planned. Do not guess save offsets."
+    },
+    {
+      "id": "expansion_project",
+      "aliases": ["add every gen 5 pokemon", "add many pokemon", "expand pokedex", "new species slots", "add many moves", "add many abilities", "new generation mechanic"],
+      "firstTargets": ["docs/pokeplatinum-expansion-boundaries.md", "docs/request-router.md#expansion-projects"],
+      "notes": "Treat as planning or a smaller first slice, not a one-command recipe."
+    }
+  ]
+}

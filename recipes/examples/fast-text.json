@@ -1,0 +1,14 @@
+{
+  "game": "pokemon-platinum",
+  "name": "Fast text",
+  "description": "Installs the experimental async text-speed hook at four normal characters per frame.",
+  "patches": [
+    {
+      "id": "text4x"
+    }
+  ],
+  "options": {
+    "textCharsPerFrame": 4,
+    "force": false
+  }
+}

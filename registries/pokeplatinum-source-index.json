@@ -1,0 +1,4637 @@
+{
+  "schemaVersion": 1,
+  "game": "pokemon-platinum",
+  "generatedAt": "2026-05-17T04:58:22.963Z",
+  "generatedBy": "scripts/extract-pokeplatinum-index.js",
+  "sourceRoot": "../pokeplatinum",
+  "sourceAvailableAtGeneration": true,
+  "notes": [
+    "Compact, high-recall source reference index for AI romhacking.",
+    "End users do not need the pokeplatinum repo for ordinary usage.",
+    "Tier 1: check this registry and companion docs. Tier 2: search pokeplatinum source only when compact notes do not answer the request."
+  ],
+  "featureAreas": [
+    {
+      "id": "build_rom_identity",
+      "title": "Build and ROM identity",
+      "summary": "Build setup, ROM revision identity, filesystem layout, static binary references.",
+      "usefulFor": [
+        "base ROM validation",
+        "build failures",
+        "file path to FAT/NARC mapping",
+        "source build setup"
+      ],
+      "primaryFiles": [
+        {
+          "path": "README.md",
+          "exists": true,
+          "lines": 13,
+          "sha1": "9eb4cb14e66f7a18cc5492f2ea6df8e39824f420",
+          "sampleSymbols": [],
+          "keyMatches": [
+            {
+              "line": 9,
+              "text": "* [**pokeplatinum.us.nds**](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=4997) (Rev 1): `sha1: 0862ec35b24de5c7e2dcb88c9eea0873110d755c`"
+            },
+            {
+              "line": 10,
+              "text": "* [**pokeplatinum.us.nds**](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=3541) (Rev 0): `sha1: ce81046eda7d232513069519cb2085349896dec7`"
+            }
+          ]
+        },
+        {
+          "path": "INSTALL.md",
+          "exists": true,
+          "lines": 300,
+          "sha1": "dc3b7a14685b23ed529ebe8b1165da6079c522b5",
+          "sampleSymbols": [
+            "Linux"
+          ],
+          "keyMatches": [
+            {
+              "line": 250,
+              "text": "- [build/pokeplatinum.us.nds](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=4997) `sha1: 0862ec35b24de5c7e2dcb88c9eea0873110d755c`"
+            },
+            {
+              "line": 254,
+              "text": "(`sha1: ce81046eda7d232513069519cb2085349896dec7`). This revision matches the"
+            },
+            {
+              "line": 283,
+              "text": "is insufficient. A fork of `binutils-gdb` which supports the overlay system"
+            }
+          ]
+        },
+        {
+          "path": "Makefile",
+          "exists": true,
+          "lines": 185,
+          "sha1": "e73c26e4f43c48952e6b6cbaade5ff09302ec293",
+          "sampleSymbols": [
+            "ifneq",
+            "ifeq"
+          ],
+          "keyMatches": [
+            {
+              "line": 11,
+              "text": "meson         \\"
+            },
+            {
+              "line": 27,
+              "text": "MESON_VER := 1.7.0"
+            },
+            {
+              "line": 28,
+              "text": "MESON_DIR := $(SUBPROJ_DIR)/meson-$(MESON_VER)"
+            },
+            {
+              "line": 29,
+              "text": "MESON_SUB := $(MESON_DIR)/meson.py"
+            },
+            {
+              "line": 31,
+              "text": "MESON ?= $(MESON_SUB)"
+            },
+            {
+              "line": 101,
+              "text": "$(NINJA) -C $(BUILD) debug.nef overlay.map"
+            },
+            {
+              "line": 104,
+              "text": "$(MESON) test -C $(BUILD)"
+            },
+            {
+              "line": 113,
+              "text": "$(NINJA) -C $(BUILD) pokeplatinum.us.nds"
+            }
+          ]
+        },
+        {
+          "path": "meson.build",
+          "exists": true,
+          "lines": 311,
+          "sha1": "83066aa691a08c0bd899114de8d647cd20535ae7",
+          "sampleSymbols": [
+            "get_option",
+            "subdir",
+            "alias_target"
+          ],
+          "keyMatches": [
+            {
+              "line": 3,
+              "text": "meson_version: '>=1.5.0',"
+            },
+            {
+              "line": 23,
+              "text": "'-proc', 'arm946e',"
+            },
+            {
+              "line": 88,
+              "text": "'-proc', 'arm946e',"
+            },
+            {
+              "line": 137,
+              "text": "subdir('generated')"
+            },
+            {
+              "line": 143,
+              "text": "subdir('tools')"
+            },
+            {
+              "line": 149,
+              "text": "subdir('platinum.us')"
+            },
+            {
+              "line": 155,
+              "text": "subdir('lib')"
+            },
+            {
+              "line": 161,
+              "text": "subdir('res')"
+            }
+          ]
+        },
+        {
+          "path": "platinum.us/filesys.csv",
+          "exists": true,
+          "lines": 342,
+          "sha1": "f696b9b942c92a0405ed4297468c270304d6d15f",
+          "sampleSymbols": [],
+          "keyMatches": [
+            {
+              "line": 3,
+              "text": "res/field/lighting/lighting.narc,/data/arealight.narc"
+            },
+            {
+              "line": 14,
+              "text": "res/prebuilt/data/demo_climax.narc,/data/demo_climax.narc"
+            },
+            {
+              "line": 27,
+              "text": "res/prebuilt/data/field_cutin.narc,/data/field_cutin.narc"
+            },
+            {
+              "line": 39,
+              "text": "res/prebuilt/data/fldtanime.narc,/data/fldtanime.narc"
+            },
+            {
+              "line": 44,
+              "text": "res/prebuilt/data/guru2.narc,/data/guru2.narc"
+            },
+            {
+              "line": 52,
+              "text": "res/graphics/naming_screen/namein.narc,/data/namein.narc"
+            },
+            {
+              "line": 80,
+              "text": "res/prebuilt/data/slot.narc,/data/slot.narc"
+            },
+            {
+              "line": 107,
+              "text": "res/prebuilt/data/tradelist.narc,/data/tradelist.narc"
+            }
+          ]
+        },
+        {
+          "path": "platinum.us/rom_rev0.sha1",
+          "exists": true,
+          "lines": 2,
+          "sha1": "827addd1a235c49c2914678c8bdd9c77d675db14",
+          "sampleSymbols": [],
+          "keyMatches": [
+            {
+              "line": 1,
+              "text": "ce81046eda7d232513069519cb2085349896dec7 *pokeplatinum.us.nds"
+            }
+          ]
+        },
+        {
+          "path": "platinum.us/rom_rev1.sha1",
+          "exists": true,
+          "lines": 2,
+          "sha1": "1098b835ac00b9c2546a5db96dbe316efc1b6377",
+          "sampleSymbols": [],
+          "keyMatches": [
+            {
+              "line": 1,
+              "text": "0862ec35b24de5c7e2dcb88c9eea0873110d755c *pokeplatinum.us.nds"
+            }
+          ]
+        }
+      ],
+      "searchPatterns": [
+        "sha1|Rev 0|Rev 1|pokeplatinum.us",
+        "filesys|NARC|overlay|arm9",
+        "subdir|custom_target|meson"
+      ],
+      "fallbackNotes": "Use only when the compact indexes do not answer build/filesystem questions."
+    },
+    {
+      "id": "battle_core",
+      "title": "Battle core",
+      "summary": "Move execution, damage, accuracy, critical hits, type chart, battle state, battle messages.",
+      "usefulFor": [
+        "critical hits",
+        "damage formula",
+        "accuracy",
+        "type effectiveness",
+        "battle rules",
+        "weather/ability interactions"
+      ],
+      "primaryFiles": [
+        {
+          "path": "src/battle/battle_script.c",
+          "exists": true,
+          "lines": 12346,
+          "sha1": "ca77315ad20c30efd06c5e334206d69e33c0120f",
+          "sampleSymbols": [
+            "BtlCmd_PlayEncounterAnimation",
+            "BtlCmd_SetPokemonEncounter",
+            "BtlCmd_PokemonSlideIn",
+            "BtlCmd_PokemonSendOut",
+            "BtlCmd_RecallPokemon",
+            "BtlCmd_DeletePokemon",
+            "BtlCmd_SetTrainerEncounter",
+            "BtlCmd_ThrowPokeball",
+            "BtlCmd_TrainerSlideOut",
+            "BtlCmd_TrainerSlideIn",
+            "BtlCmd_BackgroundSlideIn",
+            "BtlCmd_HealthbarSlideIn",
+            "BtlCmd_HealthbarSlideInDelay",
+            "BtlCmd_HealthbarSlideOut",
+            "BtlCmd_Wait",
+            "BtlCmd_CalcDamage",
+            "BtlCmd_CalcMaxDamage",
+            "BtlCmd_PrintAttackMessage"
+          ],
+          "keyMatches": [
+            {
+              "line": 103,
+              "text": "static BOOL BtlCmd_CalcDamage(BattleSystem *battleSys, BattleContext *battleCtx);"
+            },
+            {
+              "line": 104,
+              "text": "static BOOL BtlCmd_CalcMaxDamage(BattleSystem *battleSys, BattleContext *battleCtx);"
+            },
+            {
+              "line": 143,
+              "text": "static BOOL BtlCmd_CheckAbility(BattleSystem *battleSys, BattleContext *battleCtx);"
+            },
+            {
+              "line": 197,
+              "text": "static BOOL BtlCmd_EndOfTurnWeatherEffect(BattleSystem *battleSys, BattleContext *battleCtx);"
+            },
+            {
+              "line": 206,
+              "text": "static BOOL BtlCmd_WeatherHPRecovery(BattleSystem *battleSys, BattleContext *battleCtx);"
+            },
+            {
+              "line": 229,
+              "text": "static BOOL BtlCmd_CalcWeatherBallParams(BattleSystem *battleSys, BattleContext *battleCtx);"
+            },
+            {
+              "line": 231,
+              "text": "static BOOL BtlCmd_ApplyTypeEffectiveness(BattleSystem *battleSys, BattleContext *battleCtx);"
+            },
+            {
+              "line": 249,
+              "text": "static BOOL BtlCmd_CheckIgnorableAbility(BattleSystem *battleSys, BattleContext *battleCtx);"
+            }
+          ]
+        },
+        {
+          "path": "src/battle/battle_lib.c",
+          "exists": true,
+          "lines": 8205,
+          "sha1": "2d3d76d96c08ebe57f088223de427a4b0de5d981",
+          "sampleSymbols": [
+            "BasicTypeMulApplies",
+            "MapSideEffectToSubscript",
+            "ApplyTypeMultiplier",
+            "NoImmunityOverrides",
+            "UpateMoveStatusForTypeMul",
+            "MoveIsOnDamagingTurn",
+            "Battler_MonType",
+            "BattleAI_ClearKnownMoves",
+            "BattleAI_ClearKnownAbility",
+            "BattleAI_ClearKnownItem",
+            "ChooseTraceTarget",
+            "MoveCannotTriggerAnticipation",
+            "CalcMoveType",
+            "BattleSystem_InitBattleMon",
+            "Pokedex_SetupGiratina",
+            "Pokedex_HeightWeightData_Load",
+            "Pokedex_HeightWeightData_Release",
+            "Pokedex_HeightWeightData_Free"
+          ],
+          "keyMatches": [
+            {
+              "line": 56,
+              "text": "static int ApplyTypeMultiplier(BattleContext *battleCtx, int attacker, int mul, int damage, BOOL update, u32 *moveStatus);"
+            },
+            {
+              "line": 62,
+              "text": "static void BattleAI_ClearKnownAbility(BattleContext *battleCtx, u8 battler);"
+            },
+            {
+              "line": 103,
+              "text": "battleCtx->battleMons[battler].weatherAbilityAnnounced = FALSE;"
+            },
+            {
+              "line": 114,
+              "text": "battleCtx->battleMons[battler].type1 = Pokemon_GetValue(mon, MON_DATA_TYPE_1, NULL);"
+            },
+            {
+              "line": 115,
+              "text": "battleCtx->battleMons[battler].type2 = Pokemon_GetValue(mon, MON_DATA_TYPE_2, NULL);"
+            },
+            {
+              "line": 119,
+              "text": "if (BattleSystem_GetBattleType(battleSys) & BATTLE_TYPE_NO_ABILITIES) {"
+            },
+            {
+              "line": 120,
+              "text": "battleCtx->battleMons[battler].ability = ABILITY_NONE;"
+            },
+            {
+              "line": 124,
+              "text": "battleCtx->battleMons[battler].ability = Pokemon_GetValue(mon, MON_DATA_ABILITY, NULL);"
+            }
+          ]
+        },
+        {
+          "path": "src/battle/battle_system.c",
+          "exists": true,
+          "lines": 2323,
+          "sha1": "fc5d3944e9347659becca3556e30f24e484b5881",
+          "sampleSymbols": [
+            "BattleMessage_CheckSide",
+            "BattleMessage_FillFormatBuffers",
+            "BattleMessage_Format",
+            "BattleMessage_Callback",
+            "BattleMessage_SetNickname",
+            "BattleMessage_SetMoveName",
+            "BattleMessage_SetItemName",
+            "BattleMessage_SetNumber",
+            "BattleMessage_SetNumberDigits",
+            "BattleMessage_SetTypeName",
+            "BattleMessage_SetAbilityName",
+            "BattleMessage_StatName",
+            "BattleMessage_SetStatusName",
+            "BattleMessage_SetPokemonName",
+            "BattleMessage_SetPoffinName",
+            "BattleMessage_SetFlavorName",
+            "BattleMessage_SetTrainerClassName",
+            "BattleMessage_SetTrainerName"
+          ],
+          "keyMatches": [
+            {
+              "line": 86,
+              "text": "static void BattleMessage_SetAbilityName(BattleSystem *battleSys, u32 idx, enum Ability ability);"
+            },
+            {
+              "line": 129,
+              "text": "if ((battleSys->battleType & BATTLE_TYPE_2vs2) || ((battleSys->battleType & BATTLE_TYPE_TAG) && (BattleSystem_GetBattlerType(battleSys, battler) & BATTLER_THEM))) {"
+            },
+            {
+              "line": 131,
+              "text": "} else if (battleSys->battleType & BATTLE_TYPE_DOUBLES) {"
+            },
+            {
+              "line": 140,
+              "text": "if ((battleSys->battleType & BATTLE_TYPE_2vs2)"
+            },
+            {
+              "line": 141,
+              "text": "|| ((battleSys->battleType & BATTLE_TYPE_TAG)"
+            },
+            {
+              "line": 144,
+              "text": "} else if (battleSys->battleType & BATTLE_TYPE_DOUBLES) {"
+            },
+            {
+              "line": 153,
+              "text": "if ((battleSys->battleType & BATTLE_TYPE_2vs2)"
+            },
+            {
+              "line": 154,
+              "text": "|| ((battleSys->battleType & BATTLE_TYPE_TAG) && (BattleSystem_GetBattlerType(battleSys, battler) & BATTLER_THEM))) {"
+            }
+          ]
+        },
+        {
+          "path": "src/battle/battle_controller_player.c",
+          "exists": true,
+          "lines": 4865,
+          "sha1": "2af8eb3764cbd6d313542710bc0c0a7d2032aff0",
+          "sampleSymbols": [
+            "BattleControllerPlayer_InitBattleMons",
+            "BattleControllerPlayer_StartEncounter",
+            "BattleControllerPlayer_TrainerMessage",
+            "BattleControllerPlayer_ShowBattleMon",
+            "BattleControllerPlayer_InitCommandSelection",
+            "BattleControllerPlayer_CommandSelectionInput",
+            "BattleControllerPlayer_CalcTurnOrder",
+            "BattleControllerPlayer_CheckPreMoveActions",
+            "BattleControllerPlayer_BranchActions",
+            "BattleControllerPlayer_CheckFieldConditions",
+            "BattleControllerPlayer_CheckMonConditions",
+            "BattleControllerPlayer_CheckSideConditions",
+            "BattleControllerPlayer_TurnEnd",
+            "BattleControllerPlayer_FightCommand",
+            "BattleControllerPlayer_ItemCommand",
+            "BattleControllerPlayer_SwitchCommand",
+            "BattleControllerPlayer_FleeCommand",
+            "BattleControllerPlayer_SafariBallCommand"
+          ],
+          "keyMatches": [
+            {
+              "line": 110,
+              "text": "static int BattleControllerPlayer_CheckMoveHitAccuracy(BattleSystem *battleSys, BattleContext *battleCtx, int attacker, int defender, int move);"
+            },
+            {
+              "line": 121,
+              "text": "static BOOL BattleControllerPlayer_CriticalMessage(BattleSystem *battleSys, BattleContext *battleCtx);"
+            },
+            {
+              "line": 220,
+              "text": "BattleControllerPlayer_CheckMoveHitAccuracy(battleSys, battleCtx, attacker, defender, move);"
+            },
+            {
+              "line": 324,
+              "text": "if ((battleType & BATTLE_TYPE_DOUBLES)"
+            },
+            {
+              "line": 325,
+              "text": "&& (battleType & BATTLE_TYPE_2vs2) == FALSE"
+            },
+            {
+              "line": 376,
+              "text": "if (battleType & BATTLE_TYPE_PAL_PARK) {"
+            },
+            {
+              "line": 392,
+              "text": "} else if (battleType & BATTLE_TYPE_SAFARI) {"
+            },
+            {
+              "line": 464,
+              "text": "if (BattleSystem_GetBattleType(battleSys) & BATTLE_TYPE_NO_ITEMS) {"
+            }
+          ]
+        },
+        {
+          "path": "include/battle/battle_context.h",
+          "exists": true,
+          "lines": 316,
+          "sha1": "924ed18971f44a58ffe94904e8913f8221689c4a",
+          "sampleSymbols": [],
+          "keyMatches": [
+            {
+              "line": 21,
+              "text": "u32 weatherTurns;"
+            },
+            {
+              "line": 26,
+              "text": "s32 futureSightDamage[MAX_BATTLERS];"
+            },
+            {
+              "line": 61,
+              "text": "int physicalDamageTakenFrom[MAX_BATTLERS];"
+            },
+            {
+              "line": 62,
+              "text": "int physicalDamageLastAttacker;"
+            },
+            {
+              "line": 63,
+              "text": "int physicalDamageAttackerMask;"
+            },
+            {
+              "line": 65,
+              "text": "int specialDamageTakenFrom[MAX_BATTLERS];"
+            },
+            {
+              "line": 66,
+              "text": "int specialDamageLastAttacker;"
+            },
+            {
+              "line": 67,
+              "text": "int specialDamageAttackerMask;"
+            }
+          ]
+        },
+        {
+          "path": "include/battle/battle_lib.h",
+          "exists": true,
+          "lines": 1489,
+          "sha1": "9fa0fc0599019f6aadccb5a9309dc489aaa65ea0",
+          "sampleSymbols": [
+            "BattleSystem_InitBattleMon",
+            "BattleSystem_ReloadPokemon",
+            "BattleSystem_LoadScript",
+            "BattleSystem_CallScript",
+            "BattleSystem_PopScript",
+            "BattleIO_EnqueueVal",
+            "BattleIO_DequeueVal",
+            "BattleIO_QueueIsEmpty",
+            "BattleIO_UpdateTimeout",
+            "BattleIO_ClearBuffer",
+            "BattleMon_Get",
+            "BattleMon_Set",
+            "Battler_AddVal",
+            "BattleMon_AddVal",
+            "BattleSystem_CompareBattlerSpeed",
+            "BattleSystem_ClearSideExpGain",
+            "BattleSystem_FlagBattlerExpGain",
+            "BattleSystem_TriggerPrimaryEffect"
+          ],
+          "keyMatches": [
+            {
+              "line": 16,
+              "text": "enum CountAbilityMode {"
+            },
+            {
+              "line": 17,
+              "text": "COUNT_ALL_BATTLERS_OUR_SIDE = 0, //< Count all the battlers on our side with the ability"
+            },
+            {
+              "line": 18,
+              "text": "COUNT_ALIVE_BATTLERS_OUR_SIDE, //< Count all alive battlers on our side with the ability"
+            },
+            {
+              "line": 19,
+              "text": "COUNT_ALL_BATTLERS_THEIR_SIDE, //< Count all the battlers on their side with the ability"
+            },
+            {
+              "line": 20,
+              "text": "COUNT_ALIVE_BATTLERS_THEIR_SIDE, //< Count all alive battlers on their side with the ability"
+            },
+            {
+              "line": 21,
+              "text": "COUNT_ALIVE_BATTLERS_THEIR_SIDE_FLAG, //< Return a mask of alive battlers on their side with the ability"
+            },
+            {
+              "line": 22,
+              "text": "COUNT_ALL_BATTLERS, //< Count all battlers on the battlefield with the ability"
+            },
+            {
+              "line": 23,
+              "text": "COUNT_ALL_BATTLERS_EXCEPT_ME, //< Count all battlers except for me which have the ability"
+            }
+          ]
+        },
+        {
+          "path": "include/constants/battle.h",
+          "exists": true,
+          "lines": 170,
+          "sha1": "180ff019f7ddc0b33c8c7df1b2770e5723577b45",
+          "sampleSymbols": [],
+          "keyMatches": [
+            {
+              "line": 24,
+              "text": "#define BATTLE_TYPE_SINGLES        (0 << 0)"
+            },
+            {
+              "line": 25,
+              "text": "#define BATTLE_TYPE_WILD_MON       (0 << 0)"
+            },
+            {
+              "line": 26,
+              "text": "#define BATTLE_TYPE_TRAINER        (1 << 0)"
+            },
+            {
+              "line": 27,
+              "text": "#define BATTLE_TYPE_DOUBLES        (1 << 1)"
+            },
+            {
+              "line": 28,
+              "text": "#define BATTLE_TYPE_LINK           (1 << 2)"
+            },
+            {
+              "line": 29,
+              "text": "#define BATTLE_TYPE_2vs2           (1 << 3) // This is, explicitly, two distinct battlers on each side"
+            },
+            {
+              "line": 30,
+              "text": "#define BATTLE_TYPE_TAG            (1 << 4) // This is, explicitly, a battle with a partner"
+            },
+            {
+              "line": 31,
+              "text": "#define BATTLE_TYPE_SAFARI         (1 << 5)"
+            }
+          ]
+        }
+      ],
+      "searchPatterns": [
+        "CalcCritical|criticalMul|critical",
+        "CalcDamage|CalcMoveDamage|CalcDamageVariance|damage",
+        "accuracy|MOVE_STATUS_MISSED|No Guard|Lock On",
+        "ApplyTypeChart|effectiveness|TYPE_",
+        "ability|ABILITY_|weather|WEATHER_"
+      ],
+      "keySymbols": [
+        "BattleScript_CalcMoveDamage",
+        "BtlCmd_CalcDamage",
+        "BattleSystem_CalcMoveDamage",
+        "BattleSystem_CalcDamageVariance",
+        "BattleSystem_CalcCriticalMulti",
+        "BattleSystem_ApplyTypeChart"
+      ],
+      "fallbackNotes": "For requests like changing Chlorophyll weather behavior, start here plus constants for abilities/weather."
+    },
+    {
+      "id": "pokemon_generation_personality",
+      "title": "Pokemon generation, personality, stats",
+      "summary": "Pokemon initialization, shiny/personality checks, nature/gender, stats, species data access.",
+      "usefulFor": [
+        "shiny logic",
+        "nature/gender changes",
+        "IV/stat generation",
+        "species personal data runtime access"
+      ],
+      "primaryFiles": [
+        {
+          "path": "src/pokemon.c",
+          "exists": true,
+          "lines": 5356,
+          "sha1": "34bcb33ddabda143d62c7d3f91940fa8cb878657",
+          "sampleSymbols": [
+            "sub_02073E18",
+            "Pokemon_GetDataInternal",
+            "BoxPokemon_GetDataInternal",
+            "Pokemon_SetDataInternal",
+            "BoxPokemon_SetDataInternal",
+            "Pokemon_IncreaseDataInternal",
+            "BoxPokemon_IncreaseDataInternal",
+            "BoxPokemon_GetExpToNextLevel",
+            "Pokemon_LoadExperienceTableOf",
+            "Pokemon_GetExpRateBaseExpAt",
+            "Pokemon_GetNatureStatValue",
+            "BoxPokemon_IsShiny",
+            "Pokemon_InlineIsPersonalityShiny",
+            "BuildPokemonSpriteTemplateDP",
+            "LoadPokemonDPSpriteHeight",
+            "BoxPokemon_SetDefaultMoves",
+            "BoxPokemon_AddMove",
+            "BoxPokemon_ReplaceMove"
+          ],
+          "keyMatches": [
+            {
+              "line": 21,
+              "text": "#include \"generated/species_data_params.h\""
+            },
+            {
+              "line": 160,
+              "text": "[NATURE_NAIVE] = {"
+            },
+            {
+              "line": 246,
+              "text": "static void sub_02073E18(BoxPokemon *boxMon, int monSpecies, int monLevel, int monIVs, BOOL useMonPersonalityParam, u32 monPersonality, int monOTIDSource, u32 monOTID);"
+            },
+            {
+              "line": 256,
+              "text": "static u16 Pokemon_GetNatureStatValue(u8 monNature, u16 monStatValue, u8 statType);"
+            },
+            {
+              "line": 257,
+              "text": "static u8 BoxPokemon_IsShiny(BoxPokemon *boxMon);"
+            },
+            {
+              "line": 258,
+              "text": "static inline BOOL Pokemon_InlineIsPersonalityShiny(u32 monOTID, u32 monPersonality);"
+            },
+            {
+              "line": 259,
+              "text": "static void BuildPokemonSpriteTemplateDP(PokemonSpriteTemplate *spriteTemplate, u16 monSpecies, u8 monGender, u8 param3, u8 monShininess, u8 monForm, u32 monPersonality);"
+            },
+            {
+              "line": 260,
+              "text": "static u8 LoadPokemonDPSpriteHeight(u16 monSpecies, u8 monGender, u8 param2, u8 monForm, u32 monPersonality);"
+            }
+          ]
+        },
+        {
+          "path": "include/pokemon.h",
+          "exists": true,
+          "lines": 915,
+          "sha1": "33359848c1715c79f43598350b09fdeb4ec20b21",
+          "sampleSymbols": [
+            "Pokemon_Init",
+            "BoxPokemon_Init",
+            "Pokemon_StructSize",
+            "Pokemon_New",
+            "Pokemon_EnterDecryptionContext",
+            "Pokemon_ExitDecryptionContext",
+            "BoxPokemon_EnterDecryptionContext",
+            "BoxPokemon_ExitDecryptionContext",
+            "Pokemon_InitWith",
+            "sub_02074044",
+            "sub_02074088",
+            "sub_02074128",
+            "Pokemon_InitAndCalcStats",
+            "Pokemon_CalcLevelAndStats",
+            "Pokemon_CalcStats",
+            "Pokemon_GetValue",
+            "BoxPokemon_GetValue",
+            "Pokemon_SetValue"
+          ],
+          "keyMatches": [
+            {
+              "line": 29,
+              "text": "#define OTID_NOT_SHINY 2"
+            },
+            {
+              "line": 34,
+              "text": "#define INIT_IVS_RANDOM 32"
+            },
+            {
+              "line": 46,
+              "text": "FRIENDSHIP_EVENT_POISON_SURVIVE,"
+            },
+            {
+              "line": 64,
+              "text": "void Pokemon_Init(Pokemon *mon);"
+            },
+            {
+              "line": 71,
+              "text": "void BoxPokemon_Init(BoxPokemon *boxMon);"
+            },
+            {
+              "line": 81,
+              "text": "* @brief Allocates a Pokemon struct on the given heap, then calls ZeroMonData() on it"
+            },
+            {
+              "line": 89,
+              "text": "* @brief Decrypts a Pokemon data structure. PartyPokemon data is encrypted using the pokemons personality value, BoxPokemon data using a checksum value"
+            },
+            {
+              "line": 97,
+              "text": "* @brief Encrypts a Pokemon data structure. PartyPokemon data is encrypted using the pokemons personality value, BoxPokemon data using a checksum value"
+            }
+          ]
+        },
+        {
+          "path": "include/struct_defs/pokemon.h",
+          "exists": true,
+          "lines": 160,
+          "sha1": "427b38d3e9b6559da9d544e7fcdb56b306510205",
+          "sampleSymbols": [],
+          "keyMatches": [
+            {
+              "line": 50,
+              "text": "/* 0x10 */ u32 hpIV : 5;"
+            },
+            {
+              "line": 51,
+              "text": "u32 atkIV : 5;"
+            },
+            {
+              "line": 52,
+              "text": "u32 defIV : 5;"
+            },
+            {
+              "line": 53,
+              "text": "u32 speedIV : 5;"
+            },
+            {
+              "line": 54,
+              "text": "u32 spAtkIV : 5;"
+            },
+            {
+              "line": 55,
+              "text": "u32 spDefIV : 5;"
+            },
+            {
+              "line": 63,
+              "text": "/* 0x19 */ u8 unused1; //!< First 6 bits track Shiny Leaves from HGSS."
+            },
+            {
+              "line": 79,
+              "text": "/* 0x18 */ u64 ribbonsDS2; //!< A bitmask of ribbons given to the Pokemon from Sinnoh's Super Contests."
+            }
+          ]
+        },
+        {
+          "path": "include/struct_defs/species.h",
+          "exists": true,
+          "lines": 90,
+          "sha1": "926538fceffe260c2092a557820be94641b8f13a",
+          "sampleSymbols": [],
+          "keyMatches": []
+        },
+        {
+          "path": "src/field_battle_data_transfer.c",
+          "exists": true,
+          "lines": 550,
+          "sha1": "9e8b626455a20bcee5e4e518c65c0d7769fb80a5",
+          "sampleSymbols": [
+            "CalcTerrain",
+            "SetBackgroundAndTerrain",
+            "FieldBattleDTO_New",
+            "MI_CpuClear8",
+            "MI_CpuClear32",
+            "GetCurrentDateTime",
+            "FieldBattleDTO_NewSafari",
+            "FieldBattleDTO_NewPalPark",
+            "FieldBattleDTO_NewCatchingTutorial",
+            "MessageLoader_GetString",
+            "TrainerInfo_SetName",
+            "String_Free",
+            "MessageLoader_Free",
+            "TrainerInfo_SetGender",
+            "Options_Copy",
+            "Bag_TryAddItem",
+            "Pokemon_InitWith",
+            "Party_AddPokemon"
+          ],
+          "keyMatches": [
+            {
+              "line": 167,
+              "text": "Pokemon_InitWith(mon, SystemVars_GetPlayerCounterpartStarter(SaveData_GetVarsFlags(fieldSystem->saveData)), 5, INIT_IVS_RANDOM, FALSE, 0, OTID_NOT_SHINY, 0);"
+            },
+            {
+              "line": 169,
+              "text": "Pokemon_InitWith(mon, SPECIES_BIDOOF, 2, INIT_IVS_RANDOM, FALSE, 0, OTID_NOT_SHINY, 0);"
+            }
+          ]
+        },
+        {
+          "path": "src/trainer_data.c",
+          "exists": true,
+          "lines": 317,
+          "sha1": "cfa69e30c8ff1f7d714b75f5e70ec870e778c0a6",
+          "sampleSymbols": [
+            "TrainerData_BuildParty",
+            "Trainer_Encounter",
+            "Trainer_Load",
+            "CharCode_Copy",
+            "String_ToChars",
+            "String_Free",
+            "MessageLoader_Free",
+            "Trainer_LoadParam",
+            "Trainer_HasMessageType",
+            "NARC_ReadFromMemberByIndexPair",
+            "NARC_ReadFromMember",
+            "NARC_dtor",
+            "Trainer_LoadMessage",
+            "MessageBank_GetStringFromNARC",
+            "String_Clear",
+            "NARC_ReadWholeMemberByIndexPair",
+            "Trainer_LoadParty",
+            "TrainerClass_Gender"
+          ],
+          "keyMatches": [
+            {
+              "line": 29,
+              "text": "const charcode_t *rivalName = MiscSaveBlock_RivalName(SaveData_MiscSaveBlockConst(saveData));"
+            },
+            {
+              "line": 39,
+              "text": "if (trdata.header.trainerType == TRAINER_CLASS_RIVAL) {"
+            },
+            {
+              "line": 40,
+              "text": "CharCode_Copy(dto->trainer[i].name, rivalName);"
+            },
+            {
+              "line": 182,
+              "text": "u8 ivs;"
+            },
+            {
+              "line": 206,
+              "text": "rnd = trmon[i].ivScale + trmon[i].level + species + dto->trainerIDs[battler];"
+            },
+            {
+              "line": 214,
+              "text": "ivs = trmon[i].ivScale * MAX_IVS_SINGLE_STAT / MAX_IV_SCALE;"
+            },
+            {
+              "line": 216,
+              "text": "Pokemon_InitWith(mon, species, trmon[i].level, ivs, TRUE, rnd, OTID_NOT_SHINY, 0);"
+            },
+            {
+              "line": 231,
+              "text": "rnd = trmon[i].ivScale + trmon[i].level + species + dto->trainerIDs[battler];"
+            }
+          ]
+        }
+      ],
+      "searchPatterns": [
+        "Pokemon_IsShiny|Pokemon_IsPersonalityShiny|FindShiny|shiny",
+        "Pokemon_Init|InitAndCalcStats|monIVs|combinedIV|IV",
+        "GetNature|NatureOf|personality",
+        "SpeciesData_Get|SPECIES_DATA_|personal"
+      ],
+      "keySymbols": [
+        "Pokemon_InitWith",
+        "Pokemon_InitAndCalcStats",
+        "Pokemon_IsPersonalityShiny",
+        "Pokemon_FindShinyPersonality",
+        "Pokemon_GetNatureOf",
+        "SpeciesData_GetValue"
+      ],
+      "fallbackNotes": "Use NARC format indexes first for personal-data byte edits; use this for runtime behavior."
+    },
+    {
+      "id": "abilities_weather_items",
+      "title": "Abilities, weather, held items in battle",
+      "summary": "Battle runtime handling for abilities, weather, held item effects, and stat modifiers.",
+      "usefulFor": [
+        "change ability behavior",
+        "weather-dependent abilities",
+        "held item battle effects",
+        "stat modifier hooks"
+      ],
+      "primaryFiles": [
+        {
+          "path": "src/battle/battle_lib.c",
+          "exists": true,
+          "lines": 8205,
+          "sha1": "2d3d76d96c08ebe57f088223de427a4b0de5d981",
+          "sampleSymbols": [
+            "BasicTypeMulApplies",
+            "MapSideEffectToSubscript",
+            "ApplyTypeMultiplier",
+            "NoImmunityOverrides",
+            "UpateMoveStatusForTypeMul",
+            "MoveIsOnDamagingTurn",
+            "Battler_MonType",
+            "BattleAI_ClearKnownMoves",
+            "BattleAI_ClearKnownAbility",
+            "BattleAI_ClearKnownItem",
+            "ChooseTraceTarget",
+            "MoveCannotTriggerAnticipation",
+            "CalcMoveType",
+            "BattleSystem_InitBattleMon",
+            "Pokedex_SetupGiratina",
+            "Pokedex_HeightWeightData_Load",
+            "Pokedex_HeightWeightData_Release",
+            "Pokedex_HeightWeightData_Free"
+          ],
+          "keyMatches": [
+            {
+              "line": 42,
+              "text": "#include \"trainer_data.h\""
+            },
+            {
+              "line": 43,
+              "text": "#include \"trainer_info.h\""
+            },
+            {
+              "line": 62,
+              "text": "static void BattleAI_ClearKnownAbility(BattleContext *battleCtx, u8 battler);"
+            },
+            {
+              "line": 77,
+              "text": "battleCtx->battleMons[battler].speed = Pokemon_GetValue(mon, MON_DATA_SPEED, NULL);"
+            },
+            {
+              "line": 91,
+              "text": "battleCtx->battleMons[battler].speedIV = Pokemon_GetValue(mon, MON_DATA_SPEED_IV, NULL);"
+            },
+            {
+              "line": 103,
+              "text": "battleCtx->battleMons[battler].weatherAbilityAnnounced = FALSE;"
+            },
+            {
+              "line": 120,
+              "text": "battleCtx->battleMons[battler].ability = ABILITY_NONE;"
+            },
+            {
+              "line": 122,
+              "text": "battleCtx->battleMons[battler].heldItem = ITEM_NONE;"
+            }
+          ]
+        },
+        {
+          "path": "src/battle/battle_script.c",
+          "exists": true,
+          "lines": 12346,
+          "sha1": "ca77315ad20c30efd06c5e334206d69e33c0120f",
+          "sampleSymbols": [
+            "BtlCmd_PlayEncounterAnimation",
+            "BtlCmd_SetPokemonEncounter",
+            "BtlCmd_PokemonSlideIn",
+            "BtlCmd_PokemonSendOut",
+            "BtlCmd_RecallPokemon",
+            "BtlCmd_DeletePokemon",
+            "BtlCmd_SetTrainerEncounter",
+            "BtlCmd_ThrowPokeball",
+            "BtlCmd_TrainerSlideOut",
+            "BtlCmd_TrainerSlideIn",
+            "BtlCmd_BackgroundSlideIn",
+            "BtlCmd_HealthbarSlideIn",
+            "BtlCmd_HealthbarSlideInDelay",
+            "BtlCmd_HealthbarSlideOut",
+            "BtlCmd_Wait",
+            "BtlCmd_CalcDamage",
+            "BtlCmd_CalcMaxDamage",
+            "BtlCmd_PrintAttackMessage"
+          ],
+          "keyMatches": [
+            {
+              "line": 24,
+              "text": "#include \"struct_defs/trainer.h\""
+            },
+            {
+              "line": 71,
+              "text": "#include \"trainer_data.h\""
+            },
+            {
+              "line": 72,
+              "text": "#include \"trainer_info.h\""
+            },
+            {
+              "line": 94,
+              "text": "static BOOL BtlCmd_SetTrainerEncounter(BattleSystem *battleSys, BattleContext *battleCtx);"
+            },
+            {
+              "line": 96,
+              "text": "static BOOL BtlCmd_TrainerSlideOut(BattleSystem *battleSys, BattleContext *battleCtx);"
+            },
+            {
+              "line": 97,
+              "text": "static BOOL BtlCmd_TrainerSlideIn(BattleSystem *battleSys, BattleContext *battleCtx);"
+            },
+            {
+              "line": 143,
+              "text": "static BOOL BtlCmd_CheckAbility(BattleSystem *battleSys, BattleContext *battleCtx);"
+            },
+            {
+              "line": 155,
+              "text": "static BOOL BtlCmd_PrintTrainerMessage(BattleSystem *battleSys, BattleContext *battleCtx);"
+            }
+          ]
+        },
+        {
+          "path": "generated/abilities.txt",
+          "exists": true,
+          "lines": 125,
+          "sha1": "f09db51589bc722688ea85446598db099b25496d",
+          "sampleSymbols": [],
+          "keyMatches": [
+            {
+              "line": 1,
+              "text": "ABILITY_NONE"
+            },
+            {
+              "line": 2,
+              "text": "ABILITY_STENCH"
+            },
+            {
+              "line": 3,
+              "text": "ABILITY_DRIZZLE"
+            },
+            {
+              "line": 4,
+              "text": "ABILITY_SPEED_BOOST"
+            },
+            {
+              "line": 5,
+              "text": "ABILITY_BATTLE_ARMOR"
+            },
+            {
+              "line": 6,
+              "text": "ABILITY_STURDY"
+            },
+            {
+              "line": 7,
+              "text": "ABILITY_DAMP"
+            },
+            {
+              "line": 8,
+              "text": "ABILITY_LIMBER"
+            }
+          ]
+        },
+        {
+          "path": "include/constants/battle.h",
+          "exists": true,
+          "lines": 170,
+          "sha1": "180ff019f7ddc0b33c8c7df1b2770e5723577b45",
+          "sampleSymbols": [],
+          "keyMatches": [
+            {
+              "line": 9,
+              "text": "#include \"constants/battle/terrain.h\""
+            },
+            {
+              "line": 22,
+              "text": "#include \"generated/battle_terrains.h\""
+            },
+            {
+              "line": 26,
+              "text": "#define BATTLE_TYPE_TRAINER        (1 << 0)"
+            },
+            {
+              "line": 39,
+              "text": "#define BATTLE_TYPE_TRAINER_DOUBLES          (BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TRAINER)"
+            },
+            {
+              "line": 40,
+              "text": "#define BATTLE_TYPE_LINK_DOUBLES             (BATTLE_TYPE_LINK | BATTLE_TYPE_TRAINER_DOUBLES)"
+            },
+            {
+              "line": 41,
+              "text": "#define BATTLE_TYPE_FRONTIER_DOUBLES         (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_DOUBLES)"
+            },
+            {
+              "line": 42,
+              "text": "#define BATTLE_TYPE_TAG_DOUBLES              (BATTLE_TYPE_TAG | BATTLE_TYPE_TRAINER_DOUBLES)"
+            },
+            {
+              "line": 45,
+              "text": "#define BATTLE_TYPE_TRAINER_WITH_AI_PARTNER  (BATTLE_TYPE_TRAINER | BATTLE_TYPE_AI_PARTNER)"
+            }
+          ]
+        },
+        {
+          "path": "include/constants/items.h",
+          "exists": true,
+          "lines": 173,
+          "sha1": "0fd3ee4674186aebd48234973dfa8ce433b54c53",
+          "sampleSymbols": [],
+          "keyMatches": [
+            {
+              "line": 104,
+              "text": "#define FLING_EFFECT_SPEED_UP          18"
+            },
+            {
+              "line": 136,
+              "text": "#define PLUCK_EFFECT_SPEED_UP          18"
+            }
+          ]
+        },
+        {
+          "path": "include/battle/battle_context.h",
+          "exists": true,
+          "lines": 316,
+          "sha1": "924ed18971f44a58ffe94904e8913f8221689c4a",
+          "sampleSymbols": [],
+          "keyMatches": [
+            {
+              "line": 21,
+              "text": "u32 weatherTurns;"
+            },
+            {
+              "line": 77,
+              "text": "u32 stormDrainActivated : 1;"
+            },
+            {
+              "line": 145,
+              "text": "int abilityCheckState;"
+            },
+            {
+              "line": 158,
+              "text": "int abilityMon;"
+            },
+            {
+              "line": 187,
+              "text": "int msgAbilityTemp;"
+            },
+            {
+              "line": 232,
+              "text": "u32 sideEffectAbilityFlags;"
+            },
+            {
+              "line": 250,
+              "text": "u8 monSpeedOrder[MAX_BATTLERS];"
+            },
+            {
+              "line": 251,
+              "text": "u32 monSpeedValues[MAX_BATTLERS];"
+            }
+          ]
+        }
+      ],
+      "searchPatterns": [
+        "ABILITY_|ability|Battler_Ability|HeldItem",
+        "WEATHER_|weather|sun|rain|hail|sandstorm",
+        "Speed|speed|stat stage|modifier",
+        "Chlorophyll|CHLOROPHYLL"
+      ],
+      "keySymbols": [
+        "BattleSystem_CalcMoveDamage",
+        "BattleSystem_TriggerAbility",
+        "Battler_Ability",
+        "Battler_HeldItem",
+        "BattleContext_Get"
+      ],
+      "fallbackNotes": "Many ability constants may live in generated or nested constants; search before assuming a file path."
+    },
+    {
+      "id": "wild_encounters",
+      "title": "Wild encounters",
+      "summary": "Grass/water/fishing/Sweet Scent encounters, repel, swarm, radar, honey trees, Great Marsh.",
+      "usefulFor": [
+        "encounter rates",
+        "wild species slots",
+        "Sweet Scent",
+        "repel",
+        "honey trees",
+        "daily encounters"
+      ],
+      "primaryFiles": [
+        {
+          "path": "src/overlay006/wild_encounters.c",
+          "exists": true,
+          "lines": 1549,
+          "sha1": "76dbf35c34d2ae0d395cb275a8dcf9e07c71736a",
+          "sampleSymbols": [
+            "ShouldGetRandomEncounter",
+            "GetTileEncounterRateAndType",
+            "GracePeriodStepsUsed",
+            "CheckEncounterRateSuccess",
+            "TryGetSlotForTypeMatchAbility",
+            "FirstMonAbilityPreventsEncounter",
+            "GetGrassEncounterRate",
+            "GetSurfEncounterRate",
+            "GetFishingEncounterRate",
+            "TryGenerateGrassEncounter_WithRadar",
+            "TryGenerateGrassEncounter_DoubleBattle",
+            "TryGenerateSurfEncounter",
+            "TryGenerateFishingEncounter",
+            "TryGenerateWildMon",
+            "CreateWildMon_FromRadarNoChain",
+            "CreateWildMon_FromRadarKeepChain",
+            "ModifyEncounterRateWithFieldParams",
+            "CreateWildSingleBattle"
+          ],
+          "keyMatches": [
+            {
+              "line": 21,
+              "text": "#include \"overlay005/honey_tree.h\""
+            },
+            {
+              "line": 26,
+              "text": "#include \"overlay006/swarm.h\""
+            },
+            {
+              "line": 66,
+              "text": "typedef struct EncounterSlot {"
+            },
+            {
+              "line": 70,
+              "text": "} EncounterSlot;"
+            },
+            {
+              "line": 74,
+              "text": "BOOL repelActive;"
+            },
+            {
+              "line": 79,
+              "text": "u8 encounterRatesForms[2]; // from encounterData. Only used for Shellos/Gastrodon"
+            },
+            {
+              "line": 88,
+              "text": "static BOOL ShouldGetRandomEncounter(FieldSystem *fieldSystem, const u32 encounterRate, const u8 tileBehavior);"
+            },
+            {
+              "line": 89,
+              "text": "static u8 GetTileEncounterRateAndType(FieldSystem *fieldSystem, u8 tileBehavior, u8 *encounterType);"
+            }
+          ]
+        },
+        {
+          "path": "include/overlay006/wild_encounters.h",
+          "exists": true,
+          "lines": 64,
+          "sha1": "9c2642da6551cfa415cdd7c61a7da92d5ecb26e3",
+          "sampleSymbols": [
+            "WildEncounters_ReplaceTimedEncounters",
+            "WildEncounters_TryWildEncounter",
+            "WildEncounters_TryFishingEncounter",
+            "WildEncounters_TrySweetScentEncounter",
+            "WildEncounters_TryMudEncounter",
+            "CreateWildMon_HoneyTree",
+            "CreateWildMon_Scripted",
+            "WildEncounters_TileHasEncounterRate"
+          ],
+          "keyMatches": [
+            {
+              "line": 8,
+              "text": "typedef struct GrassEncounter {"
+            },
+            {
+              "line": 12,
+              "text": "} GrassEncounter;"
+            },
+            {
+              "line": 14,
+              "text": "typedef struct GrassEncounters {"
+            },
+            {
+              "line": 15,
+              "text": "int encounterRate;"
+            },
+            {
+              "line": 16,
+              "text": "GrassEncounter encounters[MAX_GRASS_ENCOUNTERS];"
+            },
+            {
+              "line": 17,
+              "text": "} GrassEncounters;"
+            },
+            {
+              "line": 19,
+              "text": "typedef struct WaterEncounter {"
+            },
+            {
+              "line": 25,
+              "text": "} WaterEncounter;"
+            }
+          ]
+        },
+        {
+          "path": "src/map_header_data.c",
+          "exists": true,
+          "lines": 260,
+          "sha1": "1940630508a00ae5ae301b562fe2acfb79584906",
+          "sampleSymbols": [
+            "MapHeaderData_LoadEvents",
+            "MapHeaderData_ParseEvents",
+            "MapHeaderData_LoadInitScripts",
+            "MapHeaderData_Init",
+            "MapHeaderData_Free",
+            "Heap_Free",
+            "MapHeaderData_Load",
+            "MapHeaderData_LoadWildEncounters",
+            "GF_ASSERT",
+            "NARC_ReadWholeMemberByIndexPair",
+            "sub_0203A418",
+            "sub_02062068",
+            "MapHeaderData_GetBgEvents",
+            "MapHeaderData_GetNumBgEvents",
+            "MapHeaderData_GetWarpEventByIndex",
+            "MapHeaderData_GetIndexOfWarpEventAtPos",
+            "MapHeaderData_GetNumCoordEvents",
+            "MapHeaderData_GetCoordEvents"
+          ],
+          "keyMatches": []
+        },
+        {
+          "path": "include/data/map_headers.h",
+          "exists": true,
+          "lines": 13065,
+          "sha1": "a3972ec21e45c9425c14e75ce6763d29b5837094",
+          "sampleSymbols": [],
+          "keyMatches": [
+            {
+              "line": 6332,
+              "text": "[MAP_HEADER_TROPHY_GARDEN] = {"
+            },
+            {
+              "line": 6341,
+              "text": ".wildEncountersArchiveID = encounters_trophy_garden,"
+            },
+            {
+              "line": 6342,
+              "text": ".eventsArchiveID = events_trophy_garden,"
+            },
+            {
+              "line": 6343,
+              "text": ".mapLabelTextID = LocationNames_Text_TrophyGarden,"
+            },
+            {
+              "line": 11117,
+              "text": ".mapLabelTextID = LocationNames_Text_GreatMarsh,"
+            },
+            {
+              "line": 11139,
+              "text": ".mapLabelTextID = LocationNames_Text_GreatMarsh,"
+            },
+            {
+              "line": 11161,
+              "text": ".mapLabelTextID = LocationNames_Text_GreatMarsh,"
+            },
+            {
+              "line": 11183,
+              "text": ".mapLabelTextID = LocationNames_Text_GreatMarsh,"
+            }
+          ]
+        },
+        {
+          "path": "src/encounter.c",
+          "exists": true,
+          "lines": 994,
+          "sha1": "4be3eabb9d2a2c95a34ac3f3a82c3512ae6d9913",
+          "sampleSymbols": [
+            "NewEncounter",
+            "NewWildEncounter",
+            "FreeEncounter",
+            "FreeWildEncounter",
+            "CallBattleTask",
+            "CheckPlayerWonEncounter",
+            "UpdateFieldSystemFromDTO",
+            "StartEncounter",
+            "SetLinkBattleResult",
+            "sub_020516C8",
+            "UpdateGameRecords",
+            "UpdateJournal",
+            "FieldTask_RunBattle",
+            "FieldTask_Encounter",
+            "FieldTask_LinkEncounter",
+            "FieldTask_WiFiEncounter",
+            "FieldTask_SafariEncounter",
+            "FieldTask_PalParkEncounter"
+          ],
+          "keyMatches": [
+            {
+              "line": 531,
+              "text": "void Encounter_NewVsHoneyTree(FieldTask *task, int *resultMaskPtr)"
+            },
+            {
+              "line": 543,
+              "text": "CreateWildMon_HoneyTree(fieldSystem, dto);"
+            },
+            {
+              "line": 558,
+              "text": "CreateWildMon_Scripted(fieldSystem, species, level, dto);"
+            },
+            {
+              "line": 577,
+              "text": "CreateWildMon_Scripted(fieldSystem, species, level, dto);"
+            },
+            {
+              "line": 979,
+              "text": "CreateWildMon_Scripted(fieldSystem, species, level, dto);"
+            }
+          ]
+        },
+        {
+          "path": "src/overlay006/repel_step_update.c",
+          "exists": true,
+          "lines": 27,
+          "sha1": "3723b242e8adb0434274308a445d5b008808ab7b",
+          "sampleSymbols": [
+            "Repel_UpdateSteps",
+            "ScriptManager_Set"
+          ],
+          "keyMatches": [
+            {
+              "line": 1,
+              "text": "#include \"overlay006/repel_step_update.h\""
+            },
+            {
+              "line": 12,
+              "text": "BOOL Repel_UpdateSteps(SaveData *saveData, FieldSystem *fieldSystem)"
+            },
+            {
+              "line": 14,
+              "text": "u8 *repelSteps = SpecialEncounter_GetRepelSteps(SaveData_GetSpecialEncounters(saveData));"
+            },
+            {
+              "line": 16,
+              "text": "if (*repelSteps > 0) {"
+            },
+            {
+              "line": 17,
+              "text": "(*repelSteps)--;"
+            },
+            {
+              "line": 19,
+              "text": "if (*repelSteps == 0) {"
+            }
+          ]
+        }
+      ],
+      "searchPatterns": [
+        "TryWildEncounter|TryFishingEncounter|SweetScent|CreateWildMon",
+        "encounterRate|encounterSlot|GrassEncounter|WaterEncounter",
+        "Repel|swarm|trophy|GreatMarsh|dualSlot|honey"
+      ],
+      "keySymbols": [
+        "WildEncounters_TryWildEncounter",
+        "WildEncounters_TryFishingEncounter",
+        "WildEncounters_TrySweetScentEncounter",
+        "CreateWildMon_Scripted",
+        "MapHeaderData_LoadWildEncounters"
+      ],
+      "fallbackNotes": "Use NARC encounter index first for direct table edits."
+    },
+    {
+      "id": "field_overworld_movement",
+      "title": "Field, overworld, movement",
+      "summary": "Player/NPC movement, map objects, field control, collision, tile behavior, camera, transitions.",
+      "usefulFor": [
+        "movement speed",
+        "NPC movement",
+        "collision",
+        "map transition behavior",
+        "field controls"
+      ],
+      "primaryFiles": [
+        {
+          "path": "src/overlay005/field_control.c",
+          "exists": true,
+          "lines": 1083,
+          "sha1": "4851547cb1062acc1443f3f6ba97ddd8f0ce943e",
+          "sampleSymbols": [
+            "Field_CheckMapTransition",
+            "Field_TileBehaviorToScript",
+            "Field_CheckWildEncounter",
+            "Field_ProcessStep",
+            "Field_CheckCoordEvent",
+            "Field_CheckTransition",
+            "Field_UpdateDaycare",
+            "Field_UpdatePoison",
+            "Field_UpdateSafari",
+            "Field_UpdateVsSeeker",
+            "Field_UpdatePokeRadar",
+            "Field_CheckSign",
+            "Field_UpdateRepel",
+            "Field_UpdateFriendship",
+            "Field_CalculateFriendship",
+            "Field_GetPlayerPos",
+            "Field_Step",
+            "Field_StepInDirection"
+          ],
+          "keyMatches": [
+            {
+              "line": 8,
+              "text": "#include \"constants/player_avatar.h\""
+            },
+            {
+              "line": 50,
+              "text": "#include \"player_avatar.h\""
+            },
+            {
+              "line": 60,
+              "text": "#include \"terrain_collision_manager.h\""
+            },
+            {
+              "line": 73,
+              "text": "static BOOL Field_CheckMapTransition(FieldSystem *fieldSystem, const FieldInput *input);"
+            },
+            {
+              "line": 74,
+              "text": "static u16 Field_TileBehaviorToScript(FieldSystem *fieldSystem, u8 behavior);"
+            },
+            {
+              "line": 75,
+              "text": "static BOOL Field_CheckWildEncounter(FieldSystem *fieldSystem);"
+            },
+            {
+              "line": 76,
+              "text": "static BOOL Field_ProcessStep(FieldSystem *fieldSystem);"
+            },
+            {
+              "line": 77,
+              "text": "static BOOL Field_CheckCoordEvent(FieldSystem *fieldSystem);"
+            }
+          ]
+        },
+        {
+          "path": "src/map_object.c",
+          "exists": true,
+          "lines": 2537,
+          "sha1": "2f8611c8856218a2bf78f4e296fac30b4646e160",
+          "sampleSymbols": [
+            "MapObjectMan_Alloc",
+            "MapObject_Save",
+            "MapObject_LoadSave",
+            "sub_02061FA8",
+            "sub_02061FF0",
+            "sub_02062010",
+            "sub_020620C4",
+            "sub_02062120",
+            "sub_02062154",
+            "MapObjectMan_AddMoveTask",
+            "sub_020621E8",
+            "sub_020622B8",
+            "sub_0206234C",
+            "sub_0206239C",
+            "sub_020623D4",
+            "sub_0206243C",
+            "sub_0206244C",
+            "sub_020624CC"
+          ],
+          "keyMatches": [
+            {
+              "line": 6,
+              "text": "#include \"generated/movement_types.h\""
+            },
+            {
+              "line": 31,
+              "text": "#include \"map_object_move.h\""
+            },
+            {
+              "line": 39,
+              "text": "typedef struct MapObjectMan {"
+            },
+            {
+              "line": 48,
+              "text": "MapObject *mapObj;"
+            },
+            {
+              "line": 49,
+              "text": "FieldSystem *fieldSystem;"
+            },
+            {
+              "line": 50,
+              "text": "} MapObjectManager;"
+            },
+            {
+              "line": 52,
+              "text": "typedef struct MapObject {"
+            },
+            {
+              "line": 58,
+              "text": "u32 movementType;"
+            }
+          ]
+        },
+        {
+          "path": "src/map_object_move.c",
+          "exists": true,
+          "lines": 1064,
+          "sha1": "32c515499bba0a14092fdc8f55fa3ced56036363",
+          "sampleSymbols": [
+            "sub_02063478",
+            "sub_020634DC",
+            "sub_020634F4",
+            "MapObject_StartMove",
+            "sub_0206353C",
+            "MapObject_EndMove",
+            "sub_020635AC",
+            "sub_0206363C",
+            "sub_020636F0",
+            "sub_0206375C",
+            "sub_020637D4",
+            "MapObject_SinkIntoTerrain",
+            "sub_02063964",
+            "sub_0206397C",
+            "sub_02063994",
+            "sub_02063A30",
+            "sub_02063A64",
+            "sub_02063A70"
+          ],
+          "keyMatches": [
+            {
+              "line": 1,
+              "text": "#include \"map_object_move.h\""
+            },
+            {
+              "line": 6,
+              "text": "#include \"generated/movement_types.h\""
+            },
+            {
+              "line": 27,
+              "text": "#include \"terrain_collision_manager.h\""
+            },
+            {
+              "line": 37,
+              "text": "static int sub_02063478(const MapObject *mapObj);"
+            },
+            {
+              "line": 38,
+              "text": "static void sub_020634DC(MapObject *mapObj);"
+            },
+            {
+              "line": 39,
+              "text": "static void sub_020634F4(MapObject *mapObj);"
+            },
+            {
+              "line": 40,
+              "text": "static void MapObject_StartMove(MapObject *mapObj);"
+            },
+            {
+              "line": 41,
+              "text": "static void sub_0206353C(MapObject *mapObj);"
+            }
+          ]
+        },
+        {
+          "path": "src/map_tile_behavior.c",
+          "exists": true,
+          "lines": 735,
+          "sha1": "225164368c229609d05277330564b3722aafd30c",
+          "sampleSymbols": [
+            "TileBehavior_IsTallGrass",
+            "TileBehavior_IsVeryTallGrass",
+            "TileBehavior_IsTable",
+            "TileBehavior_IsDoor",
+            "TileBehavior_IsWarpEntranceEast",
+            "TileBehavior_IsWarpEntranceWest",
+            "TileBehavior_IsWarpEntranceNorth",
+            "TileBehavior_IsWarpEntranceSouth",
+            "TileBehavior_IsWarpEast",
+            "TileBehavior_IsWarpWest",
+            "TileBehavior_IsWarpNorth",
+            "TileBehavior_IsWarpSouth",
+            "TileBehavior_IsSurfable",
+            "TileBehavior_IsSand",
+            "TileBehavior_IsShallowWater",
+            "TileBehavior_IsJumpNorth",
+            "TileBehavior_IsJumpSouth",
+            "TileBehavior_IsJumpWest"
+          ],
+          "keyMatches": [
+            {
+              "line": 6,
+              "text": "static const u8 sTileBehaviorFlags[] = {"
+            },
+            {
+              "line": 125,
+              "text": "[TILE_BEHAVIOR_BIKE_BRIDGE_N_S]            =  TILE_BEHAVIOR_FLAG_NONE,"
+            },
+            {
+              "line": 126,
+              "text": "[TILE_BEHAVIOR_BIKE_BRIDGE_N_S_OVER_ENCS]  =  TILE_BEHAVIOR_FLAG_ENCOUNTER,"
+            },
+            {
+              "line": 127,
+              "text": "[TILE_BEHAVIOR_BIKE_BRIDGE_N_S_OVER_WATER] =  TILE_BEHAVIOR_FLAG_SURFABLE,"
+            },
+            {
+              "line": 128,
+              "text": "[TILE_BEHAVIOR_BIKE_BRIDGE_N_S_OVER_SAND]  =  TILE_BEHAVIOR_FLAG_NONE,"
+            },
+            {
+              "line": 129,
+              "text": "[TILE_BEHAVIOR_BIKE_BRIDGE_E_W]            =  TILE_BEHAVIOR_FLAG_NONE,"
+            },
+            {
+              "line": 130,
+              "text": "[TILE_BEHAVIOR_BIKE_BRIDGE_E_W_OVER_ENCS]  =  TILE_BEHAVIOR_FLAG_ENCOUNTER,"
+            },
+            {
+              "line": 131,
+              "text": "[TILE_BEHAVIOR_BIKE_BRIDGE_E_W_OVER_WATER] =  TILE_BEHAVIOR_FLAG_SURFABLE,"
+            }
+          ]
+        },
+        {
+          "path": "src/field_system.c",
+          "exists": true,
+          "lines": 361,
+          "sha1": "369e9d08d7f6490441bad7cf78d5e7e3ce562d50",
+          "sampleSymbols": [
+            "FS_EXTERN_OVERLAY",
+            "InitFieldSystemContinue",
+            "InitFieldSystemNewGame",
+            "ExecuteFieldProcesses",
+            "ReturnToTitleScreen",
+            "InitFieldSystem",
+            "TeardownFieldSystem",
+            "ExecuteAndCleanupIfDone",
+            "HandleInputsEventsAndProcesses",
+            "HandleFieldInput",
+            "FieldSystem_StartLoadMapFromErrorTask",
+            "FieldSystem_SetLoadSavedGameMapTask",
+            "FieldSystem_SetLoadNewGameSpawnTask",
+            "EnqueueApplication",
+            "FieldSystem_StartFieldMapInner",
+            "Overlay_LoadByID",
+            "FieldSystem_FlagNotRunningFieldMap",
+            "FieldSystem_HasParentProcess"
+          ],
+          "keyMatches": [
+            {
+              "line": 45,
+              "text": "static BOOL InitFieldSystemContinue(ApplicationManager *appMan, int *state);"
+            },
+            {
+              "line": 46,
+              "text": "static BOOL InitFieldSystemNewGame(ApplicationManager *appMan, int *state);"
+            },
+            {
+              "line": 49,
+              "text": "static FieldSystem *InitFieldSystem(ApplicationManager *appMan);"
+            },
+            {
+              "line": 50,
+              "text": "static void TeardownFieldSystem(ApplicationManager *appMan);"
+            },
+            {
+              "line": 52,
+              "text": "static BOOL HandleInputsEventsAndProcesses(FieldSystem *fieldSystem);"
+            },
+            {
+              "line": 53,
+              "text": "static void HandleFieldInput(FieldSystem *fieldSystem);"
+            },
+            {
+              "line": 55,
+              "text": "static FieldSystem *sFieldSystem;"
+            },
+            {
+              "line": 57,
+              "text": "static BOOL InitFieldSystemContinue(ApplicationManager *appMan, int *state)"
+            }
+          ]
+        },
+        {
+          "path": "src/field_task.c",
+          "exists": true,
+          "lines": 167,
+          "sha1": "f24783fbc83f601a313bd87b326b46a47dcee960",
+          "sampleSymbols": [
+            "CreateTaskManager",
+            "FieldSystem_CreateTask",
+            "FieldTask_InitJump",
+            "Heap_Free",
+            "FieldTask_InitCall",
+            "FieldTask_Run",
+            "FieldSystem_IsRunningTask",
+            "FieldSystem_IsRunningApplication",
+            "FieldSystem_StartFieldMap",
+            "FieldSystem_StartFieldMapInner",
+            "FieldSystem_IsRunningFieldMap",
+            "RunChildApplication",
+            "FieldSystem_StartChildProcess",
+            "FieldTask_RunApplication",
+            "FieldTask_GetFieldSystem",
+            "FieldTask_GetEnv",
+            "FieldTask_GetState",
+            "FieldTask_GetDummy1CVal"
+          ],
+          "keyMatches": [
+            {
+              "line": 11,
+              "text": "typedef struct FieldTaskEnv {"
+            },
+            {
+              "line": 15,
+              "text": "} FieldTaskEnv;"
+            },
+            {
+              "line": 17,
+              "text": "static FieldTask *CreateTaskManager(FieldSystem *fieldSys, FieldTaskFunc taskFunc, void *taskEnv)"
+            },
+            {
+              "line": 19,
+              "text": "FieldTask *task = Heap_AllocAtEnd(HEAP_ID_FIELD3, sizeof(FieldTask));"
+            },
+            {
+              "line": 32,
+              "text": "FieldTask *FieldSystem_CreateTask(FieldSystem *fieldSys, FieldTaskFunc taskFunc, void *taskEnv)"
+            },
+            {
+              "line": 36,
+              "text": "FieldTask *task = CreateTaskManager(fieldSys, taskFunc, taskEnv);"
+            },
+            {
+              "line": 42,
+              "text": "void FieldTask_InitJump(FieldTask *task, FieldTaskFunc taskFunc, void *taskEnv)"
+            },
+            {
+              "line": 55,
+              "text": "FieldTask *FieldTask_InitCall(FieldTask *task, FieldTaskFunc taskFunc, void *taskEnv)"
+            }
+          ]
+        },
+        {
+          "path": "src/field_transition.c",
+          "exists": true,
+          "lines": 192,
+          "sha1": "c2842dfbb2bd717935f6f6bae56f01b51af29b80",
+          "sampleSymbols": [
+            "FieldTask_RunEncounterEffect",
+            "EncounterEffect_Start",
+            "Sound_SetSceneAndPlayBGM",
+            "Heap_Free",
+            "FieldTransition_StartEncounterEffect",
+            "FieldTask_InitCall",
+            "FieldTask_WaitUntilMapFinished",
+            "FieldTransition_FinishMap",
+            "GF_ASSERT",
+            "FieldSystem_FlagNotRunningFieldMap",
+            "FieldTask_WaitUntilMapStarted",
+            "FieldTransition_StartMap",
+            "FieldSystem_StartFieldMap",
+            "FieldTask_WaitUntilScreenTransitionDone",
+            "FieldTransition_FadeOut",
+            "StartScreenFade",
+            "FieldTransition_FadeIn",
+            "FieldTask_FadeOutAndFinishMap"
+          ],
+          "keyMatches": [
+            {
+              "line": 25,
+              "text": "static BOOL FieldTask_RunEncounterEffect(FieldTask *task)"
+            },
+            {
+              "line": 27,
+              "text": "FieldSystem *fieldSystem = FieldTask_GetFieldSystem(task);"
+            },
+            {
+              "line": 28,
+              "text": "EncounterEffectTaskData *data = FieldTask_GetEnv(task);"
+            },
+            {
+              "line": 32,
+              "text": "EncounterEffect_Start(data->encEffectID, fieldSystem, &data->done);"
+            },
+            {
+              "line": 48,
+              "text": "void FieldTransition_StartEncounterEffect(FieldTask *task, int encEffectID, int battleBGM)"
+            },
+            {
+              "line": 57,
+              "text": "FieldTask_InitCall(task, FieldTask_RunEncounterEffect, data);"
+            },
+            {
+              "line": 60,
+              "text": "static BOOL FieldTask_WaitUntilMapFinished(FieldTask *task)"
+            },
+            {
+              "line": 62,
+              "text": "FieldSystem *fieldSystem = FieldTask_GetFieldSystem(task);"
+            }
+          ]
+        },
+        {
+          "path": "docs/maps/maps.md",
+          "exists": true,
+          "lines": 160,
+          "sha1": "ab6d3e6eac3f934d6f37a577f49de3d75c378949",
+          "sampleSymbols": [
+            "width"
+          ],
+          "keyMatches": [
+            {
+              "line": 4,
+              "text": "excluding BDHC, which is covered in [its own document](bdhc.md)."
+            },
+            {
+              "line": 13,
+              "text": "dictate the collision and behavior of each tile, and on which map objects (such"
+            },
+            {
+              "line": 17,
+              "text": "map, and the BDHC subsystem which is used to add height and height variations"
+            },
+            {
+              "line": 22,
+              "text": "where each unit is 1/16th of a tile, and where the height at any point is given"
+            },
+            {
+              "line": 23,
+              "text": "by one or more BDHC plates."
+            },
+            {
+              "line": 52,
+              "text": "- whether running is allowed"
+            },
+            {
+              "line": 64,
+              "text": "walked on (collision data), and how the tile behaves when interacted with:"
+            },
+            {
+              "line": 67,
+              "text": "- the BDHC data"
+            }
+          ]
+        }
+      ],
+      "searchPatterns": [
+        "PlayerAvatar|avatar|walk|run|bike|movement",
+        "MapObject|Move|movement",
+        "TileBehavior|collision|BDHC|height",
+        "FieldTask|FieldSystem|fieldSystem"
+      ],
+      "keySymbols": [
+        "FieldTask_InitCall",
+        "FieldSystem_StartFieldMap",
+        "MapObject",
+        "MapObject_Move",
+        "FieldTransition_StartEncounterEffect"
+      ],
+      "fallbackNotes": "For pure movement constant patches, prefer existing patch capabilities if available."
+    },
+    {
+      "id": "scripts_events_flags",
+      "title": "Scripts, events, vars, flags",
+      "summary": "Field scripts, script commands, flags/vars, event files, level scripts, story progression.",
+      "usefulFor": [
+        "events",
+        "flags",
+        "vars",
+        "scripted wild battles",
+        "NPC scripts",
+        "story triggers"
+      ],
+      "primaryFiles": [
+        {
+          "path": "src/scrcmd.c",
+          "exists": true,
+          "lines": 7138,
+          "sha1": "7712d7b69e83bed45bad84c8c8f86ad4db7dc807",
+          "sampleSymbols": [
+            "ScrCmd_Noop",
+            "ScrCmd_Dummy",
+            "ScrCmd_End",
+            "ScrCmd_WaitTime",
+            "ScriptContext_DecrementTimer",
+            "ScrCmd_Unused_004",
+            "ScrCmd_Unused_005",
+            "ScrCmd_Unused_006",
+            "ScrCmd_Unused_007",
+            "ScrCmd_Unused_008",
+            "ScrCmd_Unused_009",
+            "ScrCmd_Unused_00A",
+            "Compare",
+            "ScrCmd_Unused_00B",
+            "ScrCmd_Unused_00C",
+            "ScrCmd_Unused_00D",
+            "ScrCmd_Unused_00E",
+            "ScrCmd_Unused_00F"
+          ],
+          "keyMatches": [
+            {
+              "line": 66,
+              "text": "#include \"overlay005/script_message.h\""
+            },
+            {
+              "line": 105,
+              "text": "#include \"field_message.h\""
+            },
+            {
+              "line": 126,
+              "text": "#include \"message.h\""
+            },
+            {
+              "line": 127,
+              "text": "#include \"message_util.h\""
+            },
+            {
+              "line": 268,
+              "text": "static BOOL ScrCmd_SetFlag(ScriptContext *ctx);"
+            },
+            {
+              "line": 269,
+              "text": "static BOOL ScrCmd_ClearFlag(ScriptContext *ctx);"
+            },
+            {
+              "line": 270,
+              "text": "static BOOL ScrCmd_CheckFlag(ScriptContext *ctx);"
+            },
+            {
+              "line": 271,
+              "text": "static BOOL ScrCmd_CheckFlagFromVar(ScriptContext *ctx);"
+            }
+          ]
+        },
+        {
+          "path": "src/field_script_context.c",
+          "exists": true,
+          "lines": 163,
+          "sha1": "4f01fe1b5b4b1f77079513ba5bfb91c1b17195fc",
+          "sampleSymbols": [
+            "ScriptContext_Init",
+            "ScriptContext_Start",
+            "ScriptContext_Pause",
+            "ScriptContext_Stop",
+            "ScriptContext_SetTask",
+            "ScriptContext_Run",
+            "GF_ASSERT",
+            "ScriptContext_Push",
+            "ScriptContext_Pop",
+            "ScriptContext_Jump",
+            "ScriptContext_Call",
+            "ScriptContext_Return",
+            "ScriptContext_ReadHalfWord",
+            "ScriptContext_ReadWord"
+          ],
+          "keyMatches": [
+            {
+              "line": 85,
+              "text": "u16 cmdCode = ScriptContext_ReadHalfWord(ctx);"
+            },
+            {
+              "line": 137,
+              "text": "u16 ScriptContext_ReadHalfWord(ScriptContext *ctx)"
+            },
+            {
+              "line": 139,
+              "text": "u16 value = ScriptContext_ReadByte(ctx);"
+            },
+            {
+              "line": 140,
+              "text": "value += ScriptContext_ReadByte(ctx) << 8;"
+            },
+            {
+              "line": 145,
+              "text": "u32 ScriptContext_ReadWord(ScriptContext *ctx)"
+            },
+            {
+              "line": 147,
+              "text": "u8 byte0 = ScriptContext_ReadByte(ctx);"
+            },
+            {
+              "line": 148,
+              "text": "u8 byte1 = ScriptContext_ReadByte(ctx);"
+            },
+            {
+              "line": 149,
+              "text": "u8 byte2 = ScriptContext_ReadByte(ctx);"
+            }
+          ]
+        },
+        {
+          "path": "include/constants/scrcmd.h",
+          "exists": true,
+          "lines": 27,
+          "sha1": "6abea5a1784e6fd966cf5477021a857c58a57ca4",
+          "sampleSymbols": [],
+          "keyMatches": []
+        },
+        {
+          "path": "include/constants/savedata/vars_flags.h",
+          "exists": true,
+          "lines": 9,
+          "sha1": "f54c5420e5c6526fa857abeeb610bd93ab422020",
+          "sampleSymbols": [],
+          "keyMatches": []
+        },
+        {
+          "path": "include/data/field/script_commands.h",
+          "exists": true,
+          "lines": 876,
+          "sha1": "c5467fd4d2c3a437675dd50de2a3fdcc0f49d68e",
+          "sampleSymbols": [
+            "ScriptCommandTableEntry"
+          ],
+          "keyMatches": [
+            {
+              "line": 57,
+              "text": "ScriptCommandTableEntry(SCRCMD_SETFLAG,                                              ScrCmd_SetFlag)"
+            },
+            {
+              "line": 58,
+              "text": "ScriptCommandTableEntry(SCRCMD_CLEARFLAG,                                            ScrCmd_ClearFlag)"
+            },
+            {
+              "line": 59,
+              "text": "ScriptCommandTableEntry(SCRCMD_CHECKFLAG,                                            ScrCmd_CheckFlag)"
+            },
+            {
+              "line": 60,
+              "text": "ScriptCommandTableEntry(SCRCMD_CHECKFLAGFROMVAR,                                     ScrCmd_CheckFlagFromVar)"
+            },
+            {
+              "line": 61,
+              "text": "ScriptCommandTableEntry(SCRCMD_SETFLAGFROMVAR,                                       ScrCmd_SetFlagFromVar)"
+            },
+            {
+              "line": 70,
+              "text": "ScriptCommandTableEntry(SCRCMD_MESSAGEINSTANT,                                       ScrCmd_MessageInstant)"
+            },
+            {
+              "line": 71,
+              "text": "ScriptCommandTableEntry(SCRCMD_MESSAGE,                                              ScrCmd_Message)"
+            },
+            {
+              "line": 72,
+              "text": "ScriptCommandTableEntry(SCRCMD_MESSAGEVAR,                                           ScrCmd_MessageVar)"
+            }
+          ]
+        }
+      ],
+      "searchPatterns": [
+        "ScrCmd_StartWildBattle|StartTrainerBattle|Encounter_New",
+        "ScriptContext_Read|ScriptContext_GetVar|GetVarPointer",
+        "FLAG_|VAR_|VarsFlags|SetFlag|CheckFlag|ClearFlag",
+        "ApplyMovement|WaitMovement|message|StringTemplate"
+      ],
+      "keySymbols": [
+        "ScrCmd_StartWildBattle",
+        "ScrCmd_GetRandom",
+        "ScriptContext_ReadHalfWord",
+        "ScriptContext_GetVar",
+        "ScriptContext_GetVarPointer"
+      ],
+      "fallbackNotes": "Use script-format compact index first for command/movement lookup."
+    },
+    {
+      "id": "text_messages",
+      "title": "Text and messages",
+      "summary": "Text rendering, message loaders, string templates, fonts, message speed and text banks.",
+      "usefulFor": [
+        "fast text",
+        "dialogue rendering",
+        "message content",
+        "text banks",
+        "font/glyph behavior"
+      ],
+      "primaryFiles": [
+        {
+          "path": "src/render_text.c",
+          "exists": true,
+          "lines": 462,
+          "sha1": "a79261a8f43efe53229ba98c7cefcffff1305b60",
+          "sampleSymbols": [
+            "RenderText",
+            "Text_GenerateFontHalfRowLookupTable",
+            "Text_RenderScreenIndicator",
+            "Window_CopyToVRAM",
+            "TextPrinter_InitScrollArrowAnim",
+            "TextPrinter_ClearScrollArrow",
+            "Window_FillTilemap",
+            "Window_Scroll",
+            "TextPrinter_SetScrollArrowBaseTile",
+            "TextPrinter_DrawScrollArrow",
+            "Bg_CopyTilemapBufferToVRAM",
+            "TextPrinter_Continue",
+            "Sound_PlayEffect",
+            "TextPrinter_WaitAutoMode",
+            "TextPrinter_WaitWithScrollArrow",
+            "TextPrinter_Wait",
+            "RenderControlFlags_SetCanABSpeedUpPrint",
+            "RenderControlFlags_SetAutoScrollFlags"
+          ],
+          "keyMatches": [
+            {
+              "line": 42,
+              "text": "enum RenderResult RenderText(TextPrinter *printer)"
+            },
+            {
+              "line": 44,
+              "text": "TextPrinterSubstruct *substruct = (TextPrinterSubstruct *)printer->substruct;"
+            },
+            {
+              "line": 50,
+              "text": "printer->delayCounter = 0;"
+            },
+            {
+              "line": 52,
+              "text": "if (printer->textSpeedBottom != 0) {"
+            },
+            {
+              "line": 57,
+              "text": "if (printer->delayCounter && printer->textSpeedBottom) {"
+            },
+            {
+              "line": 58,
+              "text": "printer->delayCounter--;"
+            },
+            {
+              "line": 63,
+              "text": "printer->delayCounter = 0;"
+            },
+            {
+              "line": 69,
+              "text": "printer->delayCounter = printer->textSpeedBottom;"
+            }
+          ]
+        },
+        {
+          "path": "src/text.c",
+          "exists": true,
+          "lines": 359,
+          "sha1": "d23f94837dad4419c5441d6978394b94cc9b0ba2",
+          "sampleSymbols": [
+            "TextPrinter_Render",
+            "Text_CreatePrinterTask",
+            "Text_DestroyPrinterTask",
+            "Text_ZeroPrinterIconGfx",
+            "Text_FreePrinterIconGfx",
+            "Text_LoadScreenIndicatorGfx",
+            "SysTask_RunTextPrinter",
+            "Text_SetFontAttributesPtr",
+            "GF_ASSERT",
+            "Heap_Free",
+            "SysTask_Done",
+            "Text_IsPrinterTaskActive",
+            "Text_ResetAllPrinters",
+            "Text_IsPrinterActive",
+            "Text_RemovePrinter",
+            "Text_AddPrinterWithParams",
+            "Text_AddPrinterWithParamsAndColor",
+            "Text_AddPrinterWithParamsColorAndSpacing"
+          ],
+          "keyMatches": [
+            {
+              "line": 20,
+              "text": "static enum RenderResult TextPrinter_Render(TextPrinter *printer);"
+            },
+            {
+              "line": 21,
+              "text": "static u8 Text_CreatePrinterTask(SysTaskFunc taskFunc, TextPrinter *printer, u32 priority);"
+            },
+            {
+              "line": 23,
+              "text": "static void Text_ZeroPrinterIconGfx(TextPrinter *printer);"
+            },
+            {
+              "line": 24,
+              "text": "static void Text_FreePrinterIconGfx(TextPrinter *printer);"
+            },
+            {
+              "line": 27,
+              "text": "static void SysTask_RunTextPrinter(SysTask *task, void *data);"
+            },
+            {
+              "line": 32,
+              "text": "static SysTask *sTextPrinterTasks[MAX_TEXT_PRINTERS] = { 0 };"
+            },
+            {
+              "line": 41,
+              "text": "static u8 Text_CreatePrinterTask(SysTaskFunc taskFunc, TextPrinter *printer, u32 priority)"
+            },
+            {
+              "line": 45,
+              "text": "if (sTextPrinterTasks[i] == NULL) {"
+            }
+          ]
+        },
+        {
+          "path": "src/message.c",
+          "exists": true,
+          "lines": 343,
+          "sha1": "dc2737afd93e684af4ed8ad437ff6e996e5afb54",
+          "sampleSymbols": [
+            "MemCopyEntry",
+            "EntryOffset",
+            "DecodeEntry",
+            "DecodeString",
+            "EntryOffsetAddress",
+            "MessageBank_Load",
+            "MessageBank_Free",
+            "Heap_Free",
+            "MessageBank_Get",
+            "GF_ASSERT",
+            "MessageBank_GetFromNARC",
+            "NARC_ReadFromMember",
+            "NARC_dtor",
+            "MI_CpuCopy16",
+            "MessageBank_GetString",
+            "String_CopyNumChars",
+            "String_Clear",
+            "MessageBank_GetNewString"
+          ],
+          "keyMatches": [
+            {
+              "line": 97,
+              "text": "void MessageBank_GetString(const MessageBank *bank, u32 entryID, String *string)"
+            },
+            {
+              "line": 149,
+              "text": "void MessageBank_GetStringFromNARC(enum NarcID narcID, u32 bankID, u32 entryID, u32 heapID, String *string)"
+            },
+            {
+              "line": 154,
+              "text": "MessageBank_GetStringFromHandle(narc, bankID, entryID, heapID, string);"
+            },
+            {
+              "line": 159,
+              "text": "void MessageBank_GetStringFromHandle(NARC *narc, u32 bankID, u32 entryID, u32 heapID, String *string)"
+            },
+            {
+              "line": 247,
+              "text": "MessageLoader *MessageLoader_Init(enum MessageLoaderMode mode, enum NarcID narcID, u32 bankID, u32 heapID)"
+            },
+            {
+              "line": 249,
+              "text": "MessageLoader *loader = Heap_AllocAtEnd(heapID, sizeof(MessageLoader));"
+            },
+            {
+              "line": 272,
+              "text": "void MessageLoader_Free(MessageLoader *loader)"
+            },
+            {
+              "line": 288,
+              "text": "void MessageLoader_GetString(const MessageLoader *loader, u32 entryID, String *string)"
+            }
+          ]
+        },
+        {
+          "path": "src/message_util.c",
+          "exists": true,
+          "lines": 64,
+          "sha1": "1f2af3942b566f3d7ee58525682af7e1dbb3d049",
+          "sampleSymbols": [
+            "MessageUtil_ExpandedString",
+            "StringTemplate_Format",
+            "String_Free",
+            "MessageUtil_MoveName",
+            "MessageLoader_GetString",
+            "MessageLoader_Free",
+            "MessageUtil_SpeciesName"
+          ],
+          "keyMatches": [
+            {
+              "line": 13,
+              "text": "String *MessageUtil_ExpandedString(StringTemplate *template, MessageLoader *loader, u32 entryID, u32 heapID)"
+            },
+            {
+              "line": 19,
+              "text": "String *entry = MessageLoader_GetNewString(loader, entryID);"
+            },
+            {
+              "line": 22,
+              "text": "StringTemplate_Format(template, buf, entry);"
+            },
+            {
+              "line": 35,
+              "text": "MessageLoader *loader = MessageLoader_Init(MSG_LOADER_LOAD_ON_DEMAND, NARC_INDEX_MSGDATA__PL_MSG, TEXT_BANK_MOVE_NAMES, heapID);"
+            },
+            {
+              "line": 41,
+              "text": "MessageLoader_GetString(loader, moveID, moveName);"
+            },
+            {
+              "line": 44,
+              "text": "MessageLoader_Free(loader);"
+            },
+            {
+              "line": 53,
+              "text": "MessageLoader *loader = MessageLoader_Init(MSG_LOADER_LOAD_ON_DEMAND, NARC_INDEX_MSGDATA__PL_MSG, TEXT_BANK_SPECIES_NAME, heapID);"
+            },
+            {
+              "line": 56,
+              "text": "String *speciesName = MessageLoader_GetNewString(loader, species);"
+            }
+          ]
+        },
+        {
+          "path": "src/field_message.c",
+          "exists": true,
+          "lines": 103,
+          "sha1": "04b1840feeb226105981d01e61dd8fefb4a53a92",
+          "sampleSymbols": [
+            "FieldMessage_LoadTextPalettes",
+            "Text_ResetAllPrinters",
+            "Font_LoadTextPalette",
+            "Font_LoadScreenIndicatorsPalette",
+            "FieldMessage_AddWindow",
+            "Window_Add",
+            "FieldMessage_DrawWindow",
+            "LoadMessageBoxGraphics",
+            "FieldMessage_ClearWindow",
+            "Window_DrawMessageBoxWithScrollCursor",
+            "Window_FillTilemap",
+            "FieldMessage_Print",
+            "RenderControlFlags_SetCanABSpeedUpPrint",
+            "RenderControlFlags_SetAutoScrollFlags",
+            "RenderControlFlags_SetSpeedUpOnTouch",
+            "FieldMessage_PrintWithParams",
+            "FieldMessage_FinishedPrinting",
+            "FieldMessage_AddSignpostWindow"
+          ],
+          "keyMatches": [
+            {
+              "line": 23,
+              "text": "Font_LoadTextPalette(palLocation, PLTT_OFFSET(FIELD_MESSAGE_PALETTE_INDEX), HEAP_ID_FIELD1);"
+            },
+            {
+              "line": 24,
+              "text": "Font_LoadScreenIndicatorsPalette(palLocation, PLTT_OFFSET(12), HEAP_ID_FIELD1);"
+            },
+            {
+              "line": 54,
+              "text": "return Text_AddPrinterWithParams(window, FONT_MESSAGE, string, 0, 0, Options_TextFrameDelay(options), NULL);"
+            },
+            {
+              "line": 64,
+              "text": "return Text_AddPrinterWithParams(window, fontID, string, 0, 0, renderDelay, NULL);"
+            }
+          ]
+        },
+        {
+          "path": "include/text.h",
+          "exists": true,
+          "lines": 51,
+          "sha1": "a7ffe21295468fd19449e47ca5f6f68e7ea708b0",
+          "sampleSymbols": [
+            "Text_SetFontAttributesPtr",
+            "Text_ResetAllPrinters",
+            "Text_IsPrinterActive",
+            "Text_RemovePrinter",
+            "Text_AddPrinterWithParams",
+            "Text_AddPrinterWithParamsAndColor",
+            "Text_AddPrinterWithParamsColorAndSpacing",
+            "Text_AddPrinter",
+            "Text_GenerateFontHalfRowLookupTable",
+            "Text_DecompressGlyph",
+            "Text_RenderScreenIndicator"
+          ],
+          "keyMatches": [
+            {
+              "line": 42,
+              "text": "u8 Text_AddPrinterWithParams(Window *window, u32 fontID, const String *string, u32 xOffset, u32 yOffset, u32 renderDelay, TextPrinterCallback callback);"
+            },
+            {
+              "line": 43,
+              "text": "u8 Text_AddPrinterWithParamsAndColor(Window *window, u32 fontID, const String *string, u32 xOffset, u32 yOffset, u32 renderDelay, TextColor color, TextPrinterCallback callback);"
+            },
+            {
+              "line": 44,
+              "text": "u8 Text_AddPrinterWithParamsColorAndSpacing(Window *window, u32 fontID, const String *string, u32 xOffset, u32 yOffset, u32 renderDelay, TextColor color, u32 letterSpacing, u32 lineSpacing, TextPrinterCallback callback);"
+            },
+            {
+              "line": 45,
+              "text": "u8 Text_AddPrinter(const TextPrinterTemplate *template, u32 renderDelay, TextPrinterCallback callback);"
+            },
+            {
+              "line": 47,
+              "text": "void Text_DecompressGlyph(u8 *src, u8 *dst);"
+            },
+            {
+              "line": 48,
+              "text": "void Text_RenderScreenIndicator(TextPrinter *printer, u16 unusedX, u16 unusedY, u16 indicator);"
+            }
+          ]
+        },
+        {
+          "path": "include/render_text.h",
+          "exists": true,
+          "lines": 102,
+          "sha1": "ffbf1557c4eb3684279f31962005b091fe66356f",
+          "sampleSymbols": [
+            "RenderText",
+            "TextPrinter_SetScrollArrowBaseTile",
+            "TextPrinter_InitScrollArrowAnim",
+            "TextPrinter_DrawScrollArrow",
+            "TextPrinter_ClearScrollArrow",
+            "TextPrinter_WaitAutoMode",
+            "TextPrinter_WaitWithScrollArrow",
+            "TextPrinter_Wait",
+            "RenderControlFlags_SetCanABSpeedUpPrint",
+            "RenderControlFlags_SetAutoScrollFlags",
+            "RenderControlFlags_SetSpeedUpOnTouch",
+            "RenderControlFlags_GetSpeedUpBattle",
+            "RenderControlFlags_ZeroSpeedUpBattle",
+            "RenderControlFlags_GetWaitBattle",
+            "RenderControlFlags_ZeroWaitBattle"
+          ],
+          "keyMatches": [
+            {
+              "line": 14,
+              "text": "typedef struct TextGlyph {"
+            },
+            {
+              "line": 18,
+              "text": "} TextGlyph;"
+            },
+            {
+              "line": 25,
+              "text": "typedef struct TextPrinterTemplate {"
+            },
+            {
+              "line": 34,
+              "text": "u16 letterSpacing;"
+            },
+            {
+              "line": 40,
+              "text": "u16 glyphTable;"
+            },
+            {
+              "line": 43,
+              "text": "} TextPrinterTemplate;"
+            },
+            {
+              "line": 45,
+              "text": "typedef BOOL (*TextPrinterCallback)(TextPrinterTemplate *, u16);"
+            },
+            {
+              "line": 47,
+              "text": "typedef struct TextPrinterSubstruct {"
+            }
+          ]
+        },
+        {
+          "path": "tools/msgenc/msgenc.cpp",
+          "exists": true,
+          "lines": 84,
+          "sha1": "28834184c835e3eff5ef281370919812f98dc649",
+          "sampleSymbols": [
+            "usage",
+            "do_main",
+            "options",
+            "invalid_argument",
+            "catch",
+            "main"
+          ],
+          "keyMatches": []
+        }
+      ],
+      "searchPatterns": [
+        "Text_AddPrinter|TextPrinter|RenderText|delayCounter|textSpeed",
+        "MessageLoader|GetString|TEXT_BANK|StringTemplate",
+        "FONT_|Font_|glyph|letterSpacing"
+      ],
+      "keySymbols": [
+        "RenderText",
+        "Text_AddPrinterWithParams",
+        "MessageLoader_Init",
+        "MessageLoader_GetString",
+        "StringTemplate_Set"
+      ],
+      "fallbackNotes": "Use DSPRE text archive notes for data edits; use these files for runtime rendering/speed behavior."
+    },
+    {
+      "id": "narc_assets_graphics",
+      "title": "NARC, assets, graphics",
+      "summary": "Runtime NARC loading, graphics helpers, Pokemon sprites, palettes, resource tools.",
+      "usefulFor": [
+        "asset replacement",
+        "NARC member lookup",
+        "sprites",
+        "icons",
+        "palettes",
+        "graphics conversion"
+      ],
+      "primaryFiles": [
+        {
+          "path": "src/narc.c",
+          "exists": true,
+          "lines": 499,
+          "sha1": "5861a708bf52b5c242c322c9fd88505f10335568",
+          "sampleSymbols": [
+            "ReadFromNarcMemberByPathAndIndex",
+            "FS_InitFile",
+            "FS_OpenFile",
+            "FS_SeekFile",
+            "FS_ReadFile",
+            "GF_ASSERT",
+            "FS_CloseFile",
+            "AllocAndReadFromNarcMemberByPathAndIndex",
+            "NARC_ReadWholeMemberByIndexPair",
+            "NARC_AllocAndReadWholeMemberByIndexPair",
+            "NARC_AllocAtEndAndReadWholeMemberByIndexPair",
+            "NARC_ReadFromMemberByIndexPair",
+            "NARC_AllocAndReadFromMemberByIndexPair",
+            "NARC_AllocAtEndAndReadFromMemberByIndexPair",
+            "NARC_GetMemberSizeByIndexPair",
+            "NARC_ctor",
+            "NARC_dtor",
+            "Heap_Free"
+          ],
+          "keyMatches": [
+            {
+              "line": 10,
+              "text": "[NARC_INDEX_BATTLE__SKILL__WAZA_SEQ] = \"battle/skill/waza_seq.narc\","
+            },
+            {
+              "line": 11,
+              "text": "[NARC_INDEX_BATTLE__SKILL__SUB_SEQ] = \"battle/skill/sub_seq.narc\","
+            },
+            {
+              "line": 12,
+              "text": "[NARC_INDEX_POKETOOL__PERSONAL__PL_PERSONAL] = \"poketool/personal/pl_personal.narc\","
+            },
+            {
+              "line": 13,
+              "text": "[NARC_INDEX_POKETOOL__PERSONAL__PL_GROWTBL] = \"poketool/personal/pl_growtbl.narc\","
+            },
+            {
+              "line": 14,
+              "text": "[NARC_INDEX_POKETOOL__POKEGRA__PL_POKEGRA] = \"poketool/pokegra/pl_pokegra.narc\","
+            },
+            {
+              "line": 15,
+              "text": "[NARC_INDEX_POKETOOL__POKEGRA__HEIGHT] = \"poketool/pokegra/height.narc\","
+            },
+            {
+              "line": 16,
+              "text": "[NARC_INDEX_POKETOOL__TRGRA__TRBGRA] = \"poketool/trgra/trbgra.narc\","
+            },
+            {
+              "line": 17,
+              "text": "[NARC_INDEX_BATTLE__GRAPHIC__PL_BATT_BG] = \"battle/graphic/pl_batt_bg.narc\","
+            }
+          ]
+        },
+        {
+          "path": "include/narc.h",
+          "exists": true,
+          "lines": 160,
+          "sha1": "663f56e64143af277ebe5ce62b00fcb53f1e1e61",
+          "sampleSymbols": [
+            "NARC_ReadWholeMemberByIndexPair",
+            "NARC_AllocAndReadWholeMemberByIndexPair",
+            "NARC_AllocAtEndAndReadWholeMemberByIndexPair",
+            "NARC_ReadFromMemberByIndexPair",
+            "NARC_AllocAndReadFromMemberByIndexPair",
+            "NARC_AllocAtEndAndReadFromMemberByIndexPair",
+            "NARC_GetMemberSizeByIndexPair",
+            "NARC_ctor",
+            "NARC_dtor",
+            "NARC_AllocAndReadWholeMember",
+            "NARC_ReadWholeMember",
+            "NARC_GetMemberSize",
+            "NARC_ReadFromMember",
+            "NARC_ReadFile",
+            "NARC_Seek",
+            "NARC_GetFileCount"
+          ],
+          "keyMatches": [
+            {
+              "line": 1,
+              "text": "#ifndef POKEPLATINUM_NARC_H"
+            },
+            {
+              "line": 2,
+              "text": "#define POKEPLATINUM_NARC_H"
+            },
+            {
+              "line": 27,
+              "text": "void NARC_ReadWholeMemberByIndexPair(void *dest, enum NarcID narcID, int memberIndex);"
+            },
+            {
+              "line": 39,
+              "text": "void *NARC_AllocAndReadWholeMemberByIndexPair(enum NarcID narcID, int memberIndex, enum HeapID heapID);"
+            },
+            {
+              "line": 40,
+              "text": "void *NARC_AllocAtEndAndReadWholeMemberByIndexPair(enum NarcID narcID, int memberIndex, enum HeapID heapID);"
+            },
+            {
+              "line": 51,
+              "text": "void NARC_ReadFromMemberByIndexPair(void *dest, enum NarcID narcID, int memberIndex, int offset, int bytesToRead);"
+            },
+            {
+              "line": 65,
+              "text": "void *NARC_AllocAndReadFromMemberByIndexPair(enum NarcID narcID, int memberIndex, enum HeapID heapID, int offset, int bytesToRead);"
+            },
+            {
+              "line": 66,
+              "text": "void *NARC_AllocAtEndAndReadFromMemberByIndexPair(enum NarcID narcID, int memberIndex, enum HeapID heapID, int offset, int bytesToRead);"
+            }
+          ]
+        },
+        {
+          "path": "include/constants/narc.h",
+          "exists": true,
+          "lines": 204,
+          "sha1": "3ce907d341f0f179df0322b68b6666cd3236844e",
+          "sampleSymbols": [],
+          "keyMatches": [
+            {
+              "line": 1,
+              "text": "#ifndef POKEPLATINUM_CONSTANTS_NARC_H"
+            },
+            {
+              "line": 2,
+              "text": "#define POKEPLATINUM_CONSTANTS_NARC_H"
+            },
+            {
+              "line": 6,
+              "text": "NARC_INDEX_BATTLE__SKILL__WAZA_SEQ = 0,"
+            },
+            {
+              "line": 7,
+              "text": "NARC_INDEX_BATTLE__SKILL__SUB_SEQ,"
+            },
+            {
+              "line": 8,
+              "text": "NARC_INDEX_POKETOOL__PERSONAL__PL_PERSONAL,"
+            },
+            {
+              "line": 9,
+              "text": "NARC_INDEX_POKETOOL__PERSONAL__PL_GROWTBL,"
+            },
+            {
+              "line": 10,
+              "text": "NARC_INDEX_POKETOOL__POKEGRA__PL_POKEGRA,"
+            },
+            {
+              "line": 11,
+              "text": "NARC_INDEX_POKETOOL__POKEGRA__HEIGHT,"
+            }
+          ]
+        },
+        {
+          "path": "src/graphics.c",
+          "exists": true,
+          "lines": 544,
+          "sha1": "94981481fd27de95ac7ef8332eb15c7bab86928d",
+          "sampleSymbols": [
+            "LoadTilesToBgLayer",
+            "LoadTilemapToBgLayer",
+            "LoadObjectTiles",
+            "LoadPaletteWithSrcOffset",
+            "LoadPartialPalette",
+            "LoadImageMapping",
+            "LoadImageMappingAndSetVramMode",
+            "GetCharacterData",
+            "GetScreenData",
+            "GetPaletteData",
+            "GetCellBank",
+            "GetAnimBank",
+            "Graphics_LoadTilesToBgLayer",
+            "Graphics_LoadTilemapToBgLayer",
+            "Graphics_LoadPalette",
+            "Graphics_LoadPaletteWithSrcOffset",
+            "Graphics_LoadObjectTiles",
+            "Graphics_LoadPartialPalette"
+          ],
+          "keyMatches": [
+            {
+              "line": 10,
+              "text": "static u32 LoadTilesToBgLayer(void *ncgrBuffer, BgConfig *bgConfig, u32 bgLayer, u32 offset, u32 size);"
+            },
+            {
+              "line": 11,
+              "text": "static void LoadTilemapToBgLayer(void *nscrBuffer, BgConfig *bgConfig, u32 bgLayer, u32 offset, u32 size);"
+            },
+            {
+              "line": 12,
+              "text": "static u32 LoadObjectTiles(void *ncgrBuffer, enum DSScreen display, u32 offset, u32 size);"
+            },
+            {
+              "line": 13,
+              "text": "static void LoadPaletteWithSrcOffset(void *nclrBuffer, enum PaletteLoadLocation loadLocation, u32 srcOffset, u32 offset, u32 size);"
+            },
+            {
+              "line": 14,
+              "text": "static void LoadPartialPalette(void *nclrBuffer, NNS_G2D_VRAM_TYPE vramType, u32 baseAddr, NNSG2dImagePaletteProxy *paletteProxy);"
+            },
+            {
+              "line": 15,
+              "text": "static u32 LoadImageMapping(void *ncgrBuffer, enum ImageMappingLayout layout, u32 size, NNS_G2D_VRAM_TYPE vramType, u32 baseAddr, NNSG2dImageProxy *imageProxy);"
+            },
+            {
+              "line": 16,
+              "text": "static void LoadImageMappingAndSetVramMode(void *ncgrBuffer, enum ImageMappingLayout layout, u32 size, NNS_G2D_VRAM_TYPE vramType, u32 baseAddr, NNSG2dImageProxy *imageProxy);"
+            },
+            {
+              "line": 17,
+              "text": "static void *GetCharacterData(void *ncgrBuffer, NNSG2dCharacterData **outCharData);"
+            }
+          ]
+        },
+        {
+          "path": "src/character_sprite.c",
+          "exists": true,
+          "lines": 283,
+          "sha1": "29bfe42ff612cf910e33e8ba7f1cb0e85ae164bd",
+          "sampleSymbols": [
+            "CharacterSprite_CopyTileFromUntiledArray",
+            "memcpy",
+            "CharacterSprite_LoadSpriteData",
+            "Heap_Free",
+            "CharacterSprite_TileUntiledPokemonSprite",
+            "CharacterSprite_SpeciesIsSpinda",
+            "CharacterSprite_LoadTiledPokemonSprite",
+            "PokemonSprite_Decrypt",
+            "PokemonSprite_DrawSpindaSpots",
+            "CharacterSprite_GetTiledPokemonSprite",
+            "CharacterSprite_LoadTiledData",
+            "CharacterSprite_GetTiledSprite",
+            "CharacterSprite_CopyTilesRect",
+            "CharacterSprite_CopyTilesRegion",
+            "CharacterSprite_LoadSpriteRect",
+            "CharacterSprite_LoadSpriteRegion",
+            "CharacterSprite_LoadSpriteFrame0",
+            "CharacterSprite_LoadTiles"
+          ],
+          "keyMatches": [
+            {
+              "line": 18,
+              "text": "static void CharacterSprite_CopyTileFromUntiledArray(const u8 *src, u8 *dest, int *srcOffset, int *destOffset, int tileWidth, int rowWidth)"
+            },
+            {
+              "line": 27,
+              "text": "static void CharacterSprite_LoadSpriteData(enum NarcID narcID, int narcIdx, enum HeapID heapID, NNSG2dCharacterData **charData)"
+            },
+            {
+              "line": 31,
+              "text": "void *ngcrFile = NARC_AllocAndReadWholeMemberByIndexPair(narcID, narcIdx, heapID);"
+            },
+            {
+              "line": 41,
+              "text": "static void CharacterSprite_TileUntiledPokemonSprite(int x, int y, int width, int height, NNSG2dCharacterData *monSpriteData, void *dest)"
+            },
+            {
+              "line": 61,
+              "text": "CharacterSprite_CopyTileFromUntiledArray(untiledSpriteData, tiledData, &startIndex, &tiledDataOffset, TILE_WIDTH_4BPP, spriteWidth);"
+            },
+            {
+              "line": 66,
+              "text": "static BOOL CharacterSprite_SpeciesIsSpinda(enum Species species)"
+            },
+            {
+              "line": 89,
+              "text": "static void CharacterSprite_LoadTiledPokemonSprite(enum NarcID narcID, int narcIdx, enum HeapID headID, int x, int y, int width, int height, void *buffer, u32 personality, BOOL isAnimated, int face, enum Species species)"
+            },
+            {
+              "line": 94,
+              "text": "CharacterSprite_LoadSpriteData(narcID, narcIdx, headID, &monSpriteData);"
+            }
+          ]
+        },
+        {
+          "path": "tools/nitroarc/README.md",
+          "exists": true,
+          "lines": 26,
+          "sha1": "2c51f91a4d2d41806d8c40dc037776c57b4d540c",
+          "sampleSymbols": [],
+          "keyMatches": []
+        },
+        {
+          "path": "tools/nitrogfx/main.c",
+          "exists": true,
+          "lines": 1555,
+          "sha1": "9dfc230c09a260a6b43b735d82d304c194b94623",
+          "sampleSymbols": [
+            "void",
+            "CountLzCompressArgs",
+            "HandleLZCompressCommand",
+            "HandleLZDecompressCommand",
+            "ConvertGbaToPng",
+            "ReadGbaPalette",
+            "ReadImage",
+            "WritePng",
+            "FreeImage",
+            "ConvertNtrToPng",
+            "fseek",
+            "rewind",
+            "fclose",
+            "ReadNtrPalette",
+            "sprintf",
+            "FATAL_ERROR",
+            "fwrite",
+            "free"
+          ],
+          "keyMatches": [
+            {
+              "line": 35,
+              "text": "if (options->paletteFilePath != NULL)"
+            },
+            {
+              "line": 37,
+              "text": "ReadGbaPalette(options->paletteFilePath, &image.palette);"
+            },
+            {
+              "line": 38,
+              "text": "image.hasPalette = true;"
+            },
+            {
+              "line": 42,
+              "text": "image.hasPalette = false;"
+            },
+            {
+              "line": 45,
+              "text": "ReadImage(inputPath, options->width, options->bitDepth, options->colsPerChunk, options->rowsPerChunk, &image, !image.hasPalette);"
+            },
+            {
+              "line": 81,
+              "text": "if (options->paletteFilePath != NULL)"
+            },
+            {
+              "line": 83,
+              "text": "ReadNtrPalette(options->paletteFilePath, &image.palette, options->bitDepth, options->palIndex, options->convertTo8Bpp, options->verbose);"
+            },
+            {
+              "line": 84,
+              "text": "image.hasPalette = true;"
+            }
+          ]
+        }
+      ],
+      "searchPatterns": [
+        "NARC_INDEX|NARC_Read|NARC_",
+        "Load.*Sprite|CharacterSprite|PokemonSprite|BuildPokemonSpriteTemplate",
+        "palette|Palette|NCLR|NCGR|NCER|NANR|NSCR"
+      ],
+      "keySymbols": [
+        "NARC_ctor",
+        "NARC_dtor",
+        "NARC_ReadWholeMember",
+        "NARC_ReadWholeMemberByIndexPair",
+        "BuildPokemonSpriteTemplate"
+      ],
+      "fallbackNotes": "Use NARC format index first for structured data; use these files for runtime asset loading."
+    },
+    {
+      "id": "pokedex_party_pc_bag",
+      "title": "Pokedex, party, PC, bag, summary",
+      "summary": "Major UI app systems and storage/party interfaces.",
+      "usefulFor": [
+        "Pokedex UI",
+        "party menu",
+        "summary screen",
+        "PC boxes",
+        "bag/items UI"
+      ],
+      "primaryFiles": [
+        {
+          "path": "include/applications/pokedex/pokedex_app.h",
+          "exists": true,
+          "lines": 37,
+          "sha1": "e2d5cc375dc9ea36c41dc5966da4da5650311df7",
+          "sampleSymbols": [],
+          "keyMatches": [
+            {
+              "line": 1,
+              "text": "#ifndef POKEPLATINUM_POKEDEX_APP_H"
+            },
+            {
+              "line": 2,
+              "text": "#define POKEPLATINUM_POKEDEX_APP_H"
+            },
+            {
+              "line": 4,
+              "text": "#include \"applications/pokedex/pokedex_graphics.h\""
+            },
+            {
+              "line": 5,
+              "text": "#include \"applications/pokedex/pokedex_sort_data.h\""
+            },
+            {
+              "line": 6,
+              "text": "#include \"applications/pokedex/pokedex_updater.h\""
+            },
+            {
+              "line": 7,
+              "text": "#include \"applications/pokedex/struct_ov21_021D423C_decl.h\""
+            },
+            {
+              "line": 8,
+              "text": "#include \"applications/pokedex/struct_ov21_021D4660.h\""
+            },
+            {
+              "line": 9,
+              "text": "#include \"applications/pokedex/struct_ov21_021E68F4.h\""
+            }
+          ]
+        },
+        {
+          "path": "include/applications/party_menu/main.h",
+          "exists": true,
+          "lines": 36,
+          "sha1": "55ef09e540395b1ff1b8b3045fef693afd231dc6",
+          "sampleSymbols": [
+            "PartyMenu_UpdateFormChangeGraphicsMode",
+            "sub_0207EF04",
+            "PartyMenu_LoadMember",
+            "sub_0207F248",
+            "PartyMenu_UpdateSlotPalette",
+            "sub_0207FD68",
+            "PartyMenu_CheckEligibility",
+            "PartyMenu_CheckBattleHallEligibility",
+            "PartyMenu_CheckBattleCastleEligibility",
+            "PartyMenu_GetMemberPanelAnim",
+            "GetElementIndex",
+            "sub_02081930",
+            "sub_02081934",
+            "sub_02081938",
+            "sub_0208193C",
+            "PartyMenu_LoadMemberPanelTilemaps",
+            "PartyMenu_SetupFormChangeAnim",
+            "PartyMenu_TeardownFormChangeAnim"
+          ],
+          "keyMatches": [
+            {
+              "line": 16,
+              "text": "void PartyMenu_UpdateFormChangeGraphicsMode(PartyMenuApplication *application, BOOL isTeardown);"
+            },
+            {
+              "line": 17,
+              "text": "u8 sub_0207EF04(PartyMenuApplication *application, u8 param1);"
+            },
+            {
+              "line": 18,
+              "text": "u8 PartyMenu_LoadMember(PartyMenuApplication *application, u8 slot);"
+            },
+            {
+              "line": 19,
+              "text": "const u16 *sub_0207F248(PartyMenuApplication *application);"
+            },
+            {
+              "line": 20,
+              "text": "void PartyMenu_UpdateSlotPalette(PartyMenuApplication *application, u8 slot);"
+            },
+            {
+              "line": 21,
+              "text": "void sub_0207FD68(PartyMenuApplication *application, u8 partySlot);"
+            },
+            {
+              "line": 22,
+              "text": "u8 PartyMenu_CheckEligibility(PartyMenuApplication *application, u8 slot);"
+            },
+            {
+              "line": 23,
+              "text": "u8 PartyMenu_CheckBattleHallEligibility(PartyMenuApplication *application, u8 slot);"
+            }
+          ]
+        },
+        {
+          "path": "include/applications/pc_boxes/box_application.h",
+          "exists": true,
+          "lines": 35,
+          "sha1": "f541b2ddb11a895d9cecabe367498b75e2cb12a9",
+          "sampleSymbols": [],
+          "keyMatches": [
+            {
+              "line": 4,
+              "text": "#include \"applications/pc_boxes/box_cursor.h\""
+            },
+            {
+              "line": 5,
+              "text": "#include \"applications/pc_boxes/box_customization.h\""
+            },
+            {
+              "line": 6,
+              "text": "#include \"applications/pc_boxes/box_mon_selection.h\""
+            },
+            {
+              "line": 7,
+              "text": "#include \"applications/pc_boxes/box_settings.h\""
+            },
+            {
+              "line": 8,
+              "text": "#include \"applications/pc_boxes/box_touch_dial_helper.h\""
+            },
+            {
+              "line": 9,
+              "text": "#include \"applications/pc_boxes/compare_mode_helper.h\""
+            },
+            {
+              "line": 10,
+              "text": "#include \"applications/pc_boxes/pc_mon_preview.h\""
+            },
+            {
+              "line": 11,
+              "text": "#include \"applications/pc_boxes/struct_box_menu.h\""
+            }
+          ]
+        },
+        {
+          "path": "include/applications/pokemon_summary_screen/main.h",
+          "exists": true,
+          "lines": 485,
+          "sha1": "de8048eddaa7dad5248b68befbcb0f26555f0d39",
+          "sampleSymbols": [
+            "PokemonSummaryScreen_ShowContestData",
+            "PokemonSummaryScreen_FlagVisiblePages",
+            "PokemonSummaryScreen_PageIsVisble",
+            "PokemonSummaryScreen_CountVisiblePages",
+            "PokemonSummaryScreen_MonData",
+            "PokemonSummaryScreen_RibbonIDAt",
+            "PokemonSummaryScreen_SetPlayerProfile",
+            "PokemonSummaryScreen_StatusIconChar",
+            "PokemonSummaryScreen_StatusIconPltt",
+            "PokemonSummaryScreen_StatusIconCell",
+            "PokemonSummaryScreen_StatusIconAnim",
+            "PokemonSummaryScreen_StatusIconAnimIdx"
+          ],
+          "keyMatches": [
+            {
+              "line": 1,
+              "text": "#ifndef POKEPLATINUM_POKEMON_SUMMARY_SCREEN_MAIN_H"
+            },
+            {
+              "line": 2,
+              "text": "#define POKEPLATINUM_POKEMON_SUMMARY_SCREEN_MAIN_H"
+            },
+            {
+              "line": 29,
+              "text": "enum SummaryMode {"
+            },
+            {
+              "line": 30,
+              "text": "SUMMARY_MODE_NORMAL = 0,"
+            },
+            {
+              "line": 31,
+              "text": "SUMMARY_MODE_LOCK_MOVES,"
+            },
+            {
+              "line": 32,
+              "text": "SUMMARY_MODE_SELECT_MOVE,"
+            },
+            {
+              "line": 33,
+              "text": "SUMMARY_MODE_FEED_POFFIN,"
+            },
+            {
+              "line": 34,
+              "text": "SUMMARY_MODE_SHOW_CONDITION_CHANGE,"
+            }
+          ]
+        },
+        {
+          "path": "src/bag.c",
+          "exists": true,
+          "lines": 484,
+          "sha1": "5a8ae5154d7faa59781903aa6a8e8b1e403e1c17",
+          "sampleSymbols": [
+            "Bag_GetPocketForItem",
+            "Bag_SaveSize",
+            "Bag_New",
+            "Bag_Init",
+            "MI_CpuClear16",
+            "Bag_Copy",
+            "MI_CpuCopy8",
+            "Bag_GetRegisteredItem",
+            "Bag_RegisterItem",
+            "Pocket_FindSlotToAddItem",
+            "Bag_FindSlotToAddItem",
+            "Bag_CanFitItem",
+            "Bag_TryAddItem",
+            "Pocket_Sort",
+            "Pocket_FindSlotWithItemQuantity",
+            "Bag_FindSlotWithItemQuantity",
+            "Bag_TryRemoveItem",
+            "Pocket_SortEmpty"
+          ],
+          "keyMatches": [
+            {
+              "line": 1,
+              "text": "#include \"bag.h\""
+            },
+            {
+              "line": 7,
+              "text": "#include \"constants/items.h\""
+            },
+            {
+              "line": 9,
+              "text": "#include \"generated/items.h\""
+            },
+            {
+              "line": 11,
+              "text": "#include \"bag_context.h\""
+            },
+            {
+              "line": 13,
+              "text": "#include \"item.h\""
+            },
+            {
+              "line": 16,
+              "text": "#define BAG_SLOT_INVALID ((u32)(-1))"
+            },
+            {
+              "line": 18,
+              "text": "#define BAG_MAX_QUANTITY_ITEM 999"
+            },
+            {
+              "line": 19,
+              "text": "#define BAG_MAX_QUANTITY_TMHM 99"
+            }
+          ]
+        },
+        {
+          "path": "src/item.c",
+          "exists": true,
+          "lines": 3407,
+          "sha1": "b8d682af5551b75a70d0ca6aaf04c38fe4203f7b",
+          "sampleSymbols": [
+            "ItemPartyParam_Get",
+            "Item_MoveInPocket",
+            "Item_FileID",
+            "Item_FromGBAID",
+            "Item_IconNCERFile",
+            "Item_IconNANRFile",
+            "Item_Load",
+            "Item_LoadName",
+            "MessageLoader_GetString",
+            "MessageLoader_Free",
+            "Item_LoadDescription",
+            "Item_LoadParam",
+            "Heap_FreeExplicit",
+            "Item_Get",
+            "Item_MoveForTMHM",
+            "Item_IsHMMove",
+            "Item_TMHMNumber",
+            "Item_IsMail"
+          ],
+          "keyMatches": [
+            {
+              "line": 1,
+              "text": "#include \"item.h\""
+            },
+            {
+              "line": 6,
+              "text": "#include \"constants/gba/items.h\""
+            },
+            {
+              "line": 7,
+              "text": "#include \"constants/items.h\""
+            },
+            {
+              "line": 10,
+              "text": "#include \"bag.h\""
+            },
+            {
+              "line": 16,
+              "text": "#include \"res/graphics/item_icons/item_icon.naix\""
+            },
+            {
+              "line": 18,
+              "text": "typedef struct ItemArchiveIDs {"
+            },
+            {
+              "line": 19,
+              "text": "u16 dataID; // Member file index in pl_item_data.narc; TODO: Use NAIX generated from pl_item_data"
+            },
+            {
+              "line": 20,
+              "text": "u16 iconID; // Member file index of NCGR in item_icon.narc; TODO: Use NAIX generated from item_icon.narc"
+            }
+          ]
+        }
+      ],
+      "searchPatterns": [
+        "Pokedex|pokedex|zukan|caught|seen",
+        "PartyMenu|Summary|pokemon_summary|MON_DATA_",
+        "pc_boxes|BoxPokemon|PokemonStorage|box app|PC",
+        "Bag|Item|ITEM_|UseItem|HeldItem|Pocket"
+      ],
+      "keySymbols": [
+        "Pokedex_Encounter",
+        "Party_GetPokemonBySlotIndex",
+        "Bag_TryAddItem",
+        "Item_Load",
+        "BoxPokemon_GetValue"
+      ],
+      "fallbackNotes": "Expansion requests usually become project plans because UI and save/data assumptions are broad."
+    },
+    {
+      "id": "trainers_ai",
+      "title": "Trainers and AI",
+      "summary": "Trainer data setup, trainer battle encounter handoff, battle AI constants/scripts.",
+      "usefulFor": [
+        "trainer party behavior",
+        "trainer AI flags",
+        "battle opening",
+        "trainer classes"
+      ],
+      "primaryFiles": [
+        {
+          "path": "src/trainer_data.c",
+          "exists": true,
+          "lines": 317,
+          "sha1": "cfa69e30c8ff1f7d714b75f5e70ec870e778c0a6",
+          "sampleSymbols": [
+            "TrainerData_BuildParty",
+            "Trainer_Encounter",
+            "Trainer_Load",
+            "CharCode_Copy",
+            "String_ToChars",
+            "String_Free",
+            "MessageLoader_Free",
+            "Trainer_LoadParam",
+            "Trainer_HasMessageType",
+            "NARC_ReadFromMemberByIndexPair",
+            "NARC_ReadFromMember",
+            "NARC_dtor",
+            "Trainer_LoadMessage",
+            "MessageBank_GetStringFromNARC",
+            "String_Clear",
+            "NARC_ReadWholeMemberByIndexPair",
+            "Trainer_LoadParty",
+            "TrainerClass_Gender"
+          ],
+          "keyMatches": [
+            {
+              "line": 1,
+              "text": "#include \"trainer_data.h\""
+            },
+            {
+              "line": 5,
+              "text": "#include \"generated/trainer_message_types.h\""
+            },
+            {
+              "line": 7,
+              "text": "#include \"struct_defs/trainer.h\""
+            },
+            {
+              "line": 9,
+              "text": "#include \"data/trainer_class_genders.h\""
+            },
+            {
+              "line": 23,
+              "text": "static void TrainerData_BuildParty(FieldBattleDTO *dto, int battler, enum HeapID heapID);"
+            },
+            {
+              "line": 25,
+              "text": "void Trainer_Encounter(FieldBattleDTO *dto, const SaveData *saveData, enum HeapID heapID)"
+            },
+            {
+              "line": 27,
+              "text": "Trainer trdata;"
+            },
+            {
+              "line": 28,
+              "text": "MessageLoader *msgLoader = MessageLoader_Init(MSG_LOADER_LOAD_ON_DEMAND, NARC_INDEX_MSGDATA__PL_MSG, TEXT_BANK_NPC_TRAINER_NAMES, heapID);"
+            }
+          ]
+        },
+        {
+          "path": "include/trainer_data.h",
+          "exists": true,
+          "lines": 97,
+          "sha1": "cdd4d9b9db88e18b10bd639288e85d4d3a43fea3",
+          "sampleSymbols": [
+            "Trainer_Encounter",
+            "Trainer_LoadParam",
+            "Trainer_HasMessageType",
+            "Trainer_LoadMessage",
+            "Trainer_Load",
+            "Trainer_LoadParty",
+            "TrainerClass_Gender"
+          ],
+          "keyMatches": [
+            {
+              "line": 1,
+              "text": "#ifndef POKEPLATINUM_TRAINER_DATA_H"
+            },
+            {
+              "line": 2,
+              "text": "#define POKEPLATINUM_TRAINER_DATA_H"
+            },
+            {
+              "line": 4,
+              "text": "#include \"generated/trainer_message_types.h\""
+            },
+            {
+              "line": 6,
+              "text": "#include \"struct_defs/trainer.h\""
+            },
+            {
+              "line": 12,
+              "text": "enum TrainerDataParam {"
+            },
+            {
+              "line": 21,
+              "text": "TRDATA_AI_MASK,"
+            },
+            {
+              "line": 26,
+              "text": "* @brief Initialize the Trainer structs within the FieldBattleDTO struct."
+            },
+            {
+              "line": 28,
+              "text": "* This routine is responsible for loading the name of a trainer and building"
+            }
+          ]
+        },
+        {
+          "path": "include/battle/trainer_ai.h",
+          "exists": true,
+          "lines": 38,
+          "sha1": "a687954120ff545ff05a91e2e8503b258b4272c2",
+          "sampleSymbols": [
+            "TrainerAI_Init",
+            "TrainerAI_Main",
+            "TrainerAI_PickCommand"
+          ],
+          "keyMatches": [
+            {
+              "line": 1,
+              "text": "#ifndef POKEPLATINUM_BATTLE_TRAINER_AI_H"
+            },
+            {
+              "line": 2,
+              "text": "#define POKEPLATINUM_BATTLE_TRAINER_AI_H"
+            },
+            {
+              "line": 9,
+              "text": "* @brief Initialize the trainer AI for a given battler."
+            },
+            {
+              "line": 17,
+              "text": "void TrainerAI_Init(BattleSystem *battleSys, BattleContext *battleCtx, u8 battler, u8 initScore);"
+            },
+            {
+              "line": 20,
+              "text": "* @brief Execute the trainer AI routine for a given battler."
+            },
+            {
+              "line": 24,
+              "text": "* @return          AI execution routine result"
+            },
+            {
+              "line": 26,
+              "text": "u8 TrainerAI_Main(BattleSystem *battleSys, u8 battler);"
+            },
+            {
+              "line": 32,
+              "text": "* @param battler   The battler who is waiting to choose their turn's action"
+            }
+          ]
+        },
+        {
+          "path": "asm/trainer_ai",
+          "exists": true,
+          "lines": null,
+          "sha1": null,
+          "sampleSymbols": [],
+          "keyMatches": []
+        },
+        {
+          "path": "tools/datagen/datagen_trainer.cpp",
+          "exists": true,
+          "lines": 395,
+          "sha1": "0ccc47fbe4eab25398712888185a05c48e1da99a",
+          "sampleSymbols": [
+            "PackImmediately",
+            "ParseMovesAndPack",
+            "ParseItemAndPack",
+            "ParseMovesAndItemAndPack",
+            "Usage",
+            "AnyMemberHasValue",
+            "ParseTrainerData",
+            "memcpy",
+            "ParseAndPackParty",
+            "subparser",
+            "ParseMessages",
+            "trainerMessages",
+            "message",
+            "idValue",
+            "CopyMessage",
+            "ParseName",
+            "main",
+            "messagesTextBank"
+          ],
+          "keyMatches": [
+            {
+              "line": 2,
+              "text": "* datagen-trainer"
+            },
+            {
+              "line": 6,
+              "text": "* This program is responsible for generating data archives from trainer data"
+            },
+            {
+              "line": 7,
+              "text": "* files (res/trainers/data/<name>.json). The file-names to be polled for data are"
+            },
+            {
+              "line": 8,
+              "text": "* drawn from an environment var TRAINERS, which should be a semicolon-delimited"
+            },
+            {
+              "line": 16,
+              "text": "*   - npc_trainer_messages.json"
+            },
+            {
+              "line": 17,
+              "text": "*   - npc_trainer_names.json"
+            },
+            {
+              "line": 27,
+              "text": "#include \"datagen_trainer.h\""
+            },
+            {
+              "line": 35,
+              "text": "#include \"generated/ai_flags.h\""
+            }
+          ]
+        },
+        {
+          "path": "res/trainers/meson.build",
+          "exists": true,
+          "lines": 83,
+          "sha1": "0622d224e3d9e27e3fe5cb7e270cbc641edf227c",
+          "sampleSymbols": [
+            "subdir"
+          ],
+          "keyMatches": [
+            {
+              "line": 1,
+              "text": "# This build file contains all definitions for building filesystem archives"
+            },
+            {
+              "line": 2,
+              "text": "# and related to Trainers. Specifically, it handles:"
+            },
+            {
+              "line": 3,
+              "text": "#   - Trainer data:"
+            },
+            {
+              "line": 4,
+              "text": "#     - trdata - header information for individual trainers in-game: their class"
+            },
+            {
+              "line": 5,
+              "text": "#       (internally called trainerType for compatibility reasons), party size,"
+            },
+            {
+              "line": 6,
+              "text": "#       AI behavior flags, and items on-hand."
+            },
+            {
+              "line": 7,
+              "text": "#     - trpoke - party information for individual trainers in-game"
+            },
+            {
+              "line": 9,
+              "text": "trainer_data_dir = meson.current_source_dir() / 'data'"
+            }
+          ]
+        }
+      ],
+      "searchPatterns": [
+        "Trainer_Encounter|TrainerData|TRAINER_|trainer",
+        "trainer_ai|AI|moveDamageRolls|AI_CONTEXT",
+        "partyCount|trainerClass|doubleBattle"
+      ],
+      "keySymbols": [
+        "Trainer_Encounter",
+        "Trainer_Load",
+        "BattleSystem_LoadTrainerParty",
+        "TrainerAI_Main"
+      ],
+      "fallbackNotes": "Use DSPRE trainer format index for data edits; use decomp for behavior."
+    },
+    {
+      "id": "save_records_system",
+      "title": "Save data, records, system",
+      "summary": "Save blocks, game records, system vars, boot/main loop, options.",
+      "usefulFor": [
+        "save compatibility",
+        "new flags/vars",
+        "records",
+        "global options",
+        "startup"
+      ],
+      "primaryFiles": [
+        {
+          "path": "include/savedata.h",
+          "exists": true,
+          "lines": 114,
+          "sha1": "dac761321f6cbbf105bb70135eb5845f4312a4d8",
+          "sampleSymbols": [
+            "SaveData_Init",
+            "SaveData_Ptr",
+            "SaveData_SaveTable",
+            "SaveData_SaveTableConst",
+            "SaveData_Erase",
+            "SaveData_Load",
+            "SaveData_Save",
+            "SaveData_SaveBlock",
+            "SaveData_Clear",
+            "SaveData_BackupExists",
+            "SaveData_LoadCheckStatus",
+            "SaveData_DataExists",
+            "SaveData_IsNewGameData",
+            "SaveData_MiscSaveBlock_InitFlag",
+            "SaveData_OverwriteCheck",
+            "SaveData_FullSaveRequired",
+            "SaveData_SetFullSaveRequired",
+            "SaveData_SaveStateInit"
+          ],
+          "keyMatches": [
+            {
+              "line": 1,
+              "text": "#ifndef POKEPLATINUM_SAVEDATA_H"
+            },
+            {
+              "line": 2,
+              "text": "#define POKEPLATINUM_SAVEDATA_H"
+            },
+            {
+              "line": 5,
+              "text": "#include \"constants/savedata/save_table.h\""
+            },
+            {
+              "line": 6,
+              "text": "#include \"constants/savedata/savedata.h\""
+            },
+            {
+              "line": 33,
+              "text": "typedef struct SaveDataBody {"
+            },
+            {
+              "line": 35,
+              "text": "} SaveDataBody;"
+            },
+            {
+              "line": 37,
+              "text": "typedef struct SaveDataState {"
+            },
+            {
+              "line": 43,
+              "text": "int mainSequence;"
+            }
+          ]
+        },
+        {
+          "path": "include/constants/savedata/vars_flags.h",
+          "exists": true,
+          "lines": 9,
+          "sha1": "f54c5420e5c6526fa857abeeb610bd93ab422020",
+          "sampleSymbols": [],
+          "keyMatches": []
+        },
+        {
+          "path": "src/game_records.c",
+          "exists": true,
+          "lines": 418,
+          "sha1": "59391ab91b649d2b42732f0b9bb059693e4ef95d",
+          "sampleSymbols": [
+            "EncodeGameRecords",
+            "DecodeGameRecords",
+            "GetRecordValue",
+            "SetRecordValue",
+            "GetRecordLimit",
+            "GetTrainerScoreIncrement",
+            "GameRecords_SaveSize",
+            "GameRecords_Init",
+            "MI_CpuClear32",
+            "SaveData_GetGameRecords",
+            "HashEncodingSeed",
+            "EncodeData",
+            "DecodeData",
+            "GF_ASSERT",
+            "SetRecordValueWithLimit",
+            "GameRecords_SetRecordValue",
+            "GameRecords_SetAndLimitRecordValue",
+            "GameRecords_IncrementRecordValue"
+          ],
+          "keyMatches": [
+            {
+              "line": 1,
+              "text": "#include \"game_records.h\""
+            },
+            {
+              "line": 5,
+              "text": "#include \"generated/game_records.h\""
+            },
+            {
+              "line": 12,
+              "text": "#define SIZE_ENCODED_RECORDS  (sizeof(GameRecords) - sizeof(EncodingSeed) - (START_ENCODED_RECORDS * sizeof(u32)))"
+            },
+            {
+              "line": 14,
+              "text": "static void EncodeGameRecords(GameRecords *records, int id);"
+            },
+            {
+              "line": 15,
+              "text": "static void DecodeGameRecords(GameRecords *records, int id);"
+            },
+            {
+              "line": 16,
+              "text": "static u32 GetRecordValue(const GameRecords *records, int id);"
+            },
+            {
+              "line": 17,
+              "text": "static u32 SetRecordValue(GameRecords *records, int id, u32 val);"
+            },
+            {
+              "line": 21,
+              "text": "int GameRecords_SaveSize(void)"
+            }
+          ]
+        },
+        {
+          "path": "src/game_options.c",
+          "exists": true,
+          "lines": 183,
+          "sha1": "b102bea7dcce17a25dfecec3378c0fca7e39d192",
+          "sampleSymbols": [
+            "Options_New",
+            "Options_Init",
+            "Options_Copy",
+            "MI_CpuCopy8",
+            "MI_CpuFill8",
+            "Options_SetSystemButtonMode",
+            "Options_TextSpeed",
+            "Options_SetTextSpeed",
+            "Options_TextFrameDelay",
+            "Options_SoundMode",
+            "Options_SetSoundMode",
+            "Options_BattleScene",
+            "Options_SetBattleScene",
+            "Options_BattleStyle",
+            "Options_SetBattleStyle",
+            "Options_ButtonMode",
+            "Options_SetButtonMode",
+            "Options_Frame"
+          ],
+          "keyMatches": [
+            {
+              "line": 1,
+              "text": "#include \"game_options.h\""
+            },
+            {
+              "line": 8,
+              "text": "#include \"savedata.h\""
+            },
+            {
+              "line": 12,
+              "text": "Options *Options_New(enum HeapID heapID)"
+            },
+            {
+              "line": 14,
+              "text": "Options *options = Heap_Alloc(heapID, sizeof(Options));"
+            },
+            {
+              "line": 15,
+              "text": "Options_Init(options);"
+            },
+            {
+              "line": 17,
+              "text": "return options;"
+            },
+            {
+              "line": 20,
+              "text": "void Options_Copy(const Options *src, Options *dest)"
+            },
+            {
+              "line": 22,
+              "text": "MI_CpuCopy8(src, dest, sizeof(Options));"
+            }
+          ]
+        },
+        {
+          "path": "src/main.c",
+          "exists": true,
+          "lines": 363,
+          "sha1": "5d3357b0000ec1bcba9438e02399a748aea18281",
+          "sampleSymbols": [
+            "FS_EXTERN_OVERLAY",
+            "InitApplication",
+            "RunApplication",
+            "WaitFrame",
+            "TrySystemReset",
+            "SoftReset",
+            "HeapCanaryFailed",
+            "CheckHeapCanary",
+            "NitroMain",
+            "InitSystem",
+            "InitVRAM",
+            "InitKeypadAndTouchpad",
+            "SetGBACartridgeVersion",
+            "PM_GetBackLight",
+            "sub_0202419C",
+            "InitRTC",
+            "Fonts_Init",
+            "Font_InitManager"
+          ],
+          "keyMatches": [
+            {
+              "line": 1,
+              "text": "#include \"main.h\""
+            },
+            {
+              "line": 15,
+              "text": "#include \"main.h\""
+            },
+            {
+              "line": 21,
+              "text": "#include \"savedata.h\""
+            },
+            {
+              "line": 63,
+              "text": "void NitroMain(void)"
+            },
+            {
+              "line": 81,
+              "text": "sApplication.args.saveData = SaveData_Init();"
+            },
+            {
+              "line": 83,
+              "text": "SoundSystem_Init(SaveData_GetChatotCry(sApplication.args.saveData), SaveData_GetOptions(sApplication.args.saveData));"
+            },
+            {
+              "line": 90,
+              "text": "if (SaveData_BackupExists(sApplication.args.saveData) == FALSE) {"
+            },
+            {
+              "line": 100,
+              "text": "SetScreenColorBrightness(DS_SCREEN_MAIN, COLOR_BLACK);"
+            }
+          ]
+        },
+        {
+          "path": "src/boot.c",
+          "exists": true,
+          "lines": 60,
+          "sha1": "f2ef5a0caaf2b07390e64102d55c59929e39255f",
+          "sampleSymbols": [
+            "CheckForMemoryTampering",
+            "OS_Terminate",
+            "CARD_Init",
+            "MI_CpuCopy8",
+            "RebootAndLoadROM",
+            "FS_InitFile",
+            "OS_ResetSystem"
+          ],
+          "keyMatches": [
+            {
+              "line": 1,
+              "text": "#include \"boot.h\""
+            },
+            {
+              "line": 21,
+              "text": "CARDRomHeader *const checkHeader = (CARDRomHeader *)HW_MAIN_MEM_SHARED; // 0x027FF000"
+            },
+            {
+              "line": 48,
+              "text": "void RebootAndLoadROM(const char *filesystemPath)"
+            }
+          ]
+        }
+      ],
+      "searchPatterns": [
+        "SaveData|VarsFlags|SystemVars|GAME_RECORD|GameRecords",
+        "Options|GameOptions|boot|main"
+      ],
+      "keySymbols": [
+        "SaveData_SaveSize",
+        "SaveData_Init",
+        "VarsFlags_SetFlag",
+        "VarsFlags_GetVar",
+        "GameRecords_IncrementRecordValue"
+      ],
+      "fallbackNotes": "Any request that expands save structures should be treated as high-risk expansion work."
+    },
+    {
+      "id": "battle_animations",
+      "title": "Battle animations",
+      "summary": "Move visual effects, particles, animation scripts, emitters, camera callbacks.",
+      "usefulFor": [
+        "move animation changes",
+        "particle effects",
+        "battle visual behavior"
+      ],
+      "primaryFiles": [
+        {
+          "path": "src/battle_anim/battle_anim_system.c",
+          "exists": true,
+          "lines": 4122,
+          "sha1": "fab9a5534c18f720c269eec481e4f2918f58b7d0",
+          "sampleSymbols": [
+            "ov12_022224F8",
+            "BattleAnimScript_WaitForDelay",
+            "BattleAnimScript_Execute",
+            "BattleAnimSystem_StartTask",
+            "BattleAnimSystem_EndTask",
+            "BattleAnimSystem_CreateSoundContext",
+            "BattleAnimSystem_StartSoundTaskInternal",
+            "BattleAnimSound_Task",
+            "BattleAnimSoundFunc_None",
+            "BattleAnimSoundFunc_Pan",
+            "BattleAnimSoundFunc_Pan2",
+            "BattleAnimSoundFunc_Pan3",
+            "BattleAnimSoundFunc_Repeat",
+            "BattleAnimSoundFunc_Delay",
+            "BattleAnimScriptCmd_Delay",
+            "BattleAnimScriptCmd_WaitForAnimTasks",
+            "BattleAnimScriptCmd_BeginLoop",
+            "BattleAnimScriptCmd_EndLoop"
+          ],
+          "keyMatches": [
+            {
+              "line": 15,
+              "text": "#include \"struct_defs/move_animation.h\""
+            },
+            {
+              "line": 23,
+              "text": "#include \"battle_anim/battle_particle_util.h\""
+            },
+            {
+              "line": 26,
+              "text": "#include \"battle_anim/script_func_tables.h\""
+            },
+            {
+              "line": 38,
+              "text": "#include \"particle_system.h\""
+            },
+            {
+              "line": 57,
+              "text": "typedef struct BattleAnimSoundContext {"
+            },
+            {
+              "line": 77,
+              "text": "BattleAnimSystem *system;"
+            },
+            {
+              "line": 78,
+              "text": "} BattleAnimSoundContext;"
+            },
+            {
+              "line": 80,
+              "text": "enum BattleAnimSoundTaskType {"
+            }
+          ]
+        },
+        {
+          "path": "src/battle_anim/script_func_tables.c",
+          "exists": true,
+          "lines": 168,
+          "sha1": "c164a17b46a05731d1eaf4d16f3000c677e691e8",
+          "sampleSymbols": [
+            "UnusedSpriteFunc",
+            "UNUSED",
+            "BattleAnimScript_GetFunc",
+            "BattleAnimScript_GetSpriteFunc"
+          ],
+          "keyMatches": [
+            {
+              "line": 1,
+              "text": "#include \"battle_anim/script_func_tables.h\""
+            },
+            {
+              "line": 8,
+              "text": "#include \"battle_anim/script_func_examples.h\""
+            },
+            {
+              "line": 9,
+              "text": "#include \"battle_anim/script_func_mimic.h\""
+            },
+            {
+              "line": 10,
+              "text": "#include \"battle_anim/script_func_tables.h\""
+            },
+            {
+              "line": 11,
+              "text": "#include \"battle_anim/script_funcs_0.h\""
+            },
+            {
+              "line": 12,
+              "text": "#include \"battle_anim/script_funcs_1.h\""
+            },
+            {
+              "line": 13,
+              "text": "#include \"battle_anim/script_funcs_2.h\""
+            },
+            {
+              "line": 14,
+              "text": "#include \"battle_anim/script_funcs_3.h\""
+            }
+          ]
+        },
+        {
+          "path": "src/battle_anim/script_funcs_0.c",
+          "exists": true,
+          "lines": 2797,
+          "sha1": "46eec0702512cd68e1d4e57ba88256bb0c4a068b",
+          "sampleSymbols": [
+            "ov12_0222AC70",
+            "ManagedSprite_GetPositionXY",
+            "ManagedSprite_SetDrawFlag",
+            "ScaleLerpContext_InitXY",
+            "ScaleLerpContext_GetAffineScale",
+            "ManagedSprite_SetAffineScale",
+            "G2_ChangeBlendAlpha",
+            "Sprite_DeleteAndFreeResources",
+            "BattleAnimSystem_EndAnimTask",
+            "Heap_Free",
+            "Sprite_TickFrame",
+            "SpriteSystem_DrawSprites",
+            "ov12_0222AE68",
+            "BattleAnimUtil_SetSpriteBgBlending",
+            "BattleAnimUtil_GetBattlerTypeDefaultPos",
+            "ManagedSprite_SetPositionXY",
+            "ManagedSprite_SetAffineOverwriteMode",
+            "ManagedSprite_OffsetPositionXY"
+          ],
+          "keyMatches": [
+            {
+              "line": 1,
+              "text": "#include \"battle_anim/script_funcs_0.h\""
+            },
+            {
+              "line": 32,
+              "text": "BattleAnimSystem *unk_08;"
+            },
+            {
+              "line": 47,
+              "text": "BattleAnimSystem *battleAnimSys;"
+            },
+            {
+              "line": 82,
+              "text": "BattleAnimSystem *battleAnimSys;"
+            },
+            {
+              "line": 119,
+              "text": "BattleAnimSystem *battleAnimSys;"
+            },
+            {
+              "line": 157,
+              "text": "#define DOUBLE_TEAM_MAX_MOVE_ITERATIONS 8"
+            },
+            {
+              "line": 166,
+              "text": "BattleAnimSystem *battleAnimSys;"
+            },
+            {
+              "line": 190,
+              "text": "BattleAnimSystem *battleAnimSys;"
+            }
+          ]
+        },
+        {
+          "path": "src/battle_anim/emitter_callbacks.c",
+          "exists": true,
+          "lines": 565,
+          "sha1": "b43f1e35a0472cae291f538a0ea68b773a9670cc",
+          "sampleSymbols": [
+            "BattleParticleUtil_GetSignFromBattler",
+            "BattleAnimEmitterCb_Nop2",
+            "BattleAnimEmitterCb_SetPosToEnemy1",
+            "UNUSED",
+            "BattleAnimUtil_GetBattlerWorldPos_Normal",
+            "BattleAnimUtil_GetBattlerTypeWorldPos_Normal",
+            "SPLEmitter_SetPosX",
+            "SPLEmitter_SetPosY",
+            "SPLEmitter_SetPosZ",
+            "BattleAnimUtil_GetUpVectorForBattler",
+            "Camera_SetAngleAroundTarget",
+            "BattleAnimEmitterCb_SetPosToPlayer1",
+            "ParticleSystem_SetCameraUp",
+            "BattleAnimEmitterCb_SetPosToDefender",
+            "BattleAnimEmitterCb_SetPosToAttacker",
+            "BattleAnimEmitterCb_SetPosToAttacker2",
+            "BattleAnimEmitterCb_SetPosToAttackerSide",
+            "BattleAnimEmitterCb_SetPosToDefenderSide"
+          ],
+          "keyMatches": [
+            {
+              "line": 1,
+              "text": "#include \"battle_anim/emitter_callbacks.h\""
+            },
+            {
+              "line": 15,
+              "text": "#include \"camera.h\""
+            },
+            {
+              "line": 17,
+              "text": "#include \"particle_system.h\""
+            },
+            {
+              "line": 20,
+              "text": "static s8 BattleParticleUtil_GetSignFromBattler(BattleAnimSystem *param0, int param1, int param2);"
+            },
+            {
+              "line": 34,
+              "text": "static s8 BattleParticleUtil_GetSignFromBattler(BattleAnimSystem *system, int startBattler, int endBattler)"
+            },
+            {
+              "line": 37,
+              "text": "int startType = BattleAnimUtil_GetBattlerType(system, startBattler);"
+            },
+            {
+              "line": 38,
+              "text": "int endType = BattleAnimUtil_GetBattlerType(system, endBattler);"
+            },
+            {
+              "line": 65,
+              "text": "void BattleAnimEmitterCb_Nop2(SPLEmitter *emitter)"
+            }
+          ]
+        },
+        {
+          "path": "include/battle_anim/battle_anim_system.h",
+          "exists": true,
+          "lines": 296,
+          "sha1": "57d99dd698bfac2d4b2f171497a0fdc17e1bb055",
+          "sampleSymbols": [
+            "position",
+            "void",
+            "BattleAnimSystem_New",
+            "BattleAnimSystem_SetIsContest",
+            "BattleAnimSystem_IsContest",
+            "BattleAnimSystem_GetHeapID",
+            "BattleAnimSystem_Delete",
+            "BattleAnimSystem_StartMove",
+            "BattleAnimSystem_ExecuteScript",
+            "BattleAnimSystem_IsMoveActive",
+            "BattleAnimSystem_FreeScriptData",
+            "BattleAnimSystem_IsActive",
+            "BattleAnimSystem_StartAnimTaskEx",
+            "BattleAnimSystem_StartAnimTask",
+            "BattleAnimSystem_StartSoundTask",
+            "BattleAnimSystem_EndAnimTask",
+            "BattleAnimSystem_EndSoundTask",
+            "BattleAnimSystem_GetAttacker"
+          ],
+          "keyMatches": [
+            {
+              "line": 7,
+              "text": "#include \"struct_defs/move_animation.h\""
+            },
+            {
+              "line": 15,
+              "text": "#include \"particle_system.h\""
+            },
+            {
+              "line": 45,
+              "text": "enum BattleAnimSystemArc {"
+            },
+            {
+              "line": 56,
+              "text": "enum BattleAnimMoveInfoType {"
+            },
+            {
+              "line": 57,
+              "text": "BATTLE_ANIM_MOVE_INFO_DAMAGE = 0,"
+            },
+            {
+              "line": 58,
+              "text": "BATTLE_ANIM_MOVE_INFO_POWER,"
+            },
+            {
+              "line": 59,
+              "text": "BATTLE_ANIM_MOVE_INFO_FRIENDSHIP,"
+            },
+            {
+              "line": 60,
+              "text": "BATTLE_ANIM_MOVE_INFO_FIELD_CONDITIONS,"
+            }
+          ]
+        },
+        {
+          "path": "res/battle/particles/battle_particles.order",
+          "exists": true,
+          "lines": 486,
+          "sha1": "09b1486971b3ea65a6bf01044196bc54035d9aab",
+          "sampleSymbols": [],
+          "keyMatches": []
+        }
+      ],
+      "searchPatterns": [
+        "script_func|BattleAnim|Particle|Emitter|camera",
+        "MOVE_|move animation|animation"
+      ],
+      "keySymbols": [
+        "BattleAnimSystem_Start",
+        "BattleAnimSystem_New",
+        "BattleParticle_New",
+        "BattleAnimScriptFunc"
+      ],
+      "fallbackNotes": "Animation work often needs asset/resource context as well as code."
+    },
+    {
+      "id": "apps_minigames_network",
+      "title": "Apps, minigames, network, extras",
+      "summary": "Main menu, Mystery Gift, Underground, contests, WFC/network, Poketch-like apps and overlays.",
+      "usefulFor": [
+        "Mystery Gift",
+        "Underground",
+        "Contest",
+        "WFC",
+        "menus",
+        "special apps"
+      ],
+      "primaryFiles": [
+        {
+          "path": "src/main_menu/main_menu.c",
+          "exists": true,
+          "lines": 1355,
+          "sha1": "b79923e6672f9f7c08bd247f34d3fb5cbdf48f40",
+          "sampleSymbols": [
+            "FS_EXTERN_OVERLAY",
+            "RenderContinueOption",
+            "RenderMysteryGiftOption",
+            "RenderRangerLinkOption",
+            "RenderGBAMigrationOption",
+            "RenderWiiConnectionOption",
+            "RenderWFCSettingsOption",
+            "RenderWiiMsgSettingsOption",
+            "CheckWFCUserInfoErased",
+            "ShowWFCUserInfoErasedMsg",
+            "MainMenuUtil_InitWindow",
+            "MainMenuWindow_SetDimensionsAndBasetile",
+            "MainMenuUtil_ShowWindowAtPos",
+            "Sound_PlayEffect",
+            "Window_EraseStandardFrame",
+            "Window_Remove",
+            "DetectGBAGame",
+            "SetGBACartridgeVersion"
+          ],
+          "keyMatches": [
+            {
+              "line": 11,
+              "text": "#include \"main_menu/application_template.h\""
+            },
+            {
+              "line": 12,
+              "text": "#include \"main_menu/distribution_cartridge.h\""
+            },
+            {
+              "line": 13,
+              "text": "#include \"main_menu/main_menu_util.h\""
+            },
+            {
+              "line": 14,
+              "text": "#include \"main_menu/ov97_02235D18.h\""
+            },
+            {
+              "line": 27,
+              "text": "#include \"mystery_gift.h\""
+            },
+            {
+              "line": 28,
+              "text": "#include \"overlay_manager.h\""
+            },
+            {
+              "line": 50,
+              "text": "#include \"res/graphics/main_menu/main_menu_graphics.naix\""
+            },
+            {
+              "line": 51,
+              "text": "#include \"res/text/bank/main_menu_alerts.h\""
+            }
+          ]
+        },
+        {
+          "path": "src/main_menu/mystery_gift_app.c",
+          "exists": true,
+          "lines": 2617,
+          "sha1": "d1cde7241f8622a5dbcbed60ba6e7937c8ded19d",
+          "sampleSymbols": [
+            "FS_EXTERN_OVERLAY",
+            "ShowMysteryGiftReceptionMethodsMenu",
+            "ExitToWonderCardsApp",
+            "ExitToTitleScreen",
+            "AskConfirmWireless_FriendOrGBA",
+            "AskConfirmWireless_WirelessDistribution",
+            "AskConfirmConnectToWFC",
+            "ReturnToMysteryGiftMenu",
+            "SetupFriendOrGBADistribution",
+            "ReturnToReceptionMethodChoiceAfterRefusingWireless",
+            "SendGiftRequestIfCanReceive",
+            "ReturnToReceptionMethodChoiceAfterRefusingGift",
+            "InitWFCConnection",
+            "StartSearchLocalWirelessDistribution",
+            "CheckPlayerCanReceive_WirelessDistribution",
+            "DisconnectLocalWireless",
+            "MakeStateChangeListMenuFromEntryTemplates",
+            "ShowMysteryGiftMenuOptions"
+          ],
+          "keyMatches": [
+            {
+              "line": 1,
+              "text": "#include \"main_menu/mystery_gift_app.h\""
+            },
+            {
+              "line": 13,
+              "text": "#include \"main_menu/distribution_cartridge.h\""
+            },
+            {
+              "line": 14,
+              "text": "#include \"main_menu/main_menu_util.h\""
+            },
+            {
+              "line": 15,
+              "text": "#include \"main_menu/ov97_0222D04C.h\""
+            },
+            {
+              "line": 16,
+              "text": "#include \"main_menu/ov97_02232054.h\""
+            },
+            {
+              "line": 17,
+              "text": "#include \"main_menu/ov97_02238534.h\""
+            },
+            {
+              "line": 18,
+              "text": "#include \"main_menu/ov97_02238D74.h\""
+            },
+            {
+              "line": 19,
+              "text": "#include \"main_menu/wonder_cards_app.h\""
+            }
+          ]
+        },
+        {
+          "path": "src/underground.c",
+          "exists": true,
+          "lines": 1372,
+          "sha1": "5ea3d78c0f7aa000685815141f89259eccd1207d",
+          "sampleSymbols": [
+            "Underground_UpdatePlacedGoodSlots",
+            "Underground_SaveSize",
+            "SecretBase_Size",
+            "UndergroundRecord_Size",
+            "UndergroundRecord_Init",
+            "MI_CpuFill8",
+            "Underground_Init",
+            "GetCurrentDateTime",
+            "Underground_FindEmptyGoodsSlotBag",
+            "Underground_FindEmptySphereSlot",
+            "Underground_FindEmptyTreasureSlot",
+            "Underground_FindEmptyTrapSlot",
+            "Underground_HandleDailyEvents",
+            "MATH_InitRand16",
+            "Underground_ProgressGiftPenalty",
+            "Underground_UpdateGiftPenaltyState",
+            "Underground_SetGiftPenaltyPrimedFlag",
+            "Underground_ClearGiftPenaltyFlag"
+          ],
+          "keyMatches": [
+            {
+              "line": 1,
+              "text": "#include \"underground.h\""
+            },
+            {
+              "line": 13,
+              "text": "#include \"underground/mining.h\""
+            },
+            {
+              "line": 14,
+              "text": "#include \"underground/secret_bases.h\""
+            },
+            {
+              "line": 39,
+              "text": "enum GiftPenaltyState {"
+            },
+            {
+              "line": 40,
+              "text": "GIFT_PENALTY_STATE_NONE = 0,"
+            },
+            {
+              "line": 41,
+              "text": "GIFT_PENALTY_STATE_PRIMED,"
+            },
+            {
+              "line": 42,
+              "text": "GIFT_PENALTY_STATE_ACTIVE,"
+            },
+            {
+              "line": 45,
+              "text": "static void Underground_UpdatePlacedGoodSlots(Underground *underground, int startSlot, int modifier);"
+            }
+          ]
+        },
+        {
+          "path": "src/contest.c",
+          "exists": true,
+          "lines": 1646,
+          "sha1": "5fc5f335662dcf39ff39b6f3e9b14771e910f906",
+          "sampleSymbols": [
+            "FS_EXTERN_OVERLAY",
+            "Contest_New",
+            "Contest_InternalFree",
+            "Contest_SetLCRNGSeed",
+            "Contest_GetRNGNext",
+            "Contest_SetUpLinkContest",
+            "Contest_IsCommTaskDoneInternal",
+            "sub_02093C6C",
+            "FieldTask_RunContest",
+            "FieldTask_RunPracticeCompetition",
+            "Contest_GetVisualCompetitionAppArgs",
+            "Contest_VisualCompetitionAppArgsFree",
+            "sub_020944E8",
+            "sub_0209451C",
+            "sub_02094EB4",
+            "SysTask_DoContestCameraFlash",
+            "CalcMonContestFame",
+            "sub_020939E0"
+          ],
+          "keyMatches": [
+            {
+              "line": 1,
+              "text": "#include \"contest.h\""
+            },
+            {
+              "line": 6,
+              "text": "#include \"constants/contests.h\""
+            },
+            {
+              "line": 11,
+              "text": "#include \"generated/pokemon_contest_ranks.h\""
+            },
+            {
+              "line": 15,
+              "text": "#include \"struct_defs/contest_camera_flash_task.h\""
+            },
+            {
+              "line": 16,
+              "text": "#include \"struct_defs/contest_player_mon_dto.h\""
+            },
+            {
+              "line": 22,
+              "text": "#include \"overlay006/ov6_022489E4.h\""
+            },
+            {
+              "line": 23,
+              "text": "#include \"overlay006/struct_ov6_02248DD8.h\""
+            },
+            {
+              "line": 24,
+              "text": "#include \"overlay017/ov17_0223B140.h\""
+            }
+          ]
+        },
+        {
+          "path": "src/nintendo_wfc/main.c",
+          "exists": true,
+          "lines": 1526,
+          "sha1": "34072f8c382118f7c4ec6a4b64462101065f0288",
+          "sampleSymbols": [
+            "NintendoWFC_Cleanup",
+            "LoginCompleteCallback",
+            "UpdateServersCallback",
+            "DummyFriendStatusCallback",
+            "DeleteDuplicateFriendCallback",
+            "DummyWFCBuddyFriendCB",
+            "MatchmakingLobbyMatchedCallback",
+            "SendCallback",
+            "ReceiveCallback",
+            "ConnectionClosedCallback",
+            "DummyPlayerEvalCallback",
+            "ProcessConnectionForFrame",
+            "ReceiveTimeoutCallback",
+            "CanSendToAll",
+            "FreeReceiveBuffer",
+            "FreeAllReceiveBuffers",
+            "CreateReceiveBuffer",
+            "GetNextFriendStatus"
+          ],
+          "keyMatches": [
+            {
+              "line": 1,
+              "text": "#include \"nintendo_wfc/main.h\""
+            },
+            {
+              "line": 12,
+              "text": "#include \"nintendo_wfc/voice_chat.h\""
+            },
+            {
+              "line": 27,
+              "text": "enum NintendoWFCState {"
+            },
+            {
+              "line": 28,
+              "text": "WFC_STATE_INIT = 0,"
+            },
+            {
+              "line": 29,
+              "text": "WFC_STATE_WAIT_CONNECTION,"
+            },
+            {
+              "line": 30,
+              "text": "WFC_STATE_INIT_LOGIN,"
+            },
+            {
+              "line": 31,
+              "text": "WFC_STATE_WAIT_FOR_LOGIN,"
+            },
+            {
+              "line": 32,
+              "text": "WFC_STATE_READY,"
+            }
+          ]
+        },
+        {
+          "path": "src/http/http.c",
+          "exists": true,
+          "lines": 313,
+          "sha1": "f99e5c531b6c8e201f6851480b91395dced49268",
+          "sampleSymbols": [
+            "HTTP_SetErrorCode",
+            "HTTP_RequestCompletedCallback",
+            "strcpy",
+            "strncat",
+            "MATH_CalcSHA1",
+            "memcpy",
+            "HTTP_Init",
+            "HTTP_PrepareRequest",
+            "HTTP_GetRequestStatus",
+            "HTTP_Shutdown",
+            "DWC_Free",
+            "DWC_ShutdownGHTTP",
+            "HTTP_GetErrorCode",
+            "HTTP_GetResponseLength"
+          ],
+          "keyMatches": [
+            {
+              "line": 1,
+              "text": "#include \"http/http.h\""
+            },
+            {
+              "line": 5,
+              "text": "#include \"http/http_b64.h\""
+            },
+            {
+              "line": 23,
+              "text": "} sHttpData = { 1, 0, 0, 0 };"
+            },
+            {
+              "line": 25,
+              "text": "static void HTTP_SetErrorCode(int requestHandle)"
+            },
+            {
+              "line": 28,
+              "text": "case DWC_GHTTP_IN_ERROR:"
+            },
+            {
+              "line": 29,
+              "text": "sHttpData.errorCode = 0;"
+            },
+            {
+              "line": 31,
+              "text": "case DWC_GHTTP_INVALID_POST:"
+            },
+            {
+              "line": 32,
+              "text": "sHttpData.errorCode = 1;"
+            }
+          ]
+        }
+      ],
+      "searchPatterns": [
+        "Mystery|WFC|WiFi|Underground|Contest|application|overlay",
+        "main_menu|gift|network|http"
+      ],
+      "keySymbols": [
+        "MainMenu_New",
+        "MysteryGift",
+        "Underground",
+        "Contest",
+        "HTTP"
+      ],
+      "fallbackNotes": "Usually not first-line for battle/code-injection requests, but keep indexed because user requests are unpredictable."
+    }
+  ]
+}

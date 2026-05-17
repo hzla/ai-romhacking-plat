@@ -1,0 +1,42 @@
+# AI context guardrails.
+# These rules are for indexing/context loading, not command execution.
+# A user-owned ROM may still be passed explicitly to scripts/apply-recipe.js with --rom.
+
+# Never load ROM images into chat/context.
+*.nds
+*.srl
+
+# Generated patched ROM copies. Keep manifests readable.
+output/*.nds
+output/*.srl
+patches/**/*.nds
+patches/**/*.srl
+
+# Local dependency/build/scratch folders.
+node_modules/
+tmp/
+.git/
+
+# Optional sibling repo bulk outputs. Do not hard-ignore source directories like
+# ../pokeplatinum/src or ../pokeplatinum/include; Tier-2 fallback needs targeted
+# source searches there.
+../pokeplatinum/.git/
+../pokeplatinum/build/
+../pokeplatinum/build-*/
+../pokeplatinum/.cache/
+../pokeplatinum/node_modules/
+../pokeplatinum/platinum.us/baserom*.nds
+../pokeplatinum/platinum.us/*.srl
+../pokeplatinum/**/*.o
+../pokeplatinum/**/*.elf
+../pokeplatinum/**/*.map
+
+../platinum-rom-patcher/.git/
+../platinum-rom-patcher/node_modules/
+../platinum-rom-patcher/output/
+../platinum-rom-patcher/dist/
+
+../DSPRE/.git/
+../DSPRE/**/bin/
+../DSPRE/**/obj/
+../DSPRE/packages/

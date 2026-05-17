@@ -1,0 +1,13 @@
+{
+  "game": "pokemon-platinum",
+  "name": "Remove critical hits",
+  "description": "Makes the critical-hit multiplier routine always return no critical hit.",
+  "patches": [
+    {
+      "id": "noCrits"
+    }
+  ],
+  "options": {
+    "force": false
+  }
+}
