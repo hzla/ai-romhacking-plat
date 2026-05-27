@@ -2,7 +2,7 @@
 
 This repo is an agent-ready workspace scaffold for AI-assisted Pokemon Platinum ROM hacking. It is designed for users who want to open the folder in Codex or Claude Code and ask for new features, patches, or research tasks in normal language.
 
-The intended setup is: clone `ai-romhacking`, add the needed reference repos, then let an AI coding agent use the included docs plus `PlatPatches` as a working source-code guide. Existing recipes are examples and smoke tests, not the main product.
+The intended setup is: clone `ai-romhacking`, add the needed reference repos, add your legally obtained ROM, then let an AI coding agent use the included docs plus `PlatPatches` as a working source-code guide.
 
 This repo does not include ROM files. Users add external reference projects and their own legally obtained ROM locally.
 
@@ -44,7 +44,7 @@ Install Node.js with your package manager or from https://nodejs.org/. Then chec
 node -v
 ```
 
-## Required Folder Layout
+## Recommended Folder Layout
 
 Clone this repo, then add `PlatPatches` inside the repo root. `PlatPatches` should come from [hzla/platpatches](https://github.com/hzla/platpatches) and must be named exactly `PlatPatches` so the workflow docs and verification scripts can find it.
 
@@ -54,12 +54,12 @@ Reference repos:
 - Optional source fallback: [pret/pokeplatinum](https://github.com/pret/pokeplatinum), placed here as `pokeplatinum/`.
 - Optional editor/source reference: [DS-Pokemon-Rom-Editor/DSPRE](https://github.com/DS-Pokemon-Rom-Editor/DSPRE), placed here as `DSPRE/`.
 
-Recommended layout:
-
 ```text
 ai-romhacking/
   ai-romhacking/         toolkit docs, scripts, registries, AGENTS.md
   PlatPatches/           required reference implementation from hzla/platpatches
+  roms/                  ignored local folder for your legally obtained .nds ROM
+    platinum.nds
   pokeplatinum/          optional source fallback from pret/pokeplatinum
   Docs/                  optional maintainer input
   DSPRE/                 optional maintainer reference from DS-Pokemon-Rom-Editor/DSPRE
@@ -75,15 +75,7 @@ PlatPatches/src/patches/
 
 The toolkit already includes compact DSPRE-derived and pokeplatinum-derived indexes, so users do not need the full `DSPRE`, `Docs`, or `pokeplatinum` folders for ordinary AI usage. Those folders are useful when an agent needs deeper source fallback.
 
-Place your legally obtained `.nds` ROM in the local `roms/` folder, for example:
-
-```text
-ai-romhacking/
-  roms/
-    platinum.nds
-```
-
-The `roms/` folder is ignored by git and AI context loading, so agents can reference the file by path without committing or pasting ROM bytes. Do not share ROM files.
+Place your legally obtained `.nds` ROM in the local `roms/` folder. The recommended path is `roms/platinum.nds`. The `roms/` folder is ignored by git and AI context loading, so agents can reference the file by path without committing or pasting ROM bytes. Do not share ROM files.
 
 `.aiignore` is included as an AI context guardrail. It prevents ROMs and generated build outputs from being loaded into chat context, but users can still point an agent or command at `roms/platinum.nds` explicitly.
 
@@ -131,28 +123,6 @@ Implement a new PlatPatches patch module for this behavior and wire it into the 
 
 The expected agent workflow is to inspect existing `PlatPatches` patch modules, follow their safety checks and registry wiring, implement the missing feature, and verify behavior against a clean ROM from `roms/` when available.
 
-## Optional: Apply An Existing Recipe
-
-Use a ROM file that you legally own. The recommended repo-root location is `roms/platinum.nds`; from the inner `ai-romhacking/` command directory, pass it as `../roms/platinum.nds`.
-
-```sh
-node scripts/apply-recipe.js recipes/examples/remove-critical-hits.json --rom "..\roms\platinum.nds"
-```
-
-On macOS or Linux:
-
-```sh
-node scripts/apply-recipe.js recipes/examples/remove-critical-hits.json --rom ../roms/platinum.nds
-```
-
-The output goes to:
-
-```text
-ai-romhacking/output/
-```
-
-The command also writes a `.manifest.json` file beside the patched ROM. The manifest records what recipe was used, input and output SHA1 hashes, and the patcher log.
-
 ## Useful Commands
 
 List all implemented patch capabilities:
@@ -191,14 +161,7 @@ Verify required runtime/reference folders:
 node scripts/verify-workspace.js --strict
 ```
 
-## Included Example Recipes
-
-- `recipes/examples/remove-critical-hits.json`
-- `recipes/examples/make-all-pokemon-shiny.json`
-- `recipes/examples/fast-text.json`
-- `recipes/examples/qol-bundle.json`
-
-## When There Is No Existing Recipe
+## When There Is No Existing Patch
 
 That is the expected advanced use case.
 
@@ -206,7 +169,7 @@ The AI agent should:
 
 1. Read `docs/agent-start-here.md`.
 2. Route the request with `docs/request-router.md`.
-3. Check the existing capability registry.
+3. Check the existing capability registry and `PlatPatches/src/patches/`.
 4. If there is no match, check one compact source or data target before searching a full decomp:
    - `docs/pokeplatinum-compact-index.md`
    - `docs/source/*.md`
