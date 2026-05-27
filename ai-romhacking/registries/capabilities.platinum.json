@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "game": "pokemon-platinum",
-  "source": "Requires sibling ../platinum-rom-patcher/app.js",
+  "source": "Uses ../PlatPatches as the patch reference implementation",
   "capabilities": [
     {
       "id": "frameRate",

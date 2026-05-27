@@ -13,3 +13,6 @@ output/*
 .DS_Store
 node_modules/
 tmp/
+
+# Local reference checkout from hzla/platpatches.
+PlatPatches/

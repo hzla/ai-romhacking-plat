@@ -3,7 +3,7 @@
   "workspaceName": "my-platinum-romhack",
   "game": "pokemon-platinum",
   "expectedSiblings": {
-    "platinum-rom-patcher": "../platinum-rom-patcher"
+    "PlatPatches": "../PlatPatches"
   },
   "optionalMaintainerInputs": {
     "pokeplatinum": "../pokeplatinum",

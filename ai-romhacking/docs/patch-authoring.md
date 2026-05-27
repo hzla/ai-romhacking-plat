@@ -1,8 +1,8 @@
 # Patch Authoring
 
-This toolkit currently wraps the implemented patches in `../platinum-rom-patcher/app.js`. Those patches are examples and a working backend. Most real user requests are expected to need new research and new capability authoring.
+This toolkit uses `../PlatPatches` as the reference implementation for safe Pokemon Platinum binary patches. Most real user requests are expected to need new research and new patch authoring, so treat the existing modules as patterns rather than as the full list of possible work.
 
-New binary patches should usually be added to `platinum-rom-patcher` first, then registered here as a capability. If a source-build change or DSPRE/data workflow is safer than binary injection, document that route instead of forcing the patch into the binary patcher.
+New binary patches should usually be added to `../PlatPatches/src/patches/` first, then wired through `../PlatPatches/app.js` and registered here as a capability. If a source-build change or DSPRE/data workflow is safer than binary injection, document that route instead of forcing the patch into the binary patcher.
 
 For low-context sessions, start with `docs/agent-start-here.md` and `docs/request-router.md`. Open one routed source shard or data index before using broader references.
 
@@ -28,11 +28,22 @@ For source/code-behavior requests, check the compact pokeplatinum-derived indexe
 
 ## Add A New Capability
 
-1. Implement and test the patch in `platinum-rom-patcher`.
-2. Export it through that patcher's `PATCH_IMPLS` and `PATCHES`.
-3. Add an entry to `registries/capabilities.platinum.json`.
-4. Add an example recipe if users are likely to ask for it.
-5. Document caveats in plain language.
+1. Find the closest existing module in `../PlatPatches/src/patches/`.
+2. Implement and test the patch in a focused `PlatPatches` module.
+3. Export it from that module and wire it through `../PlatPatches/app.js`.
+4. Add a browser script tag in `../PlatPatches/index.html` if a new module was created.
+5. Add or update an entry in `registries/capabilities.platinum.json`.
+6. Add an example recipe only if users are likely to reuse that exact bundle.
+7. Document caveats in plain language.
+
+## PlatPatches Module Checklist
+
+- Use `src/core.js` helpers for overlay lookup, ARM9 offsets, NARC edits, byte parsing, and byte writes.
+- Keep expected original bytes, already-patched bytes, and fallback scans explicit.
+- Preserve CommonJS and browser compatibility.
+- Keep `app.js` focused on patch ordering, labels, options, and orchestration.
+- Verify with `node --check` on touched modules and a CommonJS load test.
+- When a legal before/after ROM is available, compare hashes and known touched byte ranges.
 
 ## Design Rules
 
@@ -59,6 +70,6 @@ Classification:
 - `expansion-project`: broad structural work, such as adding large numbers of Pokemon or expanding Pokedex capacity.
 - `unfeasible`: too broad, unsafe, or not grounded enough to implement honestly.
 
-For feasible code changes, research the decomp first, write down the exact behavior target, implement a reusable patch/capability, then add registry metadata and a recipe.
+For feasible code changes, research the decomp first, write down the exact behavior target, implement a reusable `PlatPatches` patch/capability, then add registry metadata.
 
-For expansion projects, produce a scoped plan or suggest a smaller first slice. Do not present large expansions as one-command recipes.
+For expansion projects, produce a scoped plan or suggest a smaller first slice. Do not present large expansions as one-command patches.

@@ -8,7 +8,7 @@ Requests like: shiny odds, all Pokemon shiny, no critical hits, IV range, wild n
 
 First target: `registries/capabilities.platinum.json`
 
-Then: `recipes/examples/` or `docs/common-requests.md`
+Then: inspect the matching module under `../PlatPatches/src/patches/`, or use `docs/common-requests.md` for plain-language mapping.
 
 ## Pokemon Personal Data
 

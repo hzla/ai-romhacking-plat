@@ -1,17 +1,22 @@
 # Workspace Setup
 
-Use this toolkit from a workspace that contains sibling folders:
+Use this toolkit from the repo root with the reference folders placed beside the inner `ai-romhacking/` toolkit folder:
 
 ```text
-romhack-workspace/
   ai-romhacking/
-  platinum-rom-patcher/
-  pokeplatinum/ optional maintainer source fallback
-  Docs/       optional maintainer input
-  DSPRE/      optional maintainer reference
+  PlatPatches/ required reference implementation from hzla/platpatches
+  pokeplatinum/ optional source fallback from pret/pokeplatinum
+  Docs/         optional maintainer input
+  DSPRE/        optional maintainer reference from DS-Pokemon-Rom-Editor/DSPRE
 ```
 
-Only `platinum-rom-patcher` is required to apply the included recipes. End users do not need `pokeplatinum`, `Docs`, or `DSPRE`; compact generated indexes are already included under `docs/` and `registries/`.
+Reference repos:
+
+- Required: [hzla/platpatches](https://github.com/hzla/platpatches), placed here as `PlatPatches/`.
+- Optional source fallback: [pret/pokeplatinum](https://github.com/pret/pokeplatinum), placed here as `pokeplatinum/`.
+- Optional editor/source reference: [DS-Pokemon-Rom-Editor/DSPRE](https://github.com/DS-Pokemon-Rom-Editor/DSPRE), placed here as `DSPRE/`.
+
+Only `PlatPatches` is required for normal agent patch authoring. End users do not need `pokeplatinum`, `Docs`, or `DSPRE`; compact generated indexes are already included under `docs/` and `registries/`.
 
 For low-context/free-plan agent usage, start with `docs/agent-start-here.md` and `docs/request-router.md`. Those files point to one small source shard or data index instead of the full reference set.
 
@@ -34,7 +39,7 @@ node scripts/inspect-workspace.js
 node scripts/verify-workspace.js
 ```
 
-Use strict mode to require the runtime siblings used by the toolkit:
+Use strict mode to require the runtime/reference folders used by the toolkit:
 
 ```sh
 node scripts/verify-workspace.js --strict
@@ -67,4 +72,4 @@ This refreshes:
 
 ## ROM Files
 
-Do not put ROM files in this toolkit. Keep a legal backup somewhere private, then pass its path to `apply-recipe.js` with `--rom`.
+Do not put ROM files in this toolkit. Keep a legal backup somewhere private, then pass its path explicitly only when a verification or patching command needs it.

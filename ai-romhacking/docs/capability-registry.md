@@ -1,4 +1,4 @@
-# Capability Registry And Recipes
+# Capability Registry
 
 Capabilities live in:
 
@@ -8,7 +8,7 @@ registries/capabilities.platinum.json
 
 Each capability has:
 
-- `id`: patch ID passed to `platinum-rom-patcher`.
+- `id`: patch ID implemented or planned in `PlatPatches`.
 - `name`: human-readable label.
 - `summary`: what it does.
 - `aliases`: common user phrases.
@@ -17,9 +17,9 @@ Each capability has:
 - `caveats`: important behavior notes.
 - `examplePrompts`: examples an AI agent should recognize.
 
-## Recipe Format
+## Optional Recipe Format
 
-Recipes are JSON files:
+Recipes are legacy/example JSON files for exercising existing patches:
 
 ```json
 {
@@ -47,7 +47,7 @@ Supported option keys:
 
 Options can appear at the top level or under an individual patch. If both are used, patch-level options are merged after top-level options.
 
-## Applying Recipes
+## Optional Recipe Application
 
 ```sh
 node scripts/apply-recipe.js recipes/examples/remove-critical-hits.json --rom /path/to/platinum.nds

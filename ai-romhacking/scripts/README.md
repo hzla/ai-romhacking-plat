@@ -9,7 +9,7 @@ node scripts/verify-workspace.js
 node scripts/apply-recipe.js recipes/examples/remove-critical-hits.json --rom /path/to/platinum.nds
 ```
 
-The apply command imports `../platinum-rom-patcher/app.js`, writes a patched ROM copy, and writes a manifest beside it.
+The apply command is a legacy/example path. The main agent workflow uses `../PlatPatches/src/patches/` as the reference implementation for writing new patches.
 
 For low-context agent sessions, read `docs/agent-start-here.md` and `docs/request-router.md` before opening larger docs.
 

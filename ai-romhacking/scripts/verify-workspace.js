@@ -2,12 +2,10 @@
 "use strict";
 
 const path = require("path");
-const { inspectWorkspace, TOOLKIT_ROOT, isFile } = require("../lib/workspace");
+const { inspectWorkspace, TOOLKIT_ROOT, WORKSPACE_ROOT, isFile } = require("../lib/workspace");
 
 const REQUIRED_TOOLKIT_FILES = [
   "AGENTS.md",
-  "README.md",
-  ".aiignore",
   "docs/agent-start-here.md",
   "docs/request-router.md",
   "docs/pokeplatinum-compact-index.md",
@@ -20,6 +18,11 @@ const REQUIRED_TOOLKIT_FILES = [
   "registries/pokeplatinum-source-index.json",
   "lib/patcher-adapter.js",
   "scripts/apply-recipe.js",
+];
+
+const REQUIRED_WORKSPACE_FILES = [
+  "README.md",
+  ".aiignore",
 ];
 
 function parseArgs(argv) {
@@ -57,11 +60,16 @@ function main() {
       failures.push(`Missing toolkit file: ${file}`);
     }
   }
+  for (const file of REQUIRED_WORKSPACE_FILES) {
+    if (!isFile(path.join(WORKSPACE_ROOT, file))) {
+      failures.push(`Missing workspace file: ${file}`);
+    }
+  }
 
   const report = inspectWorkspace();
-  const patcher = report.siblings.find((sibling) => sibling.id === "platinum-rom-patcher");
+  const patcher = report.siblings.find((sibling) => sibling.id === "PlatPatches");
   if (!patcher || !patcher.ok) {
-    failures.push("Missing or incomplete sibling platinum-rom-patcher; apply-recipe needs ../platinum-rom-patcher/app.js.");
+    failures.push("Missing or incomplete PlatPatches reference; expected ../PlatPatches with app.js and src/patches/registry.js.");
   }
 
   if (args.strict) {

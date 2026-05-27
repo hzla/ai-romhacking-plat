@@ -6,13 +6,13 @@ const { findSibling, requireFile } = require("./workspace");
 const { unknownPatchIds } = require("./capabilities");
 
 function patcherModulePath() {
-  return path.join(findSibling("platinum-rom-patcher"), "app.js");
+  return path.join(findSibling("PlatPatches"), "app.js");
 }
 
 function loadPatcher() {
   const file = requireFile(
     patcherModulePath(),
-    "platinum-rom-patcher/app.js sibling dependency"
+    "PlatPatches/app.js reference dependency"
   );
   const patcher = require(file);
   if (!patcher || typeof patcher.applySelectedPatches !== "function") {

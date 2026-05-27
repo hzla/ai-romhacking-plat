@@ -6,8 +6,8 @@
     {
       "id": "existing_capability",
       "aliases": ["shiny odds", "all shiny", "no critical hits", "fast text", "faster movement", "fairy type", "iv range", "wild natures", "player accuracy"],
-      "firstTargets": ["registries/capabilities.platinum.json", "recipes/examples/", "docs/common-requests.md"],
-      "notes": "Use existing recipes before researching new source behavior."
+      "firstTargets": ["registries/capabilities.platinum.json", "../PlatPatches/src/patches/", "docs/common-requests.md"],
+      "notes": "Inspect existing PlatPatches modules before researching new source behavior."
     },
     {
       "id": "pokemon_personal_data",
@@ -67,7 +67,7 @@
       "id": "expansion_project",
       "aliases": ["add every gen 5 pokemon", "add many pokemon", "expand pokedex", "new species slots", "add many moves", "add many abilities", "new generation mechanic"],
       "firstTargets": ["docs/pokeplatinum-expansion-boundaries.md", "docs/request-router.md#expansion-projects"],
-      "notes": "Treat as planning or a smaller first slice, not a one-command recipe."
+      "notes": "Treat as planning or a smaller first slice, not a one-command patch."
     }
   ]
 }

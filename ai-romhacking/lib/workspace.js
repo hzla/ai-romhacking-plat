@@ -15,10 +15,10 @@ const EXPECTED_SIBLINGS = [
     markers: ["README.md", "INSTALL.md", "src", "include", "res", "platinum.us"],
   },
   {
-    id: "platinum-rom-patcher",
-    path: "platinum-rom-patcher",
-    requiredFor: ["apply-recipe"],
-    markers: ["app.js", "README.md"],
+    id: "PlatPatches",
+    path: "PlatPatches",
+    requiredFor: ["patch reference implementation", "optional recipe application"],
+    markers: ["app.js", "README.md", "src/core.js", "src/patches/registry.js"],
   },
   {
     id: "Docs",

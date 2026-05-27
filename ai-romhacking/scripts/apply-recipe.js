@@ -36,7 +36,7 @@ function usage() {
   return [
     "Usage: node scripts/apply-recipe.js <recipe.json> --rom <input.nds> [--out <output.nds>] [--force]",
     "",
-    "Applies a recipe through ../platinum-rom-patcher/app.js and writes a patched ROM copy plus manifest.",
+    "Applies a legacy/example recipe through ../PlatPatches/app.js and writes a patched ROM copy plus manifest.",
   ].join("\n");
 }
 

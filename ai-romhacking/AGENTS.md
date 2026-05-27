@@ -1,16 +1,16 @@
 # AGENTS.md - ai-romhacking
 
-Scope: this folder provides safe command-line workflows for AI-assisted Pokemon Platinum ROM research, patch authoring, and patch application.
+Scope: this folder provides an agent-ready workspace for Pokemon Platinum ROM research, patch authoring, and patch verification.
 
-Most user requests for this toolkit are expected to be outside the known recipe list. The existing `platinum-rom-patcher` capabilities are baseline examples and a reusable patch-application backend, not the main limit of what the agent should attempt. Default to researching and implementing a new reusable capability when the request is feasible and not already covered.
+Most user requests for this toolkit are expected to be outside the known patch list. The bundled `../PlatPatches` repo is the source-code guide for how to write safe binary patches: study its modules, reuse its helpers, and add new reusable patches there when the request is feasible.
 
 ## Core Rules
 
 - Never include, copy, commit, or distribute `.nds` ROM files.
-- Never modify an input ROM in place. Use `scripts/apply-recipe.js`, which writes a patched copy.
-- Prefer reusable capabilities over one-off byte edits.
-- Use `../platinum-rom-patcher/app.js` as the source of truth for already implemented binary patches.
-- Treat the existing registry as a starting catalog, not a complete list of possible requests.
+- Never modify an input ROM in place. Patching commands must write a copy.
+- Prefer reusable `PlatPatches` patch modules over one-off byte edits.
+- Use `../PlatPatches/src/patches/*.js`, `../PlatPatches/src/core.js`, and `../PlatPatches/app.js` as the source of truth for binary patch style and implemented examples.
+- Treat the existing capability registry as a starting catalog, not a complete list of possible requests.
 - Read `docs/agent-start-here.md` and `docs/request-router.md` before opening larger docs.
 - Use the routed compact docs/source shard before searching the optional decomp source.
 - Treat `.aiignore` as context-loading guardrails, not as a ban on explicit command inputs.
@@ -18,14 +18,14 @@ Most user requests for this toolkit are expected to be outside the known recipe 
 
 ## Expected Workspace
 
-Expected sibling folders:
+Expected folders from this directory:
 
-- `../platinum-rom-patcher`: required for applying recipes.
-- `../pokeplatinum`: optional maintainer source fallback and source-index regeneration input.
+- `../PlatPatches`: required reference implementation from `hzla/platpatches` (`https://github.com/hzla/platpatches`).
+- `../pokeplatinum`: optional maintainer source fallback and source-index regeneration input from `pret/pokeplatinum` (`https://github.com/pret/pokeplatinum`).
 - `../Docs`: optional maintainer input for regenerating compact DSPRE indexes.
-- `../DSPRE`: optional maintainer GUI/source reference.
+- `../DSPRE`: optional maintainer GUI/source reference from `DS-Pokemon-Rom-Editor/DSPRE` (`https://github.com/DS-Pokemon-Rom-Editor/DSPRE`).
 
-Run these checks before patching:
+Run these checks before patch authoring:
 
 ```sh
 node scripts/inspect-workspace.js
@@ -35,24 +35,25 @@ node scripts/verify-workspace.js
 ## Request Workflow
 
 1. Check whether the request is already covered by `registries/capabilities.platinum.json`.
-2. If a matching recipe exists, use it.
+2. If an existing `PlatPatches` module already covers it, explain or apply that patch path.
 3. If no known capability exists, read `docs/request-router.md` and choose one route.
 4. If no known capability exists, assume the request may still be feasible and classify it using Unknown Request Triage.
 5. For NARC/data/script requests, check compact indexes before searching external DSPRE sources.
 6. For source/code-behavior requests, read one `docs/source/*.md` shard before searching the optional decomp source.
-7. For feasible unknowns, implement a reusable capability, add registry metadata, and add a recipe if useful.
-8. Apply the recipe with `node scripts/apply-recipe.js <recipe> --rom <input.nds>` when a ROM patch is ready.
-9. Report the output ROM path, manifest path, verification performed, and important caveats.
+7. For feasible unknowns, inspect similar modules under `../PlatPatches/src/patches/`, then implement a reusable patch module or extend the closest existing one.
+8. Wire new patches through `../PlatPatches/app.js`, browser script tags when needed, and capability metadata here.
+9. Verify syntax/module loading, and when a legal ROM path is provided, patch a copy and compare expected byte regions.
+10. Report changed files, verification performed, and important caveats.
 
 Ask a follow-up only when the request has incompatible meanings. Example: "make battles faster" could mean text speed, HP bars, animation waits, or framerate.
 
 ## Unknown Request Triage
 
-If a user asks for something with no known recipe/capability, that is the normal use case for this toolkit. Do not stop just because the registry has no match, and do not invent a one-off mystery edit. Classify the request first, then choose the workflow.
+If a user asks for something with no known patch/capability, that is the normal use case for this toolkit. Do not stop just because the registry has no match, and do not invent a one-off mystery edit. Classify the request first, then choose the workflow.
 
 Classification:
 
-- `implemented`: an existing capability or recipe covers it. Apply the recipe.
+- `implemented`: an existing `PlatPatches` patch covers it. Explain or apply it.
 - `simple-data-edit`: likely belongs in DSPRE or exported data, such as trainer teams, move stats, Pokemon stats, item data, encounters, or text.
 - `feasible-code-change`: localized behavior change in known code, such as "make Chlorophyll double Speed in hail instead of sun".
 - `new-code-injection-capability`: localized binary hook or overlay helper needed, but the scope is still narrow and testable.
@@ -66,7 +67,7 @@ For `feasible-code-change` requests:
 3. Use narrow `rg` searches in `../pokeplatinum` only if compact indexes are insufficient and the optional source is available.
 4. Identify the exact behavior hook, constants, data table, or battle routine involved.
 5. Explain the intended implementation in plain language.
-6. Implement as a reusable capability when execution is requested, then register it in `registries/capabilities.platinum.json` and add a recipe if useful.
+6. Implement as a reusable `PlatPatches` patch when execution is requested, then register it in `registries/capabilities.platinum.json`.
 7. Include verification steps and caveats.
 
 Example feasible unknown:
@@ -84,10 +85,12 @@ rg -n "Speed|speed|ability" ../pokeplatinum/src/battle ../pokeplatinum/include/b
 
 For `new-code-injection-capability` requests:
 
-- Prefer adding patch logic to `../platinum-rom-patcher/app.js` first.
+- Prefer adding patch logic to a focused module under `../PlatPatches/src/patches/`.
+- Reuse helpers from `../PlatPatches/src/core.js` and patterns from similar modules before creating new helpers.
+- Wire the patch through `../PlatPatches/app.js` and `../PlatPatches/index.html` if the browser build needs a new script.
 - Add capability metadata here only after the patch is implemented and tested.
 - Sanity-check expected bytes and avoid patching in place.
-- Write a recipe only after the capability is proven.
+- Write a recipe only if it is useful as an example or smoke test.
 - If direct source-build changes are safer than binary injection, document that path and avoid forcing the work through the patcher backend.
 
 For `simple-data-edit` requests:
@@ -100,7 +103,7 @@ For `simple-data-edit` requests:
 
 ## Unfeasible Or Expansion-Sized Requests
 
-Be honest and specific when a request is too large for the current framework. Do not promise a one-click recipe for expansion-class work.
+Be honest and specific when a request is too large for the current framework. Do not promise a one-click patch for expansion-class work.
 
 Common expansion-sized examples:
 
@@ -109,7 +112,7 @@ Common expansion-sized examples:
 - "Expand the Pokedex with full sprites, cries, icons, forms, evolution data, learnsets, encounters, trainer compatibility, and UI support."
 - "Add a full new battle mechanic generation."
 
-Why these are not normal recipes:
+Why these are not normal patch requests:
 
 - They require coordinated data expansion, new assets, text, cries, icons, sprites, Pokedex UI changes, save/data compatibility checks, encounter/trainer integration, and extensive testing.
 - They may exceed hardcoded table limits or UI assumptions.
@@ -124,13 +127,13 @@ Response pattern for nontechnical users:
 
 Example response:
 
-"Porting every Gen 5 Pokemon is too large for this recipe system as a single task. It would need new species data, sprites, icons, cries, Pokedex entries, evolution/learnset data, UI expansion, and save compatibility testing. A safer first slice would be adding one test species or researching whether the current decomp has unused species slots."
+"Porting every Gen 5 Pokemon is too large for this patch system as a single task. It would need new species data, sprites, icons, cries, Pokedex entries, evolution/learnset data, UI expansion, and save compatibility testing. A safer first slice would be adding one test species or researching whether the current decomp has unused species slots."
 
 If the user accepts a smaller slice, treat that slice as `feasible-code-change` or `expansion-project` planning depending on scope.
 
 ## Existing Baseline Capability IDs
 
-These are already implemented through `platinum-rom-patcher` and are useful as examples, tests, and immediately available recipes. They are not the expected boundary of user requests.
+These are already implemented through `PlatPatches` and are useful as examples, tests, and immediately available patches. They are not the expected boundary of user requests.
 
 - `frameRate`
 - `shinyOdds`

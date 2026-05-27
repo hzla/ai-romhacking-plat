@@ -14,17 +14,29 @@ Use this file first when context is tight. The goal is to answer or implement th
 
 ## Request Classes
 
-- Existing patch: check `registries/capabilities.platinum.json`, then apply a recipe.
+- Existing patch: check `registries/capabilities.platinum.json`, then inspect the matching `../PlatPatches/src/patches/` module.
 - Data edit: check `docs/dspre-data-edit-playbook.md`, then NARC/script registries.
 - Source behavior change: check one `docs/source/*.md` shard.
 - Expansion project: check `docs/pokeplatinum-expansion-boundaries.md`.
 - Unknown: route by keywords in `docs/request-router.md`, then research narrowly.
 
+## PlatPatches Source Rule
+
+Use `../PlatPatches` as the implementation guide for binary patches:
+
+- `src/core.js`: shared ROM, overlay, NARC, byte, and helper utilities.
+- `src/patches/*.js`: focused patch modules grouped by domain.
+- `src/patches/registry.js`: patch registry validation helpers.
+- `app.js`: patch ordering, options, UI metadata, and CommonJS/browser exports.
+- `index.html`: browser script order for patch modules.
+
+When adding a new binary patch, follow the closest existing module pattern, keep byte checks explicit, and wire the patch through both CommonJS and browser paths.
+
 ## Safe Binary Handling
 
 Ignored ROM files may be used only as explicit command inputs. Do not read them into chat/context, paste bytes into docs, or modify them in place.
 
-Use:
+Optional legacy recipe command:
 
 ```sh
 node scripts/apply-recipe.js <recipe.json> --rom <input.nds>
