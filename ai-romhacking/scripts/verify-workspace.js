@@ -81,9 +81,6 @@ function main() {
         failures.push(`Strict mode: ${sibling.id} is missing or incomplete.`);
       }
     }
-    if (report.romFilesInToolkit.length) {
-      failures.push(`Strict mode: .nds files found inside ai-romhacking: ${report.romFilesInToolkit.join(", ")}`);
-    }
   }
 
   if (failures.length) {

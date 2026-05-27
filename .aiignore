@@ -1,10 +1,11 @@
 # AI context guardrails.
 # These rules are for indexing/context loading, not command execution.
-# A user-owned ROM may still be passed explicitly to scripts/apply-recipe.js with --rom.
+# User-owned ROMs may live in roms/ and may be passed explicitly to tools.
 
 # Never load ROM images into chat/context.
 *.nds
 *.srl
+roms/
 
 # Generated patched ROM copies. Keep manifests readable.
 output/*.nds

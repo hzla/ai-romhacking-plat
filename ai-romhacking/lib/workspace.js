@@ -128,12 +128,19 @@ function inspectWorkspace() {
     .filter((file) => /\.nds$/i.test(file))
     .filter((file) => !path.relative(TOOLKIT_ROOT, file).startsWith(`output${path.sep}`))
     .map((file) => path.relative(TOOLKIT_ROOT, file));
+  const workspaceFiles = walkFiles(WORKSPACE_ROOT, {
+    ignoreDirs: [".git", "node_modules", "PlatPatches", "pokeplatinum", "Docs", "DSPRE"],
+  });
+  const romFilesInWorkspace = workspaceFiles
+    .filter((file) => /\.nds$/i.test(file))
+    .map((file) => path.relative(WORKSPACE_ROOT, file));
 
   return {
     toolkitRoot: TOOLKIT_ROOT,
     workspaceRoot: WORKSPACE_ROOT,
     siblings,
     romFilesInToolkit: romFiles,
+    romFilesInWorkspace,
   };
 }
 

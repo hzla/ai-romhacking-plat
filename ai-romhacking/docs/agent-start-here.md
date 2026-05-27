@@ -34,12 +34,12 @@ When adding a new binary patch, follow the closest existing module pattern, keep
 
 ## Safe Binary Handling
 
-Ignored ROM files may be used only as explicit command inputs. Do not read them into chat/context, paste bytes into docs, or modify them in place.
+Place legally obtained ROMs in `../roms/`, for example `../roms/platinum.nds`. Ignored ROM files may be used only as explicit command or tool inputs. Do not read them into chat/context or paste bytes into docs.
 
 Optional legacy recipe command:
 
 ```sh
-node scripts/apply-recipe.js <recipe.json> --rom <input.nds>
+node scripts/apply-recipe.js <recipe.json> --rom ../roms/platinum.nds
 ```
 
 The command writes a patched copy under `output/` and a manifest beside it.

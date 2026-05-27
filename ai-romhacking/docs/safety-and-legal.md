@@ -5,8 +5,8 @@ This toolkit is for user-owned ROM backups and local patches.
 - Do not distribute `.nds` ROM files.
 - Do not commit ROM files.
 - Do not paste ROM bytes into chat.
-- Do not patch the only copy of a ROM.
-- Keep original clean backups outside this toolkit.
+- Place a local working ROM in `roms/`, for example `roms/platinum.nds`.
+- Keep original clean backups somewhere private.
 
 The command workflow writes patched copies and JSON manifests. The manifest makes it easier to understand what changed without sharing the ROM.
 

@@ -2,12 +2,14 @@
 output/*
 !output/.gitkeep
 
-# User-owned ROM files should not be committed or shared.
+# User-owned ROM/save files may live locally in roms/, but should not be committed or shared.
 *.nds
 *.srl
 *.dsv
 *.sav
 *.state
+roms/*
+!roms/.gitkeep
 
 # Local scratch files.
 .DS_Store

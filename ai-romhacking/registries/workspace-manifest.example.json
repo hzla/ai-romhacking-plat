@@ -12,6 +12,6 @@
   },
   "notes": [
     "Do not commit or share .nds ROM files.",
-    "Place user-owned ROM files outside ai-romhacking or in an ignored local folder."
+    "Place user-owned ROM files in the ignored local roms/ folder, for example roms/platinum.nds."
   ]
 }

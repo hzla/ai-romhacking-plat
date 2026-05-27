@@ -7,7 +7,8 @@ Most user requests for this toolkit are expected to be outside the known patch l
 ## Core Rules
 
 - Never include, copy, commit, or distribute `.nds` ROM files.
-- Never modify an input ROM in place. Patching commands must write a copy.
+- User-owned `.nds` files may live in `../roms/`; use them only by explicit path.
+- Do not paste ROM bytes into chat or docs.
 - Prefer reusable `PlatPatches` patch modules over one-off byte edits.
 - Use `../PlatPatches/src/patches/*.js`, `../PlatPatches/src/core.js`, and `../PlatPatches/app.js` as the source of truth for binary patch style and implemented examples.
 - Treat the existing capability registry as a starting catalog, not a complete list of possible requests.
@@ -42,7 +43,7 @@ node scripts/verify-workspace.js
 6. For source/code-behavior requests, read one `docs/source/*.md` shard before searching the optional decomp source.
 7. For feasible unknowns, inspect similar modules under `../PlatPatches/src/patches/`, then implement a reusable patch module or extend the closest existing one.
 8. Wire new patches through `../PlatPatches/app.js`, browser script tags when needed, and capability metadata here.
-9. Verify syntax/module loading, and when a legal ROM path is provided, patch a copy and compare expected byte regions.
+9. Verify syntax/module loading, and when a legal ROM is available under `../roms/`, patch or inspect it by explicit path and compare expected byte regions.
 10. Report changed files, verification performed, and important caveats.
 
 Ask a follow-up only when the request has incompatible meanings. Example: "make battles faster" could mean text speed, HP bars, animation waits, or framerate.
@@ -170,7 +171,7 @@ Free-plan users may run out of context quickly. Keep the working set small:
 - Read one source shard under `docs/source/`, not the full decomp map.
 - Prefer exact registry entries over broad Markdown docs when looking up offsets or IDs.
 - Use exact `rg` searches and line-specific reads for optional source fallback.
-- Never load `.nds` ROMs, build outputs, dependency folders, or generated binaries into chat context.
+- Never load `.nds` ROMs, build outputs, dependency folders, or generated binaries into chat context; use local ROM paths only as explicit tool inputs.
 
 ## Compact Reference Indexes
 

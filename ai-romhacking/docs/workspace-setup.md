@@ -18,6 +18,24 @@ Reference repos:
 
 Only `PlatPatches` is required for normal agent patch authoring. End users do not need `pokeplatinum`, `Docs`, or `DSPRE`; compact generated indexes are already included under `docs/` and `registries/`.
 
+Place your legally obtained `.nds` ROM in the local `roms/` folder at the repo root, for example:
+
+```text
+roms/platinum.nds
+```
+
+The `roms/` folder is ignored by git and AI context loading. Agents may reference files there by explicit path for patching and verification, but should not paste ROM bytes into chat or docs.
+
+## Open In Codex
+
+After `PlatPatches`, any optional reference repos, and your legal ROM have been added:
+
+1. Install Codex for Windows from [developers.openai.com/codex/app/windows](https://developers.openai.com/codex/app/windows).
+2. Open Codex.
+3. Click **Project** on the left.
+4. Click **Use Existing Folder**.
+5. Select the full `ai-romhacking/` folder, the one containing `PlatPatches/`, `roms/`, and the inner `ai-romhacking/` toolkit folder.
+
 For low-context/free-plan agent usage, start with `docs/agent-start-here.md` and `docs/request-router.md`. Those files point to one small source shard or data index instead of the full reference set.
 
 ## Install Node.js
@@ -72,4 +90,4 @@ This refreshes:
 
 ## ROM Files
 
-Do not put ROM files in this toolkit. Keep a legal backup somewhere private, then pass its path explicitly only when a verification or patching command needs it.
+Put local working ROM files in `roms/`, keep clean backups private, and pass the ROM path explicitly only when a verification or patching command needs it.

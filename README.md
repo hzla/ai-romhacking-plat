@@ -4,7 +4,7 @@ This repo is an agent-ready workspace scaffold for AI-assisted Pokemon Platinum 
 
 The intended setup is: clone `ai-romhacking`, add the needed reference repos, then let an AI coding agent use the included docs plus `PlatPatches` as a working source-code guide. Existing recipes are examples and smoke tests, not the main product.
 
-This repo does not include ROM files. Users add external reference projects locally.
+This repo does not include ROM files. Users add external reference projects and their own legally obtained ROM locally.
 
 For low-context/free-plan usage, agents should start with `docs/agent-start-here.md`, route the request with `docs/request-router.md`, and read only one compact reference shard before using optional source fallback.
 
@@ -75,9 +75,17 @@ PlatPatches/src/patches/
 
 The toolkit already includes compact DSPRE-derived and pokeplatinum-derived indexes, so users do not need the full `DSPRE`, `Docs`, or `pokeplatinum` folders for ordinary AI usage. Those folders are useful when an agent needs deeper source fallback.
 
-Do not put `.nds` files inside this toolkit unless they are generated outputs under `ai-romhacking/output/`. Do not share ROM files.
+Place your legally obtained `.nds` ROM in the local `roms/` folder, for example:
 
-`.aiignore` is included as an AI context guardrail. It prevents ROMs and generated build outputs from being loaded into chat context, but users can still pass an explicit ROM path to patch commands.
+```text
+ai-romhacking/
+  roms/
+    platinum.nds
+```
+
+The `roms/` folder is ignored by git and AI context loading, so agents can reference the file by path without committing or pasting ROM bytes. Do not share ROM files.
+
+`.aiignore` is included as an AI context guardrail. It prevents ROMs and generated build outputs from being loaded into chat context, but users can still point an agent or command at `roms/platinum.nds` explicitly.
 
 ## First-Time Check
 
@@ -93,7 +101,17 @@ node scripts/list-capabilities.js
 
 ## Using This With Codex Or Claude Code
 
-Open the repo root in your coding agent and ask for the feature you want. The agent should start from:
+After `PlatPatches`, any optional reference repos, and your legal ROM have been added, open the full repo root in your coding agent and ask for the feature you want.
+
+For Codex on Windows:
+
+1. Install Codex from [developers.openai.com/codex/app/windows](https://developers.openai.com/codex/app/windows).
+2. Open Codex.
+3. Click **Project** on the left.
+4. Click **Use Existing Folder**.
+5. Select the full `ai-romhacking/` folder, the one containing `PlatPatches/`, `roms/`, and the inner `ai-romhacking/` toolkit folder.
+
+The agent should start from:
 
 ```text
 ai-romhacking/AGENTS.md
@@ -111,20 +129,20 @@ Research whether the request belongs in data/NARC editing or a binary patch.
 Implement a new PlatPatches patch module for this behavior and wire it into the UI.
 ```
 
-The expected agent workflow is to inspect existing `PlatPatches` patch modules, follow their safety checks and registry wiring, implement the missing feature, and verify behavior against a clean ROM when a legal ROM path is provided.
+The expected agent workflow is to inspect existing `PlatPatches` patch modules, follow their safety checks and registry wiring, implement the missing feature, and verify behavior against a clean ROM from `roms/` when available.
 
 ## Optional: Apply An Existing Recipe
 
-Use a ROM file that you legally own. The command writes a patched copy and never edits the input ROM in place.
+Use a ROM file that you legally own. The recommended repo-root location is `roms/platinum.nds`; from the inner `ai-romhacking/` command directory, pass it as `../roms/platinum.nds`.
 
 ```sh
-node scripts/apply-recipe.js recipes/examples/remove-critical-hits.json --rom "C:\path\to\your\platinum.nds"
+node scripts/apply-recipe.js recipes/examples/remove-critical-hits.json --rom "..\roms\platinum.nds"
 ```
 
 On macOS or Linux:
 
 ```sh
-node scripts/apply-recipe.js recipes/examples/remove-critical-hits.json --rom /path/to/your/platinum.nds
+node scripts/apply-recipe.js recipes/examples/remove-critical-hits.json --rom ../roms/platinum.nds
 ```
 
 The output goes to:
@@ -167,7 +185,7 @@ Verify this toolkit and the required patcher:
 node scripts/verify-workspace.js
 ```
 
-Verify required runtime folders and check for accidental ROM files:
+Verify required runtime/reference folders:
 
 ```sh
 node scripts/verify-workspace.js --strict

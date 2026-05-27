@@ -52,10 +52,10 @@ function main() {
       console.log(`  missing markers: ${missing.join(", ")}`);
     }
   }
-  if (report.romFilesInToolkit.length) {
+  if (report.romFilesInWorkspace && report.romFilesInWorkspace.length) {
     console.log("");
-    console.log("Warning: .nds files were found inside ai-romhacking:");
-    for (const file of report.romFilesInToolkit) {
+    console.log("Local ROM files available for explicit tool use:");
+    for (const file of report.romFilesInWorkspace) {
       console.log(`- ${file}`);
     }
   }
