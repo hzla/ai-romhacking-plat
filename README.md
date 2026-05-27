@@ -2,7 +2,7 @@
 
 This repo is an agent-ready workspace scaffold for AI-assisted Pokemon Platinum ROM hacking. It is designed for users who want to open the folder in Codex or Claude Code and ask for new features, patches, or research tasks in normal language.
 
-The intended setup is: clone `ai-romhacking`, add the needed reference repos, add your legally obtained ROM, then let an AI coding agent use the included docs plus `PlatPatches` as a working source-code guide.
+The intended setup is: clone `ai-romhacking`, add the needed reference repos, add your legally obtained ROM, then ask an AI coding agent to add or improve patches in `PlatPatches`. After the agent updates the webapp, open `PlatPatches/index.html` and use the webapp to patch your ROM.
 
 This repo does not include ROM files. Users add external reference projects and their own legally obtained ROM locally.
 
@@ -119,9 +119,17 @@ Good requests look like:
 Add a reusable patch that makes Chlorophyll activate in hail instead of sun.
 Research whether the request belongs in data/NARC editing or a binary patch.
 Implement a new PlatPatches patch module for this behavior and wire it into the UI.
+Add this feature to the PlatPatches webapp so I can apply it to roms/platinum.nds.
 ```
 
-The expected agent workflow is to inspect existing `PlatPatches` patch modules, follow their safety checks and registry wiring, implement the missing feature, and verify behavior against a clean ROM from `roms/` when available.
+The default workflow is:
+
+1. The user asks the agent to add or modify a patch in `PlatPatches`.
+2. The agent inspects existing `PlatPatches` patch modules, follows their safety checks and registry wiring, and implements the missing feature.
+3. The agent verifies the new patch against a clean ROM from `roms/` when available.
+4. The user opens `PlatPatches/index.html` and applies the patch through the webapp.
+
+Direct ROM edits should be limited to investigation, prototyping, or verification. User-facing work should become a reusable `PlatPatches` patch so it can be reviewed, reapplied, and used from the webapp later.
 
 ## Useful Commands
 
@@ -176,7 +184,7 @@ The AI agent should:
    - `registries/pokeplatinum-source-index.json`
 5. Decide whether the request is a simple data edit, a feasible code change, a code-injection capability, or a larger expansion project.
 6. Search optional `../pokeplatinum` source only if the compact notes are not enough and the source is available.
-7. Implement a reusable capability when the scope is feasible.
+7. Implement a reusable `PlatPatches` patch when the scope is feasible.
 8. Add or update the `PlatPatches` patch module, registry wiring, UI metadata, and capability docs after testing.
 
 Example:
